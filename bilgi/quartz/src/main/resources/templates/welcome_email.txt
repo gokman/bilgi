@@ -1,0 +1,6 @@
+Welcome $user.firstName $user.lastName!
+
+Please enjoy the rest of your stay on the website. While you can!
+
+Thanks,
+Your New Website
