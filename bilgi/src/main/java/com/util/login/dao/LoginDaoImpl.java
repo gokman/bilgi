@@ -9,6 +9,7 @@ import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.util.constants.ApplicationConstants;
 import com.util.membership.model.User;
 
 @Repository("loginDao")
@@ -33,7 +34,7 @@ public class LoginDaoImpl implements LoginDao{
 	public List<User> listByNickname(String nickname) {
 		User user = new User();
 		user.setNickName(nickname);
-		
+		user.setMembershipStatus(ApplicationConstants.MEMBERSHIP_STATUS_CODES.ACTIVE);
 		List<User> userList = sessionFactory.getCurrentSession().createCriteria(User.class).add(Example.create(user)).list();
 		
 		return  userList;
