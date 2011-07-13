@@ -1,5 +1,9 @@
 package com.util.mailing;
 
+import java.net.URI;
+import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.Security;
 import java.util.Date;
 import java.util.Properties;
@@ -53,7 +57,6 @@ public class MailSender {
 	     msg.setSentDate(new Date()); 
 	     Transport.send(msg); 
 
-      
 	     return activationUrl;
     }
 

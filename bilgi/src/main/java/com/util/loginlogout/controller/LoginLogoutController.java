@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,14 +75,16 @@ public class LoginLogoutController{
 		validator.validate(user, result);
 		//TODO user validasyonu ve þifresi gönderilecek þekilde bir  servis yazýlmalý.
 		
+
+		List <User> usersInDB = loginService.getByUsername(user.getNickName());
+		if(usersInDB.size() > 0){
+			result.rejectValue("nickName", "dublicateNickname");
+		}
+		
 		if(result.hasErrors()){
 			ModelAndView returnView = new ModelAndView("membershipForm");
 			returnView.addObject("user", user);
 			return returnView;
-		}
-		List <User> usersInDB = loginService.getByUsername(user.getNickName());
-		if(usersInDB.size()!= 0){
-			
 		}
 		
 		String to = user.getEmail();	

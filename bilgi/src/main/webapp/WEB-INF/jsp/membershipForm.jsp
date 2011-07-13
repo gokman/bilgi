@@ -16,6 +16,7 @@
 
 <c:url value="/login/membershipFormSave.htm" var="saveMember"></c:url>
 <p align="center">Uyelik Sayfasi</p>
+
 <form:form  action="${saveMember}" method="POST" modelAttribute="user">
 		<table>
 			<tr>
