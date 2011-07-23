@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,21 +15,21 @@ public class User {
 
 	//Kimlik bilgileri
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private Long userId;
 
-	@Column(name = "username", nullable = false, length=20)
-	private String userName;
+	@Column(name = "name", nullable = false, length=20)
+	private String name;
 
-	@Column(name = "user_surname", nullable = false, length=20)
-	private String userSurname;
+	@Column(name = "surname", nullable = false, length=20)
+	private String surname;
 	
 	@Column( name = "password",nullable = false)
 	private String password ;
 	
-	@Column(name = "nickname", nullable = false,length = 20)
-	private String nickName;
+	@Column(name = "username", nullable = false,length = 20)
+	private String username;
 	
 	@Column(name = "date_of_birth")
 	private String dateOfBirth;
@@ -47,6 +48,9 @@ public class User {
 	
 	@Column ( name = "email")
 	private String email;
+	
+	@Column ( name = "activation_string")
+	private String activationString;
 	
 	//Ýletiþim Bilgileri
 	
@@ -71,36 +75,6 @@ public class User {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
-	}
-
-
-	public String getUserName() {
-		return userName;
-	}
-
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-
-	public String getUserSurname() {
-		return userSurname;
-	}
-
-
-	public void setUserSurname(String userSurname) {
-		this.userSurname = userSurname;
-	}
-
-
-	public String getNickName() {
-		return nickName;
-	}
-
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
 	}
 
 
@@ -162,4 +136,43 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+	public String getActivationString() {
+		return activationString;
+	}
+
+
+	public void setActivationString(String activationString) {
+		this.activationString = activationString;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getSurname() {
+		return surname;
+	}
+
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}	
+	
 }

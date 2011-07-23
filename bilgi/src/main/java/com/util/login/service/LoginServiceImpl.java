@@ -27,14 +27,34 @@ public class LoginServiceImpl implements LoginService{
 		loginDao.saveUser(user);
 	}
 
+	public void updateMembershipStatus(Long userID){
+		loginDao.updateMembershipStatus(userID);
+	}
+	
 	public List<User> listUsers() {
 		return loginDao.listUsers();
 	}
 
 
 
-	public List<User> getByUsername(String nickname) {
-		return loginDao.listByNickname(nickname);
+	public List<User> getByUsername(String username) {
+		return loginDao.listByUsername(username);
 	}
+	
+	public List<User> getByEmail(String email) {
+		return loginDao.listByEmail(email);
+	}
+	
+	@Override
+	public User getWaitingMember(User user) {
+		List <User>waitingUsers = loginDao.listUsers(user);
+		
+		if(waitingUsers.size() > 0)
+			return (User)waitingUsers.get(0);
+		else
+			return null;
+	}
+	
+	
 
 }
