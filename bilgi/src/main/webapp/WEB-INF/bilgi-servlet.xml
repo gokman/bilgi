@@ -13,7 +13,7 @@
 	<!-- Scans the classpath of this application for @Components to deploy as beans -->
 	<context:component-scan base-package="/" />
 	<context:annotation-config />
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
 
      <!-- Enable annotation-based validation using Bean Validation Framework -->  
      <!-- Using these instead of vld namespace to prevent Eclipse from complaining 

@@ -24,32 +24,32 @@
 					<label for="username">Ad</label>
 				</td>	
 				<td>
-					<form:input type="text" id="username" path="userName"/>
+					<form:input type="text" id="name" path="name"/>
 				</td>
 				<td>
-					<form:errors path="userName" cssClass="error" />
+					<form:errors path="name" cssClass="error" />
 				</td>
 			</tr>
 			<tr>
 				<td>	
-					<label for="user_surname">Soyad</label>
+					<label for="surname">Soyad</label>
 				</td>
 				<td>	
-					<form:input path="userSurname" type="text" id="userSurname"/>
+					<form:input path="surname" type="text" id="surname"/>
 				</td>
 				<td>
-					<form:errors path="userSurname" cssClass="error" />
+					<form:errors path="surname" cssClass="error" />
 				</td>				
 			</tr>
 			<tr>
 				<td>
-					<label for="nickname">Kullanici Adi</label>
+					<label for="username">Kullanici Adi</label>
 				</td>
 				<td>
-					<form:input type="text" id="nickname" path="nickName"/>
+					<form:input type="text" id="username" path="username"/>
 				</td>
 				<td>
-					<form:errors path="nickName" cssClass="error" />
+					<form:errors path="username" cssClass="error" />
 				</td>				
 			</tr>
 			<tr>	
