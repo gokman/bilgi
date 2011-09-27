@@ -1,5 +1,8 @@
 package com.util.loginlogout.controller;
+import java.io.File;
+import java.io.IOException;
 import java.security.Security;
+import java.sql.Blob;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
@@ -14,11 +17,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.samples.mvc.basic.model.Article;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +33,7 @@ import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Hibernate;
 
 import com.util.constants.ApplicationConstants;
 import com.util.login.service.LoginService;
@@ -52,11 +60,14 @@ public class LoginLogoutController{
 	@Autowired
 	private LoginService loginService;
 	
+    private static final String destinationDir = "C:/temp/";
+	
+	
 	@Autowired 
 	private ApplicationContext context;
 	
 	@RequestMapping(value = "/login.htm", method = RequestMethod.GET)
-	public ModelAndView login(@ModelAttribute("article") Article  article,
+	public ModelAndView login(
 			BindingResult result) {
 
 		return new ModelAndView("login");
@@ -74,10 +85,22 @@ public class LoginLogoutController{
 	}	
 
 	@RequestMapping(value = "/membershipFormSave.htm",method = RequestMethod.POST)
-	public ModelAndView saveMemberForm(@ModelAttribute("user")User user ,BindingResult result){
+	public ModelAndView saveMemberForm(HttpServletRequest req,@ModelAttribute("user")User user ,BindingResult result,@RequestParam("file") MultipartFile file){
+		String profileImagePath = "/resources/kariyer/"+file.getOriginalFilename();
+		File newFiles= new File(req.getSession().getServletContext().getRealPath(profileImagePath));
+	
+		
+        File destination = new File(destinationDir + file.getOriginalFilename());
+        try {
+			file.transferTo(newFiles);
+		} catch (Exception e1) {
+
+			e1.printStackTrace();
+		}
 		MembershipFormValidator validator = new MembershipFormValidator();
 //		applicationContext.getAutowireCapableBeanFactory().autowireBean(object);
 		user.setMembershipStatus(ApplicationConstants.MEMBERSHIP_STATUS_CODES.WAITING);
+		user.setProfileImage(profileImagePath);
 		validator.validate(user, result);
 		//TODO user validasyonu ve þifresi gönderilecek þekilde bir  servis yazýlmalý.
 		

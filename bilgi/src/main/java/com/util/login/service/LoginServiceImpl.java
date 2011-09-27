@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.util.constants.ApplicationConstants;
 import com.util.login.dao.LoginDao;
 import com.util.membership.model.User;
 
@@ -54,7 +55,16 @@ public class LoginServiceImpl implements LoginService{
 		else
 			return null;
 	}
-	
-	
+
+
+
+	public List<User> listActiveCustomers() {
+		User user = new User();
+//		user.setMembershipStatus(ApplicationConstants.MEMBERSHIP_STATUS_CODES.ACTIVE);
+		return loginDao.listUsers(user);
+	}
+
+
+
 
 }

@@ -17,4 +17,6 @@ public interface LoginService {
 		public List<User> getByEmail (String email);
 		
 		public User getWaitingMember(User user);
+		
+		public List<User> listActiveCustomers();
 	}

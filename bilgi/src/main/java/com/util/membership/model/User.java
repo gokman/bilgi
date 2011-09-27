@@ -1,5 +1,6 @@
 package com.util.membership.model;
 
+import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -7,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "USER")
@@ -52,7 +56,8 @@ public class User {
 	@Column ( name = "activation_string")
 	private String activationString;
 	
-	//Ýletiþim Bilgileri
+	@Column ( name = "profile_image")
+    private String profileImage;
 	
 	public String getEmail() {
 		return email;
@@ -173,6 +178,16 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+
+
+	public String getProfileImage() {
+		return profileImage;
 	}	
 	
 }

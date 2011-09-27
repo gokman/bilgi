@@ -28,9 +28,9 @@ public class MembershipFormValidator  implements Validator {
     
     
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userSurname", "usersurname");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "username");
-        ValidationUtils.rejectIfEmpty(errors, "nickName", "membership","isim alani bos birakilamaz");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "surname");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name");
+        ValidationUtils.rejectIfEmpty(errors, "username", "membership","isim alani bos birakilamaz");
         
         ValidationUtils.rejectIfEmpty(errors, "dateOfBirth","birthdate", "country isim gerekli");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "adress", "adress");
