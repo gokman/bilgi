@@ -1,7 +1,0 @@
-Hello $user.firstName $user.lastName!
-
-Visit http://theteam.com:8080/signup_confirmation.htm?userIdHash=${userIdHash} to confirm.
-
-Thanks,
-The Team
-
