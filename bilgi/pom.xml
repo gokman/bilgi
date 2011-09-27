@@ -227,7 +227,15 @@
 			    <groupId>log4j</groupId>
 			    <artifactId>log4j</artifactId>
 			    <version>1.2.9</version>
-			</dependency>            
+			</dependency>    
+			
+		<!-- commons file upload -->
+		
+		<dependency>
+		   <groupId>commons-fileupload</groupId>
+		   <artifactId>commons-fileupload</artifactId>
+		   <version>1.2.1</version>
+		</dependency>					        
   </dependencies>
 	<build>
 		<finalName>bilgi</finalName>
