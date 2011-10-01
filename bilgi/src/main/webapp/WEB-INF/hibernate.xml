@@ -26,7 +26,7 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
  
     <property name="annotatedClasses">
 	<list>
-		<value>org.springframework.samples.mvc.basic.model.Article</value>
+		<value>com.spor.salon.model.Saloon</value>
 		<value>com.util.membership.model.User</value>	
 	</list>
     </property>

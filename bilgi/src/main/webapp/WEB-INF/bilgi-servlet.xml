@@ -44,4 +44,13 @@
 	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
 			p:basename="messages"/>
+			
+	
+	
+	<!-- for file upload -->
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		   <property name="maxUploadSize" value="10000000" />
+	</bean>	
+			
 </beans>
