@@ -32,7 +32,7 @@ public class WelcomePageController extends AbstractController{
 		logger.info("Returning hello view");
 		
 		System.out.println("stdout - Returning hello view");
-		ModelAndView mv = new ModelAndView("prettyPhoto");
+		ModelAndView mv = new ModelAndView("product/addProduct");
 
 		//aktif müþterilerin listelenmesi
 		List activeCustomers = loginService.listActiveCustomers();
