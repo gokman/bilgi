@@ -52,7 +52,7 @@ public class MailSender {
 	     final String username = "bilgi.app@gmail.com"; 
 	     final String password = "bilgiapp"; 
 	     
-	     //Kullancýyý gönderilecek aktivasyon linkinde kullanýlacak random String
+	     //Kullanciyi gonderilecek aktivasyon linkinde kullanilacak random String
 	     SecureRandom random = new SecureRandom();
 	     String activationString =new BigInteger(130, random).toString(20).substring(0,19);		 	
 		 
