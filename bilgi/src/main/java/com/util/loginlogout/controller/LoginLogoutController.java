@@ -102,7 +102,7 @@ public class LoginLogoutController{
 		user.setMembershipStatus(ApplicationConstants.MEMBERSHIP_STATUS_CODES.WAITING);
 		user.setProfileImage(profileImagePath);
 		validator.validate(user, result);
-		//TODO user validasyonu ve þifresi gönderilecek þekilde bir  servis yazýlmalý.
+		//TODO user validasyonu ve sifresi gonderilecek sekilde bir  servis yazilmali.
 		
 
 		List <User> usersInDB = loginService.getByUsername(user.getUsername());
@@ -139,7 +139,7 @@ public class LoginLogoutController{
 	
 	@RequestMapping(value = "/activateUserAccount/{username}/{activationString}.htm")
 	public ModelAndView activateUserAccount(@PathVariable("username")String username,@PathVariable("activationString") String activationString,@ModelAttribute("user")User user ,BindingResult result){
-//		User kaydýnýn membership statusu aktife çekilicek.
+//		User kaydinin membership statusu aktife cekilicek.
 		
 		User exmpUser = new User();
 		exmpUser.setActivationString(activationString);
@@ -148,7 +148,7 @@ public class LoginLogoutController{
 		
 		if(waitingUser != null){
 			loginService.updateMembershipStatus(waitingUser.getUserId());
-			//TODO güncelleme kýsmý eksik
+			//TODO guncelleme kismi eksik
 			return new ModelAndView("/articles.htm");
 		}else{
 			return new ModelAndView("/articles.htm");
