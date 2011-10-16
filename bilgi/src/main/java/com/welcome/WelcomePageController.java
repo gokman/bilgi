@@ -34,7 +34,7 @@ public class WelcomePageController extends AbstractController{
 		System.out.println("stdout - Returning hello view");
 		ModelAndView mv = new ModelAndView("product/addProduct");
 
-		//aktif müþterilerin listelenmesi
+		//aktif musterilerin listelenmesi
 		List activeCustomers = loginService.listActiveCustomers();
 		mv.addObject("activeCustomers",activeCustomers);
 		
