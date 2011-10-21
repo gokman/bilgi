@@ -53,7 +53,7 @@ public class CustomerController{
 		return new ModelAndView("customer/customerForm");
 	}	
 
-	@RequestMapping(value = "/saveCustomerForm.htm",method = RequestMethod.POST)
+	@RequestMapping(value = "/saveCustomerForm.htm")
 	public ModelAndView saveCustomerForm(HttpServletRequest req,@ModelAttribute("customer")Customer customer,BindingResult result){
 
 		CustomerValidator validator = new CustomerValidator();
@@ -65,8 +65,9 @@ public class CustomerController{
 			return returnView;
 		}
 		customerService.addCustomer(customer);
+		ModelAndView successPage = new ModelAndView("emlakSitem");
 
-		return new ModelAndView("addCustomerSuccess");
+		return successPage;
 	}	
 	
 }
