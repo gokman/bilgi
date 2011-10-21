@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<script type="text/javascript" src="<c:url value="/resources/jquery-1.5.2.js" /> "></script>
+<script type="text/javascript" src="<c:url value="/resources/jquery-1.5.2.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/jquery.ui.core.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/resources/jquery.ui.datepicker.js" /> "></script>
 <script type="text/javascript" src="<c:url value="/resources/jquery.ui.widget.js" /> "></script>
