@@ -338,9 +338,8 @@
 						</td>
 						<td width="78"
 							background="<c:url value="/resources/kariyer/kmn2g.jpg"/>"
-							onmouseover="menuGoster(2,1)" align="center" id="MN2"><a
-							href="http://www.kariyer.net/jobsearch/detayliarama.kariyer?arn=&sid=&clktkp=1034"
-							class="topmenug" id="amn2">MÜÞTERÝ EKLEME</a></td>
+							onmouseover="menuGoster(2,1)" align="center" id="MN2">
+							<a href="<c:url value="/customer/addCustomer.htm"/>" class="topmenug" id="amn2">MÜÞTERÝ EKLEME</a></td>
 						<td width="3" valign="bottom"><span id="spM3"
 							style="position: relative"></span>
 						<div id="menudiv3"
