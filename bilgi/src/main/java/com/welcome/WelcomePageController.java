@@ -32,12 +32,8 @@ public class WelcomePageController extends AbstractController{
 		logger.info("Returning hello view");
 		
 		System.out.println("stdout - Returning hello view");
-		ModelAndView mv = new ModelAndView("product/addProduct");
+		ModelAndView mv = new ModelAndView("emlakSitem");
 
-		//aktif musterilerin listelenmesi
-		List activeCustomers = loginService.listActiveCustomers();
-		mv.addObject("activeCustomers",activeCustomers);
-		
 		return mv;
 		}
 }
