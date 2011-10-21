@@ -25,7 +25,24 @@ public class Customer {
 	@Column(name = "soyad", nullable = false, length=20)
 	private String surname;
 	
-	@Column( name = "adress_detay")
+	//Meslek ve Mali Durum Bilgileri
+	
+	@Column ( name="salary")
+	private Long salary;
+		@Column(name="occupation")
+	private String occupation;
+	
+	@Column(name="education_level")
+	private String educationLevel;
+	
+	@Column(name="place_of_work")
+	private String placeOfWork;
+	
+	@Column(name="settlement_status")
+	private String settlementStatus;
+	
+	//Ýletisim Bilgileri
+	@Column( name = "adres_detay")
 	private String adress;
 	
 	@Column ( name = "tel")
@@ -40,12 +57,50 @@ public class Customer {
 	@Column ( name = "ulke")
 	private String country;
 	
+ 	
+	//2nd part
+	@Column (name="gender")
+	private String gender;
 	
-	
+	@Column (name="marital_status")
+	private String maritalStatus;
 	
 	public String getCity() {
 		return city;
 	}
+
+	public String getOccupation() {
+		return occupation;
+	}
+
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+
+	public String getEducationLevel() {
+		return educationLevel;
+	}
+
+	public void setEducationLevel(String educationLevel) {
+		this.educationLevel = educationLevel;
+	}
+
+	public String getPlaceOfWork() {
+		return placeOfWork;
+	}
+
+	public void setPlaceOfWork(String placeOfWork) {
+		this.placeOfWork = placeOfWork;
+	}
+
+	public String getSettlementStatus() {
+		return settlementStatus;
+	}
+
+	public void setSettlementStatus(String settlementStatus) {
+		this.settlementStatus = settlementStatus;
+	}
+
 
 	public void setCity(String city) {
 		this.city = city;
@@ -105,6 +160,30 @@ public class Customer {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setMaritalStatus(String maritalStatus) {
+		this.maritalStatus = maritalStatus;
+	}
+
+	public String getMaritalStatus() {
+		return maritalStatus;
+	}
+
+	public void setSalary(Long salary) {
+		this.salary = salary;
+	}
+
+	public Long getSalary() {
+		return salary;
 	}
 	
 	
