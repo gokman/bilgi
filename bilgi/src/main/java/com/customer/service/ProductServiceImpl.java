@@ -11,9 +11,9 @@ import com.customer.dao.ProductDao;
 import com.customer.model.Customer;
 import com.customer.model.Product;
 
-@Service("customerService")
+@Service("productService")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-public class ProductServiceImpl {
+public class ProductServiceImpl implements ProductService{
 
 	@Autowired
 	public ProductDao productDao;
@@ -23,11 +23,11 @@ public class ProductServiceImpl {
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-	public void addCustomer(Product prod) {
+	public void addProduct(Product prod) {
 		productDao.saveProduct(prod);
 	}
 
-	public List<Product> lisProducts() {
+	public List<Product> listProduct() {
 		return productDao.listProducts();
 	}
 }
