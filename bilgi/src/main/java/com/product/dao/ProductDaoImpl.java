@@ -1,4 +1,4 @@
-package com.customer.dao;
+package com.product.dao;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.customer.model.Product;
+import com.product.model.Product;
 
 @Repository("productDao")
 public class ProductDaoImpl implements ProductDao{
