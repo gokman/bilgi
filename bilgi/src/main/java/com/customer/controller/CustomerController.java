@@ -48,7 +48,7 @@ public class CustomerController{
 	private ApplicationContext context;
 	
 	@RequestMapping(value = "/addCustomer.htm",method = RequestMethod.GET) 
-	public ModelAndView getMemberForm(@ModelAttribute("customer") Customer customer,BindingResult result) {
+	public ModelAndView getCustomerForm(@ModelAttribute("customer") Customer customer,BindingResult result) {
 
 		return new ModelAndView("customer/customerForm");
 	}	

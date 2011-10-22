@@ -33,4 +33,61 @@ public class Product {
 	
 	@Column(name="ozellik_detay", length=255)
 	private String ozellik_detay;
+
+	public long getUrun_id() {
+		return urun_id;
+	}
+
+	public void setUrun_id(long urun_id) {
+		this.urun_id = urun_id;
+	}
+
+	public String getTip() {
+		return tip;
+	}
+
+	public void setTip(String tip) {
+		this.tip = tip;
+	}
+
+	public String getSehir() {
+		return sehir;
+	}
+
+	public void setSehir(String sehir) {
+		this.sehir = sehir;
+	}
+
+	public String getSemt() {
+		return semt;
+	}
+
+	public void setSemt(String semt) {
+		this.semt = semt;
+	}
+
+	public String getAdres_detay() {
+		return adres_detay;
+	}
+
+	public void setAdres_detay(String adres_detay) {
+		this.adres_detay = adres_detay;
+	}
+
+	public long getEbat() {
+		return ebat;
+	}
+
+	public void setEbat(long ebat) {
+		this.ebat = ebat;
+	}
+
+	public String getOzellik_detay() {
+		return ozellik_detay;
+	}
+
+	public void setOzellik_detay(String ozellik_detay) {
+		this.ozellik_detay = ozellik_detay;
+	}
+
 }

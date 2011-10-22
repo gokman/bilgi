@@ -25,7 +25,10 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
     </property>
  
     <property name="annotatedClasses">
-		<value>com.customer.model.Customer</value>	   
+		<list>
+			<value>com.customer.model.Customer</value>
+			<value>com.product.model.Product</value>
+		</list>
     </property>
  
     </bean>

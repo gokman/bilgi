@@ -470,7 +470,7 @@
 						<td width="90" background="/resources/kariyer/kmn3g.jpg"
 							onmouseover="menuGoster(3,1)" style="cursor: hand" align="center"
 							id="MN3"><a
-							href="http://www.kariyer.net/kariyerim/index.kariyer?arn=&sid=&clktkp=1048"
+							href="<c:url value="/product/addProduct.htm"/>"
 							class="topmenug" id="amn3">GAYRIMENKUL EKLEME</a></td>
 						<td width="3" valign="bottom"><span id="spM4"
 							style="position: relative"></span>

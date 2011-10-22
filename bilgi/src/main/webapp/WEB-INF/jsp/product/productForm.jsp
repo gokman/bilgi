@@ -389,8 +389,8 @@
 	<div id="content-wrap">
 	<div id="main">
 	<!-- Acordion form js and css end -->
-	<c:url value="/customer/saveCustomerForm.htm" var="saveCustomer"></c:url>
-	<form:form  name="cmaForm" id="cmaForm" action="${saveCustomer}" method="POST" modelAttribute="customer"  enctype="multipart/form-data" >
+	<c:url value="/product/saveProductForm.htm" var="saveProduct"></c:url>
+	<form:form  name="cmaForm" id="cmaForm" action="${saveProduct}" method="POST" modelAttribute="product"  enctype="multipart/form-data" >
 		<input type="hidden" name="recordRequestPrimaryServiceID" id="recordRequestPrimaryServiceID" value="100" /> 
 		<input type="hidden" name="recordClientServices" id="recordClientServices" value="1,3" /> 
 		<ul id="stepForm" class="ui-accordion-container">
@@ -403,40 +403,43 @@
 
 
 				<fieldset>
-				<legend> Step 1 of 3 - Kimlik Bilgileri</legend> 
+				<legend> Step 1 of 3 - Urun Bilgileri</legend> 
 				<div class="requiredNotice">*Required Field</div>
-				<h3 class="stepHeader">Musteri Kayit Formu</h3>
-<!-- Sahis sirket olayi simdidlik kapali
-				<div class="formspacer" > </div>
-				<label for="recordPurchaseMetRealtor" class="input required">Musteri Turu</label>
-				&nbsp;&nbsp;Sahis: 				
-				<form:radiobutton name="recordPurchaseMetRealtor" path="gender" class="inputclass" value="0"/> 
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sirket: 
-				<form:radiobutton name="recordPurchaseMetRealtor" path="gender" class="inputclass {required:true}" value="1" title="Please choose Yes or No" />				
--->
+				<h3 class="stepHeader">Urun Kayit Formu</h3>
 				<div class="formspacer" > </div>
 
-				<label for="recordClientNameFirst" class="input required">First Name:</label>
-				<form:input path="name" name="recordClientNameFirst" id="recordClientNameFirst" class="inputclass {required:true}" title="First Name is required" maxlength="254" />
-				<br />
-				<label for="recordClientNameLast" class="input required">Last Name:</label>
-				<form:input path="surname" name="recordClientNameLast" id="recordClientNameLast" class="inputclass {required:true}" maxlength="254" title="Last Name is required" />
-				<br />
-				<label for="recordBirthDate" class="input required">Dogum Tarihi:</label>
-				<input class="inputclass {required:true}" id="inputDate" name="inputDate"  maxlength="254" title="Last Name is required" />
+				<label for="recordProductType" class="input required">Urun Turu:</label>
+				
+				<form:select
+						path="tip" name="recordProductType" id="recordProductType"
+						class="inputclass {required:true}" title="Urun Turu">
+						<form:option value="Ev" label="Ev" />
+						<form:option value="Dukkan" label="Dukkan" />
+						<form:option value="Arsa" label="Arsa" />
+		       </form:select> 
+		       <br />
+
+				<label for="recordPropertyCity" class="input required">Sehir:</label>
+				<form:input path="sehir" name="recordPropertyCity" id="recordPropertyCity" class="inputclass {required:true}" title="Urunun bulundugu sehir" maxlength="254"  onblur="recordClientCity.value = this.value" /><br />
+				<br />					
+				
+
+				<label for="recordPropertyDistrict" class="input required">Semt:</label>
+				<form:input path="semt" name="recordPropertyDistrict" id="recordPropertyDistrict" class="inputclass {required:true}" title="Urunun bulundugu semt" maxlength="254"  onblur="recordClientCity.value = this.value" /><br />
+				<br />					
+
+				<label for="recordClientAddress1" class="input required">Adres Detay:</label>
+				<form:input path="adres_detay" name="recordClientAddress1" id="recordClientAddress1" class="inputclass {required:true}" maxlength="254" title="Adres "/>
 				<br />
 
-				<label for="recordForGenderType" class="input required">Cinsiyet</label>
-				&nbsp;&nbsp;Bay: 
-				<form:radiobutton path="gender" name="recordForGenderType" type="radio" checked="checked" class="inputclass" value="0" />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bayan: 
-				<form:radiobutton path="gender" name="recordForGenderType" type="radio" class="inputclass {required:true}" value="1" title="Please choose Yes or No" />
-				<div class="formspacer" > </div>
-				<label for="recordForMaritalStatus" class="input required">Medeni Durum</label>
-				&nbsp;&nbsp;Evli: 
-				<form:radiobutton path="maritalStatus" name="recordForMaritalStatus" type="radio" checked="checked" class="inputclass" value="0" />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bekar: 
-				<form:radiobutton path="maritalStatus" name="recordForMaritalStatus" type="radio" class="inputclass {required:true}" value="1" title="Please choose Yes or No" />
+				<label for="ebat" class="input required">Alan:</label>
+				<form:input path="ebat" name="ebat" id="ebat" class="inputclass {required:true}" maxlength="254" title="Alan "/>
+				<br />
+
+				<label for="recordProductDetail" class="input required">Urun Detay:</label>
+				<form:input path="ozellik_detay" name="recordProductDetail" id="recordProductDetail" class="inputclass {required:true}" maxlength="254" title="Ozellik Detay "/>
+				<br />
+				
 				<div class="formspacer" > </div>
 
 				<!-- gecici olarak kapatilacak
@@ -466,103 +469,6 @@
 	<div class="requiredNotice">*Required Field</div>
 	<h3 class="stepHeader">Tell us about the property you're selling</h3>
 
-		<label for="recordEducationLevel" class="input required">Egitim Durumu:</label> 
-		<form:select
-				path="educationLevel" name="recordEducationLevel" id="recordEducationLevel"
-				class="inputclass {required:true}" title="Egitim Durumunuz">
-				<form:option value="Ilkogretim" label="Ilkogretim" />
-				<form:option value="Lise" label="Lise" />
-				<form:option value="Universite" label="Universite" />
-				<form:option value="Y.Lisans" label="Y.Lisans" />
-       </form:select> 
-       <br />
-
-		<label for="recordClientSalary" class="input required">Aylik Gelir:</label>
-		<form:input path="salary" name="recordClientSalary" id="recordClientSalary" class="inputclass {required:true}" title="Aylik Gelir" maxlength="254" />
-		<br />
-	
-		<label for="recordClientOccupation" class="input required">Meslek:</label>
-		<form:input path="occupation" name="recordClientOccupation" id="recordClientOccupation" class="inputclass {required:true}" title="Meslek" maxlength="254" />
-		<br />
-		
-		<label for="recordClientPlaceOfWork" class="input required">Calisilan Kurum:</label>
-		<form:input path="placeOfWork" name="recordClientPlaceOfWork" id="recordClientPlaceOfWork" class="inputclass {required:true}" title="Calisilan Kurum" maxlength="254" />
-		<br />
-		
-		<label for="recordSettlementStatus" class="input required">Ikamet Durumu:</label>
-		
-		<form:select
-				path="settlementStatus" name="recordSettlementStatus" id="recordSettlementStatus"
-				class="inputclass {required:true}" title="Ikamet Durumu">
-				<form:option value="EvSahibi" label="Ev Sahibi" />
-				<form:option value="Kiraci" label="Kiraci" />
-				<form:option value="Misafir" label="Misafir" />
-       </form:select> 
-       <br />
-		
-	
-			<!-- 
-	<label for="recordClientAddress2" class="input">Address (2):</label>
-	<input name="recordClientAddress2" id="recordClientAddress2" class="inputclass" maxlength="254" />
-	<br />
-	<label for="recordClientCity" class="input required">City:</label>
-	<input name="recordClientCity" id="recordClientCity" class="inputclass {required:true}" maxlength="254" title="City is required"/>
-	<br />
-	
-	<label for="recordClientHomeTypeID" class="input required">Type of property you are selling:</label>
-	<select name="recordClientHomeTypeID" id="recordClientHomeTypeID" class="inputclass {required:true}" title="Select a Property Type">
-	<option value=""> -Select- </option>
-	<option value="1">Single Family Detached</option>
-	<option value="7">Other</option>
-	</select>
-	<br />
-	<label for="recordPropertyAddress1" class="input required">Property Street Address:</label>
-	<input name="recordPropertyAddress1" id="recordPropertyAddress1" class="inputclass {required:true}" title="Street Address is required" maxlength="254" onblur="recordClientAddress1.value = this.value" /><br />
-	<label for="recordPropertyAddress2" class="input">Address (2):</label>
-	<input name="recordPropertyAddress2" id="recordPropertyAddress2" class="inputclass" maxlength="254"  onblur="recordClientAddress2.value = this.value" /><br />
-	-->
-	<!-- 
-	<select name="recordPropertyState" id="recordPropertyState" class="inputclass {required:true}" title="Select a State"  onchange="recordClientState.value = this.value" >
-	<option value=""> -Select- </option>
-	<option value="AL">Alabama</option>
-	</select>
-	
-	<br />
-	<label for="recordPropertyZip" class="input required">Zip:</label>
-	<input name="recordPropertyZip" id="recordPropertyZip" class="inputclass {required:true}" title="Zip Code is required" maxlength="254"  onblur="recordClientZip.value = this.value" /><br />
-	
-	<label for="recordClientPropertyValueID" class="input required">Estimated Market Value:</label>
-	<select name="recordClientPropertyValueID" id="recordClientPropertyValueID" class="inputclass {required:true}" title="Select a Price Range">
-	<option value=""> -Select- </option>
-	<option value="1">Less Than $75K</option>
-	<option value="2">$75-$100K</option>
-	</select>
-	<br />
-	<label for="recordPropertyBedroomsID" class="input">Bedrooms:</label>
-	<select name="recordPropertyBedroomsID" id="recordPropertyBedroomsID" class="inputclass">
-	<option value=""> -Select- </option>
-	<option value="1">1</option>
-	</select>
-	<br />
-	<label for="recordPropertyBathroomsId" class="input">Bathrooms:</label>
-	<select name="recordPropertyBathroomsId" id="recordPropertyBathroomsId" class="inputclass">
-	<option value=""> -Select- </option>
-	<option value="7">4+</option>
-	</select>
-	<br />
-	<label for="recordPropertyAgeId" class="input">Approx. Age of Home:</label>
-	<select name="recordPropertyAgeId" id="recordPropertyAgeId" class="inputclass">
-	<option value=""> -Select- </option>
-	<option value="1">Less Than 1 year</option>
-	<option value="2">1-5 years</option>
-	<option value="3">6-10 years</option>
-	<option value="4">11-15 years</option>
-	<option value="5">More than 15 years</option>
-	</select>
-	<br />
-	<label for="recordPropertySqFt" class="input">Approx. Square Footage:</label>
-	<input name="recordPropertySqFt" id="recordPropertySqFt" class="inputclass" maxlength="254" /><br />
-	-->
 	<div class="buttonWrapper">
 	<input name="formBack0" type="button" class="open0 prevbutton" value="Back" alt="Back" title="Back"/>
 	<input name="formNext2" type="button" class="open2 nextbutton" value="Next" alt="Next" title="Next"/>
@@ -582,39 +488,6 @@
 <legend> Step 3 of 3 - Iletisim Bilgileri</legend>
 <div class="requiredNotice">*Required Field</div>
 <h3 class="stepHeader">Tell us about your communication info</h3>
-<label for="recordClientState" class="input required">State:</label>
-
-	<form:select path="country" name="recordClientState" id="recordClientState" class="inputclass {required:true}" title="Select a State">
-		<form:option value="TR" label="TR" />
-		<form:option value="GR" label="GR" />
-		<form:option value="KKTC" label="KKTC" />
-	</form:select> 
-
-	<br />
-
-	<label for="recordClientAddress1" class="input required">Current  Address:</label>
-	<form:input path="adress" name="recordClientAddress1" id="recordClientAddress1" class="inputclass {required:true}" maxlength="254" title="Address is required"/>
-	<br />
-
-	<label for="recordPropertyCity" class="input required">City:</label>
-	<form:input path="city" name="recordPropertyCity" id="recordPropertyCity" class="inputclass {required:true}" title="City is required" maxlength="254"  onblur="recordClientCity.value = this.value" /><br />
-	<br />					
-	<label for="recordClientEmail" class="input required">Email Address:</label>
-	<form:input path="email" name="recordClientEmail" id="recordClientEmail" class="inputclass {required:true, email:true}" maxlength="254" title="Email address is required" />
-	<br />
-<!-- 	
-<label for="recordClientZip" class="input required">Zip:</label>
-<input name="recordClientZip" id="recordClientZip" class="inputclass {required:true}" maxlength="12" title="Zip Code is required" />
-<br />
--->
-<label for="recordClientPhone" class="input required">Phone Number:</label>
-<form:input path="phoneNumber" name="recordClientPhone" id="recordClientPhone" class="inputclass {required:true}" maxlength="254" title="Phone Number is required"/>
-<br />
-<!-- 
-<label for="recordClientPhoneAlt" class="input">Alternate Number:</label>
-<input name="recordClientPhoneAlt" id="recordClientPhoneAlt" class="inputclass" maxlength="254" />
-<br />
--->
 <br />
 <div class="buttonWrapper">
 <input name="formBack1" type="button" class="open1 prevbutton" value="Back" alt="Back" title="Back"/>
