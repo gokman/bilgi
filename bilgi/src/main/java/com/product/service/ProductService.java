@@ -1,8 +1,8 @@
-package com.customer.service;
+package com.product.service;
 
 import java.util.List;
 
-import com.customer.model.Product;
+import com.product.model.Product;
 
 public interface ProductService {
 

@@ -1,4 +1,4 @@
-package com.customer.service;
+package com.product.service;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.customer.dao.ProductDao;
 import com.customer.model.Customer;
-import com.customer.model.Product;
+import com.product.dao.ProductDao;
+import com.product.model.Product;
 
 @Service("productService")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
