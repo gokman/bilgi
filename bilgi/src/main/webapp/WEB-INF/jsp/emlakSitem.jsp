@@ -586,8 +586,8 @@
 						<td width="112" onmouseover="menuGoster(4,1)"
 							background="/resources/kariyer/kmn4g.jpg" style="cusros: hand"
 							align="center" id="MN4"><a
-							href="http://www.kariyer.net/egitimlerim/index.kariyer?arn=&sid=&clktkp=1061"
-							class="topmenug" id="amn4">ÝÞLEM MENÜSÜ</a></td>
+							href="<c:url value="/customer/listCustomers.htm"/>"
+							class="topmenug" id="amn4">MUSTERI LISTELEME</a></td>
 						<td width="3" valign="bottom"><span id="spM5"
 							style="position: relative"></span>
 						<div id="menudiv5"

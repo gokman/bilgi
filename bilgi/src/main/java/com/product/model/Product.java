@@ -34,6 +34,10 @@ public class Product {
 	@Column(name="ozellik_detay", length=255)
 	private String ozellik_detay;
 
+
+	@Column ( name = "profile_image")
+    private String profileImage;		
+
 	public long getUrun_id() {
 		return urun_id;
 	}
@@ -88,6 +92,14 @@ public class Product {
 
 	public void setOzellik_detay(String ozellik_detay) {
 		this.ozellik_detay = ozellik_detay;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+
+	public String getProfileImage() {
+		return profileImage;
 	}
 
 }

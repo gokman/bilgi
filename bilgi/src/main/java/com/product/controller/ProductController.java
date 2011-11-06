@@ -1,5 +1,7 @@
 package com.product.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +45,23 @@ public class ProductController {
 			return returnView;
 		}
 		productService.addProduct(product);
-		ModelAndView successPage = new ModelAndView("emlakSitem");
 
-		return successPage;
+		ModelAndView productListPage = new ModelAndView("product/productList");
+		List activeProducts = productService.listProduct();
+		productListPage.addObject("activeProducts", activeProducts );		
+		
+		return productListPage;
 	}	
+
+	@RequestMapping(value = "/listProducts.htm",method = RequestMethod.GET) 
+	public ModelAndView getProductList() {
+		ModelAndView productListPage = new ModelAndView("product/productList");
+		List activeProducts = productService.listProduct();
+		productListPage.addObject("activeProducts", activeProducts);
+
+		return productListPage;
+	}	
+	
 	
 	
 	

@@ -35,6 +35,8 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.Hibernate;
 import com.customer.model.Customer;
 import com.customer.service.CustomerService;
+import com.image.model.EntityImage;
+import com.util.constants.ApplicationConstants;
 import com.util.validator.CustomerValidator;
 
 @Controller
@@ -54,20 +56,51 @@ public class CustomerController{
 	}	
 
 	@RequestMapping(value = "/saveCustomerForm.htm")
-	public ModelAndView saveCustomerForm(HttpServletRequest req,@ModelAttribute("customer")Customer customer,BindingResult result){
+	public ModelAndView saveCustomerForm(HttpServletRequest req,@ModelAttribute("customer")Customer customer,BindingResult result,@RequestParam("customerProfileImage") MultipartFile customerProfileImage){
 
+		String profileImagePath = "/resources/image/customer/"+customerProfileImage.getOriginalFilename();
+		File newFiles= new File(req.getSession().getServletContext().getRealPath(profileImagePath));
+	
+		
+        try {
+			customerProfileImage.transferTo(newFiles);
+		} catch (Exception e1) {
+
+			e1.printStackTrace();
+		}
+		customer.setProfileImage(profileImagePath);
+		
+		
 		CustomerValidator validator = new CustomerValidator();
 		validator.validate(customer, result);
 
 		if(result.hasErrors()){
-			ModelAndView returnView = new ModelAndView("customerForm");
+			ModelAndView returnView = new ModelAndView("customer/customerForm");
 			returnView.addObject("customer", customer);
 			return returnView;
 		}
 		customerService.addCustomer(customer);
-		ModelAndView successPage = new ModelAndView("emlakSitem");
+		ModelAndView imageForm = new ModelAndView("image/imageForm");
 
-		return successPage;
+		EntityImage image = new EntityImage();
+		image.setEntityType(ApplicationConstants.EntityImageTypes.CUSTOMER);
+		image.setObjectID(customer.getCustomerId());
+		
+		imageForm.addObject("image", image);
+		imageForm.addObject("imageCount",ApplicationConstants.imageCountPerObject);
+
+		return imageForm;
 	}	
+
+	@RequestMapping(value = "/listCustomers.htm",method = RequestMethod.GET) 
+	public ModelAndView getCustomerList() {
+		ModelAndView custListPage = new ModelAndView("customer/customerList");
+		List activeCustomers = customerService.listCustomers();
+		custListPage.addObject("activeCustomers", activeCustomers);
+
+		return custListPage;
+	}	
+
+	
 	
 }
