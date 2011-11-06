@@ -28,6 +28,8 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		<list>
 			<value>com.customer.model.Customer</value>
 			<value>com.product.model.Product</value>
+			<value>com.image.model.EntityImage</value>
+			
 		</list>
     </property>
  

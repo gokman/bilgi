@@ -54,23 +54,12 @@
 		<div id="main">
 			<h1>prettyPhoto</h1>
 			
-			<p>This page has been made for testing purpose only. It covers all the basic things you can handle in prettyPhoto.</p>
-	
-			<p>For complete documentation, please refer to the official website: <a href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/">http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/</a></p>
-	
 			<h2>Gallery</h2>
 			<ul class="gallery clearfix">
-	<li><a
-		href="<c:url value="/resources/image/prettyPhoto/fullscreen/1.jpg"/>"
-		rel="prettyPhoto[gallery1]"
-		title="You can add caption to pictures. You can add caption to pictures. You can add caption to pictures.">
-	<img src="<c:url value="/resources/image/prettyPhoto/thumbnails/t_1.jpg"/>" width="60" height="60"
-		alt="Red round shape" /></a></li>
-	<li><a href="<c:url value="/resources/image/prettyPhoto/fullscreen/2.jpg"/>" rel="prettyPhoto[gallery1]"><img src="<c:url value="/resources/image/prettyPhoto/thumbnails/t_2.jpg"/>" width="60" height="60" alt="Nice building" /></a></li>
-				<li><a href="<c:url value="/resources/image/prettyPhoto/fullscreen/3.jpg"/>" rel="prettyPhoto[gallery1]"><img src="<c:url value="/resources/image/prettyPhoto/thumbnails/t_3.jpg"/>" width="60" height="60" alt="Fire!" /></a></li>
-				<li><a href="<c:url value="/resources/image/prettyPhoto/fullscreen/4.jpg"/>" rel="prettyPhoto[gallery1]"><img src="<c:url value="/resources/image/prettyPhoto/thumbnails/t_4.jpg"/>" width="60" height="60" alt="Rock climbing" /></a></li>
-				<li><a href="<c:url value="/resources/image/prettyPhoto/fullscreen/5.jpg"/>" rel="prettyPhoto[gallery1]"><img src="<c:url value="/resources/image/prettyPhoto/thumbnails/t_5.jpg"/>" width="60" height="60" alt="Fly kite, fly!" /></a></li>
-				<li><a href="<c:url value="/resources/image/prettyPhoto/fullscreen/6.jpg"/>" rel="prettyPhoto[gallery1]"><img src="<c:url value="/resources/image/prettyPhoto/thumbnails/t_2.jpg"/>" width="60" height="60" alt="Nice building" /></a></li>
+
+				<c:forEach var="image" items="${images}" varStatus="rowCounter">
+					<li><a href="<c:url value='${image.imagePath}'/>" rel="prettyPhoto[gallery1]"><img src="<c:url value='${image.imagePath}'/>" width="60" height="60"	alt="Red round shape" /></a></li>											
+				</c:forEach>
 			</ul>
 
 			<!-- 

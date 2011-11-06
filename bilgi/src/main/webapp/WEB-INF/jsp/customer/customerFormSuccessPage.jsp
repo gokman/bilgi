@@ -31,26 +31,21 @@
 			
 				<link rel="stylesheet" href="<c:url value="/resources/css/datepicker/datepicker.css"/>" />
 			    <link rel="stylesheet" href="<c:url value="/resources/css/datepicker/layout.css"/>" />
-			
-			<!--	 
+				<!--
+					<script type="text/javascript" src="js/jquery.js"></script>
+				
 				<script type="text/javascript" src="<c:url value="/resources/js/datepicker/datepicker.js"/>"></script>
-			    
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/eye.js"/>"></script>
-			    
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/utils.js"/>"></script>
-			    
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/layout.js"/>"></script>
-			    
-			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/jquery.js"/>"></script>
-			  -->
+			    -->
+			<!--  -->
 			
 			<script type="text/javascript">
 			// JQUERY FOR THIS PAGE
 			
 				$(document)
 						.ready(
-								
-								
 								function() {
 									// add * to required field labels
 									$('label.required').append(
@@ -422,6 +417,9 @@
 				<label for="recordClientNameLast" class="input required">Last Name:</label>
 				<form:input path="surname" name="recordClientNameLast" id="recordClientNameLast" class="inputclass {required:true}" maxlength="254" title="Last Name is required" />
 				<br />
+				<label for="recordBirthDate" class="input required">Dogum Tarihi:</label>
+				<input name="recordBirthDate" id="recordBirthDate" class="inputclass {required:true}" maxlength="254" title="Last Name is required" />
+				<br />
 
 				<label for="recordForGenderType" class="input required">Cinsiyet</label>
 				&nbsp;&nbsp;Bay: 
@@ -441,11 +439,7 @@
 				<form:input path="" name="recordClientEmail1" id="recordClientEmail1" class="inputclass {required:true, equalTo:'#recordClientEmail'}" maxlength="254"  title="Please confirm your email address"/>
 				<br />
 			-->
-	
-				<label for="customerProfileImage" class="input required">Profil Resmi:</label>
-				<input type="file" class="inputclass {required:true}" id="customerProfileImage" name="customerProfileImage" title="Profile image is required" />
-				<br />
-
+			
 
 				<br />
 				<div class="buttonWrapper">
@@ -467,42 +461,9 @@
 	<div class="requiredNotice">*Required Field</div>
 	<h3 class="stepHeader">Tell us about the property you're selling</h3>
 
-		<label for="recordEducationLevel" class="input required">Egitim Durumu:</label> 
-		<form:select
-				path="educationLevel" name="recordEducationLevel" id="recordEducationLevel"
-				class="inputclass {required:true}" title="Egitim Durumunuz">
-				<form:option value="Ilkogretim" label="Ilkogretim" />
-				<form:option value="Lise" label="Lise" />
-				<form:option value="Universite" label="Universite" />
-				<form:option value="Y.Lisans" label="Y.Lisans" />
-       </form:select> 
-       <br />
 
-		<label for="recordClientSalary" class="input required">Aylik Gelir:</label>
-		<form:input path="salary" name="recordClientSalary" id="recordClientSalary" class="inputclass {required:true}" title="Aylik Gelir" maxlength="254" />
-		<br />
-	
-		<label for="recordClientOccupation" class="input required">Meslek:</label>
-		<form:input path="occupation" name="recordClientOccupation" id="recordClientOccupation" class="inputclass {required:true}" title="Meslek" maxlength="254" />
-		<br />
-		
-		<label for="recordClientPlaceOfWork" class="input required">Calisilan Kurum:</label>
-		<form:input path="placeOfWork" name="recordClientPlaceOfWork" id="recordClientPlaceOfWork" class="inputclass {required:true}" title="Calisilan Kurum" maxlength="254" />
-		<br />
-		
-		<label for="recordSettlementStatus" class="input required">Ikamet Durumu:</label>
-		
-		<form:select
-				path="settlementStatus" name="recordSettlementStatus" id="recordSettlementStatus"
-				class="inputclass {required:true}" title="Ikamet Durumu">
-				<form:option value="EvSahibi" label="Ev Sahibi" />
-				<form:option value="Kiraci" label="Kiraci" />
-				<form:option value="Misafir" label="Misafir" />
-       </form:select> 
-       <br />
-		
-	
-			<!-- 
+
+	<!-- 
 	<label for="recordClientAddress2" class="input">Address (2):</label>
 	<input name="recordClientAddress2" id="recordClientAddress2" class="inputclass" maxlength="254" />
 	<br />
@@ -586,11 +547,16 @@
 <label for="recordClientState" class="input required">State:</label>
 
 	<form:select path="country" name="recordClientState" id="recordClientState" class="inputclass {required:true}" title="Select a State">
-		<form:option value="TR" label="TR" />
-		<form:option value="GR" label="GR" />
-		<form:option value="KKTC" label="KKTC" />
+		<form:option value="0" label="TR" />
+		<form:option value="1" label="GR" />
+		<form:option value="2" label="KKTC" />
 	</form:select> 
 
+	<br />
+
+	<label for="recordClientCity" class="input required">City:</label>
+	<input name="recordClientCity" id="recordClientCity" class="inputclass {required:true}" maxlength="254" title="City is required"/>
+	
 	<br />
 
 	<label for="recordClientAddress1" class="input required">Current  Address:</label>

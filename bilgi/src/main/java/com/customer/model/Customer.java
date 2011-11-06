@@ -56,7 +56,9 @@ public class Customer {
 	
 	@Column ( name = "ulke")
 	private String country;
-	
+
+	@Column ( name = "profile_image")
+    private String profileImage;	
  	
 	//2nd part
 	@Column (name="gender")
@@ -184,6 +186,14 @@ public class Customer {
 
 	public Long getSalary() {
 		return salary;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+
+	public String getProfileImage() {
+		return profileImage;
 	}
 	
 	
