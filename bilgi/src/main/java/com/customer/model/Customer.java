@@ -41,7 +41,7 @@ public class Customer {
 	@Column(name="settlement_status")
 	private String settlementStatus;
 	
-	//Ýletisim Bilgileri
+	//iletisim Bilgileri
 	@Column( name = "adres_detay")
 	private String adress;
 	
