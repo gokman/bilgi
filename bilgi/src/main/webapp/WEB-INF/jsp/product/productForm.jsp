@@ -384,7 +384,7 @@
 			</style> 
 	</head>
 <body>	
-	<div id="wrap">
+<a href="<c:url value="/index.htm"/>">Anasayfa</a>	<div id="wrap">
 	<!-- content-wrap starts here -->
 	<div id="content-wrap">
 	<div id="main">
