@@ -12,7 +12,7 @@ padding:0px;
 .ust_div_ust{
 width:990px;
 height:120px;
-background-image:url(///image/ana_sayfa/ust_reklam.jpg);
+background-image:url(../../image/ana_sayfa/ust_reklam.jpg);
 }
 .orta_div{
 width:1000px;
@@ -68,7 +68,7 @@ vertical-align:top;
 background-color:#BC70FA;
 }
 .dugme_giris{
-background-image:url(//image/ana_sayfa/giris_dugme.jpg);
+background-image:url(../../image/ana_sayfa/giris_dugme.jpg);
 width:65px;
 height:25px;
 margin-top:5px;

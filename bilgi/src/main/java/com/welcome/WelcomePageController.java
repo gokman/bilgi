@@ -32,7 +32,7 @@ public class WelcomePageController extends AbstractController{
 		logger.info("Returning hello view");
 		
 		System.out.println("stdout - Returning hello view");
-		ModelAndView mv = new ModelAndView("emlakSitem");
+		ModelAndView mv = new ModelAndView("ana_sayfa/main");
 
 		return mv;
 		}
