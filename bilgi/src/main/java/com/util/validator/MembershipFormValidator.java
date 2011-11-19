@@ -32,7 +32,7 @@ public class MembershipFormValidator  implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name");
         ValidationUtils.rejectIfEmpty(errors, "username", "membership","isim alani bos birakilamaz");
         
-        ValidationUtils.rejectIfEmpty(errors, "dateOfBirth","birthdate", "country isim gerekli");
+//        ValidationUtils.rejectIfEmpty(errors, "dateOfBirth","birthdate", "country isim gerekli");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "adress", "adress");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email.must.be.entered");
         User user = (User) target;
@@ -45,21 +45,21 @@ public class MembershipFormValidator  implements Validator {
 //        List <User> userList = loginService.getByUsername(user.getNickName());
         
         
-        Pattern datePattern = null;
-        String dateRegEx =  "^[0-1][1-9][- / ]?(0[1-9]|[12][0-9]|3[01])[- /]?(18|19|20|21)\\d{2}$";
-        String  birthDate = user.getDateOfBirth();
-        boolean isValidDate = false;
-        if(user.getDateOfBirth().length() != 10){
-        	errors.rejectValue("dateOfBirth", "birthdate");
-        }else{
-
-            Pattern pattern = Pattern.compile(dateRegEx,Pattern.CASE_INSENSITIVE);  
-            Matcher matcher = pattern.matcher(birthDate);  
-            if(!matcher.matches()){  
-            	errors.rejectValue("dateOfBirth", "birthdate");
-            }         	
-        	
-        }
+//        Pattern datePattern = null;
+//        String dateRegEx =  "^[0-1][1-9][- / ]?(0[1-9]|[12][0-9]|3[01])[- /]?(18|19|20|21)\\d{2}$";
+//        String  birthDate = user.getDateOfBirth();
+//        boolean isValidDate = false;
+//        if(user.getDateOfBirth().length() != 10){
+//        	errors.rejectValue("dateOfBirth", "birthdate");
+//        }else{
+//
+//            Pattern pattern = Pattern.compile(dateRegEx,Pattern.CASE_INSENSITIVE);  
+//            Matcher matcher = pattern.matcher(birthDate);  
+//            if(!matcher.matches()){  
+//            	errors.rejectValue("dateOfBirth", "birthdate");
+//            }         	
+//        	
+//        }
     }
  
 }

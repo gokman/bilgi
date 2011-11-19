@@ -29,8 +29,8 @@
 		  </li>
 			<li><a href="#">Müþteriler</a>
                 <ul>
-                <li><a href="<c:url value="/customer/addCustomer.htm"/>">Listele</a></li>
-                <li><a href="<c:url value="/customer/listCustomers.htm"/>">Müþteri Gir</a></li>
+                <li><a href="<c:url value="/customer/listCustomers.htm"/>">Listele</a></li>
+                <li><a href="<c:url value="/customer/addCustomer.htm"/>">Müþteri Gir</a></li>
                 </ul>
           </li>
 			<li><a href="#">Ýletiþim</a></li>
@@ -56,7 +56,8 @@
 	Þifre <br />
 	<input type="text" width="10px" name="password"/><br />
 	<input class="dugme_giris" type="submit" width="60px" value=" "/>
-	
+	<a href="<c:url value="/login/renewPassword.htm"/>">Sifremi Unuttum</a>
+	<a href="<c:url value="/login/membershipForm.htm"/>">Üye Ol</a>
 	</form>
 	</div>
 	<div class="sol_menu">
