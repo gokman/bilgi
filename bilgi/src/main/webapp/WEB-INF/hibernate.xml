@@ -30,6 +30,7 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 			<value>com.product.model.Product</value>
 			<value>com.lookup.model.LookupMst</value>
 			<value>com.image.model.EntityImage</value>
+			<value>com.util.membership.model.User</value>
 		</list>
     </property>
  

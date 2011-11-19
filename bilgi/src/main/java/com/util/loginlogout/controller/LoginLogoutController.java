@@ -81,7 +81,7 @@ public class LoginLogoutController{
 	@RequestMapping(value = "/membershipForm.htm",method = RequestMethod.GET) 
 	public ModelAndView getMemberForm(@ModelAttribute("user") User user,BindingResult result) {
 
-		return new ModelAndView("membershipForm");
+		return new ModelAndView("/membership/membershipForm.htm");
 	}	
 
 	@RequestMapping(value = "/membershipFormSave.htm",method = RequestMethod.POST)
@@ -116,7 +116,7 @@ public class LoginLogoutController{
 		
 		
 		if(result.hasErrors()){
-			ModelAndView returnView = new ModelAndView("membershipForm");
+			ModelAndView returnView = new ModelAndView("/membership/membershipForm.htm");
 			returnView.addObject("user", user);
 			return returnView;
 		}
@@ -133,8 +133,9 @@ public class LoginLogoutController{
 		loginService.addUser(user);
 			
 
-		
-		return new ModelAndView("login");
+		ModelAndView mv = new ModelAndView("/membership/membershipSuccessPage");
+		mv.addObject("email", user.getEmail());
+		return mv;
 	}	
 	
 	@RequestMapping(value = "/activateUserAccount/{username}/{activationString}.htm")
@@ -148,10 +149,11 @@ public class LoginLogoutController{
 		
 		if(waitingUser != null){
 			loginService.updateMembershipStatus(waitingUser.getUserId());
-			//TODO guncelleme kismi eksik
-			return new ModelAndView("/articles.htm");
+			return new ModelAndView("index");
 		}else{
-			return new ModelAndView("/articles.htm");
+			//TODO aktivasyon hata sayfasý
+			
+			return new ModelAndView("index");
 		}
 	}	
 
