@@ -1,5 +1,6 @@
 package com.customer.controller;
 import java.io.File;
+
 import java.io.IOException;
 import java.security.Security;
 import java.sql.Blob;
@@ -101,6 +102,4 @@ public class CustomerController{
 		return custListPage;
 	}	
 
-	
-	
 }
