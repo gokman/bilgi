@@ -11,7 +11,7 @@
 	<%@include file="/WEB-INF/jsp/ana_sayfa/header.jsp" %>
 	<!-- ana bolum -->
 	<div class="orta_div_sag">
-	<form:form action="/bilgi/lookup/lookupMstSearch.htm" method="POST" commandName="lookupMst" modelAttribute="lookupMst" enctype="multipart/form-data">
+	<form:form action="/bilgi/lookup/lookupMstSearch.htm" method="POST" commandName="lookupSearch" modelAttribute="lookupSearch" enctype="multipart/form-data">
 <table width="300px" height="100px">
 <tr height="50px">
 <td>Ara:</td>
@@ -21,6 +21,16 @@
 </td></tr>
 </table>
 </form:form>
+<table>
+<c:forEach var="look" items="${lookup}">
+                    <tr width="300px"><td>
+                    <a href="#"><c:out value="${look.baslik}"></c:out></a>
+                    </td></tr>
+                </c:forEach>
+</table>
+                
+
+
 	</div> 
 	<%@include file="/WEB-INF/jsp/ana_sayfa/footer.jsp" %>
 
