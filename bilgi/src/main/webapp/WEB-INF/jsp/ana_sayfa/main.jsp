@@ -9,78 +9,11 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/ana_sayfa/menu_style.css"/>" type="text/css" />
 </head>
 
-<body bgcolor="#AF4555">
-<div align="center"><img src="<c:url value="/resources/image/ana_sayfa/ust_resim.jpg"/>" /></div>
-<table align="center" cellspacing="0" cellpadding="0" width="1000px" bgcolor="#FFFFFF">
-<tbody>
-<!-- üst kisim -->
-<tr><td align="center">
-<div class="ust_div">
-<div class="ust_div_ust"></div>
-<div class="ust_div_menu">
-<div class="menu">
-		<ul>
-			<li><a href="#" >Ana Sayfa</a></li>
-			<li><a href="#" id="current">Ürünler</a>
-				<ul>
-					<li><a href="<c:url value="/product/addProduct.htm"/>">Ürün Gir</a></li>
-					<li><a href="<c:url value="/product/listProducts.htm"/>">Listele</a></li>
-			   </ul>
-		  </li>
-			<li><a href="#">Müþteriler</a>
-                <ul>
-                <li><a href="<c:url value="/customer/listCustomers.htm"/>">Listele</a></li>
-                <li><a href="<c:url value="/customer/addCustomer.htm"/>">Müþteri Gir</a></li>
-                </ul>
-          </li>
-			<li><a href="#">Ýletiþim</a></li>
-			<li><a href="#">Hakkýmýzda</a></li>
-		</ul>
-	</div>
-</div>
-</div>
-</td></tr>
-
-<!-- orta kisim -->
-<tr><td>
-
-	<table class="orta_div">
-	<tr><td>
-	<div class="orta_div_sol">
-	<!-- kullanýcý giriþ bölümü olacak-->
-	<div class="kullanici_giris">
-	<form method="post">
-	<br />
-	Kullanýcý Adý <br />
-	<input type="text" width="10px" name="username"/><br />
-	Þifre <br />
-	<input type="text" width="10px" name="password"/><br />
-	<input class="dugme_giris" type="submit" width="60px" value=" "/>
-	<a href="<c:url value="/login/renewPassword.htm"/>">Sifremi Unuttum</a>
-	<a href="<c:url value="/login/membershipForm.htm"/>">Üye Ol</a>
-	</form>
-	</div>
-	<div class="sol_menu">
-	<img src="<c:url value="/resources/image/ana_sayfa/reklam.jpg"/>"/>
-	</div>
-	</div>
-	</td><td valign="top">
+<%@include file="/WEB-INF/jsp/ana_sayfa/header.jsp" %>
+<!-- ana bolum -->
 	<div class="orta_div_sag">
-	ana bolum
+	
 	</div> 
-	</td>
-	</tr>
-	</table>
+<%@include file="/WEB-INF/jsp/ana_sayfa/footer.jsp" %>
 
-</td></tr>
-
-<!-- alt kisim -->
-<tr><td align="center">
-<div class="alt_div">alt bölüm</div>
-</td></tr>
-
-</tbody>
-</table>
-<div align="center"><img src="<c:url value="/resources/image/ana_sayfa/alt_resim.jpg"/>" /></div>
-</body>
 </html>
