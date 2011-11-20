@@ -26,15 +26,22 @@ public class LookupMstController {
 	private ApplicationContext appContext;
 
 	@RequestMapping(value = "/addLookup.htm",method = RequestMethod.GET) 
-	public ModelAndView getCustomerForm(@ModelAttribute("lookupMst") LookupMst lookupMst,BindingResult result) {
+	public ModelAndView getLookupForm(@ModelAttribute("lookupMst") LookupMst lookupMst,BindingResult result) {
 
 		return new ModelAndView("lookup/lookupForm");
 	}	
 	@RequestMapping(value = "/lookupMstSave.htm") 
-	public ModelAndView saveCustomerForm(HttpServletRequest req,@ModelAttribute("lookupMst")LookupMst lookupMst,BindingResult result) {
+	public ModelAndView saveLookupForm(HttpServletRequest req,@ModelAttribute("lookupMst")LookupMst lookupMst,BindingResult result) {
 
 		lookupMstService.saveLookupMst(lookupMst);
 		
 		return new ModelAndView("lookup/lookupForm");
-	}	
+	}
+	
+	@RequestMapping(value = "/lookupMstSearch.htm") 
+	public ModelAndView searchLookupForm(HttpServletRequest req,@ModelAttribute("lookupMst")LookupMst lookupMst,BindingResult result) {
+
+		
+		return new ModelAndView("lookup/lookupSearchList");
+	}
 }
