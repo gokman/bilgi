@@ -1,5 +1,7 @@
 package com.lookup.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -18,6 +20,12 @@ public class LookupMstServiceImpl implements LookupMstService{
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void saveLookupMst(LookupMst lookupMst) {
 		lookupMstDao.saveLookupMst(lookupMst);
+		
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public List<LookupMst> searchLookupMst(String baslik) {
+		return lookupMstDao.searchLookupMst(baslik);
 		
 	}
 
