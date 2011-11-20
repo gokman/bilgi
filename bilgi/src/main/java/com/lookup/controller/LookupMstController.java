@@ -1,5 +1,8 @@
 package com.lookup.controller;
 
+import java.util.List;
+
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.customer.model.Customer;
 import com.lookup.model.LookupMst;
 import com.lookup.service.LookupMstService;
 
@@ -39,9 +41,11 @@ public class LookupMstController {
 	}
 	
 	@RequestMapping(value = "/lookupMstSearch.htm") 
-	public ModelAndView searchLookupForm(HttpServletRequest req,@ModelAttribute("lookupMst")LookupMst lookupMst,BindingResult result) {
-
+	public ModelAndView searchLookupForm(HttpServletRequest req,@ModelAttribute("lookupSearch")LookupMst lookupSearch,BindingResult result) {
+                ModelAndView modell=new ModelAndView("lookup/lookupSearchList");
+                List<LookupMst> lookup=lookupMstService.searchLookupMst(lookupSearch.getBaslik());
+		        modell.addObject("lookup",lookup);
 		
-		return new ModelAndView("lookup/lookupSearchList");
+		return modell;
 	}
 }
