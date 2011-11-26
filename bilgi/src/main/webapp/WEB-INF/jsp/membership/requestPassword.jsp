@@ -389,8 +389,8 @@
 	<div id="content-wrap">
 	<div id="main">
 	<!-- Acordion form js and css end -->
-	<c:url value="/login/membershipFormSave.htm" var="saveMember"></c:url>
-	<form:form  name="cmaForm" id="cmaForm" action="${saveMember}" method="POST" modelAttribute="user"  enctype="multipart/form-data" >
+	<c:url value="/login/sendForgottenPassword.htm" var="sendPassword"></c:url>
+	<form:form  name="cmaForm" id="cmaForm" action="${sendPassword}" method="POST"   enctype="multipart/form-data" >
 
 		<ul id="stepForm" class="ui-accordion-container">
 			<li  id="sf1">
@@ -402,14 +402,20 @@
 
 
 				<fieldset>
-				<legend> Kullanici Kayit Islemi Sonuc</legend> 
+				<legend> Sifremi Unuttum</legend> 
 				<div class="formspacer" > </div>
 
-				<h3>Uyelik bilgileriniz <b><c:out value="${email}"/></b> adresine gonderilmistir.</h3>
+				<h3>Sifrenizin mail adresinize gonderilmesi icin asagidaki alana mail adresinizi giriniz.</h3>
 				<br />
-				<a href="<c:url value="/index.htm"/>">Anasayfa
-				</a>
+
+				<label for="email" class="inputclass {required:true, email:true}">Email :</label>
+				<input  type ="email" name="email" id="email" class="inputclass {required:true}" title="Email" maxlength="50"  onblur="recordClientCity.value = this.value" />
+				<br />					
+
 				<div class="buttonWrapper">
+
+				<input name="submit" type="submit" id="submit" value="Submit" class="submitbutton" alt="Submit" title="Submit">
+				
 				</div>
 		</fieldset> 
 		</div>

@@ -402,10 +402,10 @@
 
 
 				<fieldset>
-				<legend> Kullanici Kayit Islemi Sonuc</legend> 
+				<legend> Sifre Hatirlatma Islemi Sonuc</legend> 
 				<div class="formspacer" > </div>
 
-				<h3>Uyelik bilgileriniz <b><c:out value="${email}"/></b> adresine gonderilmistir.</h3>
+				<h3>Sifreniz <b><c:out value="${email}"/></b> adresine gonderilmistir.</h3>
 				<br />
 				<a href="<c:url value="/index.htm"/>">Anasayfa
 				</a>

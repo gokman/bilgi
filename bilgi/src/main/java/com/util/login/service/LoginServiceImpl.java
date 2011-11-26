@@ -55,7 +55,16 @@ public class LoginServiceImpl implements LoginService{
 		else
 			return null;
 	}
-
+	
+	public User getUser(User user) {
+		List <User>users = loginDao.listUsers(user);
+		
+		if(users.size() > 0)
+			return (User)users.get(0);
+		else
+			return null;
+	}
+	
 
 
 	public List<User> listActiveCustomers() {

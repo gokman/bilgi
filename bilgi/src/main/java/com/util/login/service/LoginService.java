@@ -18,5 +18,7 @@ public interface LoginService {
 		
 		public User getWaitingMember(User user);
 		
+		public User getUser(User user) ;
+
 		public List<User> listActiveCustomers();
 	}
