@@ -106,5 +106,75 @@ public class MailSender {
 		
 		
 	}
+
+	public static String sendForgottenPassword(User user)throws Exception{
+
+		try{	
+			String title = "Bilgi Uygulamasi Sifre Hatirlatma";
+
+		     Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider()); 
+		     final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory"; 
+		     Properties props = System.getProperties(); 
+		     props.setProperty("mail.smtp.host", "smtp.gmail.com"); 
+		     props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY); 
+		     props.setProperty("mail.smtp.socketFactory.fallback", "false"); 
+		     props.setProperty("mail.smtp.port", "465"); 
+		     props.setProperty("mail.smtp.socketFactory.port", "465"); 
+		     props.put("mail.smtp.auth", "true"); 
+
+		     final String username = "bilgi.app@gmail.com"; 
+		     final String password = "bilgiapp"; 
+		     
+		     //Kullanciyi gonderilecek aktivasyon linkinde kullanilacak random String
+		     SecureRandom random = new SecureRandom();
+		     String activationString =new BigInteger(130, random).toString(20).substring(0,19);		 	
+			 
+		     Session session = Session.getDefaultInstance(props,new Authenticator() { 
+		        protected PasswordAuthentication getPasswordAuthentication() { 
+		         return new PasswordAuthentication(username, 
+		           password); 
+		        } 
+		       });   
+		   
+		     // -- Create a new message -- 
+		     Message msg = new MimeMessage(session);   
+		     msg.setFrom(new InternetAddress(username));
+		     msg.addRecipient(Message.RecipientType.TO, new InternetAddress(user.getEmail()));
+		     msg.setSubject("Activation Email");
+		     //*************************************************************
+
+		     String line;
+		     String subject = msg.getSubject();
+		     StringBuffer sb = new StringBuffer();
+		     sb.append("<HTML>\n");
+		     sb.append("<HEAD>\n");
+		     sb.append("<TITLE>\n");
+		     sb.append(subject + "\n");
+		     sb.append("</TITLE>\n");
+		     sb.append("</HEAD>\n");
+
+		     sb.append("<BODY>\n");
+		     sb.append("<H1>" + subject + "</H1>" + "\n");
+		     sb.append("<h3>Sifre : "+user.getPassword()+"</h3>");
+		     sb.append("</BODY>\n");
+		     sb.append("</HTML>\n");
+
+		     msg.setDataHandler(new DataHandler(new ByteArrayDataSource(sb.toString(), "text/html")));	     
+		     
+	 //*************************************************************	     
+		     Transport.send(msg); 
+
+		     return activationString;
+	    }
+
+	    catch (Exception ex) {
+
+	      ex.printStackTrace( ); 
+
+	    }
+		return null;
+			
+			
+		}
 	
 }

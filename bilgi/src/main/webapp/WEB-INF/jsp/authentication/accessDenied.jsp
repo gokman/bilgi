@@ -402,10 +402,10 @@
 
 
 				<fieldset>
-				<legend> Kullanici Kayit Islemi Sonuc</legend> 
+				<legend> Erisim Yetkiniz bulunmamaktadir</legend> 
 				<div class="formspacer" > </div>
 
-				<h3>Uyelik bilgileriniz <b><c:out value="${email}"/></b> adresine gonderilmistir.</h3>
+				<h3>Erismek istediginiz icerige yetkiniz bulunmamaktadir.Lutfen sisteme giris yaparak yeniden deneyiniz.</h3>
 				<br />
 				<a href="<c:url value="/index.htm"/>">Anasayfa
 				</a>

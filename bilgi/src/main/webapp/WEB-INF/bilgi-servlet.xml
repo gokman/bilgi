@@ -25,6 +25,7 @@
 	<!-- Database Configuration -->
 	<import resource="DataSource.xml"/>
 	<import resource="hibernate.xml"/>
+	<import resource="security.xml"/>
 	<!--  
 	<import resource="email-utils.xml"/>	
 	-->

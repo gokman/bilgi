@@ -1,56 +1,30 @@
 package com.util.loginlogout.controller;
 import java.io.File;
-import java.io.IOException;
-import java.security.Security;
-import java.sql.Blob;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
-
-import java.util.Date;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.hibernate.Hibernate;
 
 import com.util.constants.ApplicationConstants;
 import com.util.login.service.LoginService;
 import com.util.mailing.MailSender;
 import com.util.membership.model.User;
 import com.util.validator.MembershipFormValidator;
-import java.util.Properties;
-
-import javax.mail.Address;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 
 @Controller
@@ -81,7 +55,7 @@ public class LoginLogoutController{
 	@RequestMapping(value = "/membershipForm.htm",method = RequestMethod.GET) 
 	public ModelAndView getMemberForm(@ModelAttribute("user") User user,BindingResult result) {
 
-		return new ModelAndView("/membership/membershipForm.htm");
+		return new ModelAndView("/membership/membershipForm");
 	}	
 
 	@RequestMapping(value = "/membershipFormSave.htm",method = RequestMethod.POST)
@@ -116,7 +90,7 @@ public class LoginLogoutController{
 		
 		
 		if(result.hasErrors()){
-			ModelAndView returnView = new ModelAndView("/membership/membershipForm.htm");
+			ModelAndView returnView = new ModelAndView("/membership/membershipForm");
 			returnView.addObject("user", user);
 			return returnView;
 		}
@@ -149,15 +123,46 @@ public class LoginLogoutController{
 		
 		if(waitingUser != null){
 			loginService.updateMembershipStatus(waitingUser.getUserId());
-			return new ModelAndView("index");
+			return new ModelAndView("/index.htm");
 		}else{
 			//TODO aktivasyon hata sayfasý
 			
-			return new ModelAndView("index");
+			return new ModelAndView("/index.htm");
 		}
 	}	
 
 	
 	
+	@RequestMapping(value = "/requestPassword.htm",method = RequestMethod.GET) 
+	public ModelAndView getRequestPassowrdForm() {
+
+		return new ModelAndView("/membership/requestPassword");
+	}	
 	
+	
+	
+	@RequestMapping(value = "/sendForgottenPassword.htm")
+	public ModelAndView sendForgottenPassword(@RequestParam("email") String email) throws Exception{
+		
+		
+		User exmpUser = new User();
+		exmpUser.setEmail(email);
+		exmpUser.setMembershipStatus(ApplicationConstants.MEMBERSHIP_STATUS_CODES.ACTIVE);
+		User existingUser = loginService.getUser(exmpUser);
+		
+		if(existingUser != null){
+			MailSender.sendForgottenPassword(existingUser);
+			ModelAndView mv = new ModelAndView("membership/requestPasswordSuccessPage");
+			mv.addObject("email", existingUser.getEmail());
+			return mv;
+		}else{
+			//TODO bu mail adresiyle kayitli kullanici bulunmamaktadir
+			
+			return new ModelAndView("/index.htm");
+		}
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/accessDenied.do")
+	public void accessDenied(ModelMap model,HttpServletRequest request) {
+	}
 }
