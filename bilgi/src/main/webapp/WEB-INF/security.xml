@@ -17,24 +17,23 @@
 		
 		<intercept-url pattern="/authentication/accessDenied.jsp" access="permitAll" />
 		<intercept-url pattern="/authentication/accessDenied.htm" access="permitAll" />
+		<intercept-url pattern="/authentication/accessDenied.htm" access="permitAll" />
 		<intercept-url pattern="/index.jsp" access="permitAll" />
 		<intercept-url pattern="/index.htm" access="permitAll" />
 		<intercept-url pattern="/resources/**" access="permitAll" /> <!-- resources (css,image,js) dosyalarına erişim icin -->
-		<!-- 
+		
 		<intercept-url pattern="/resources/**" access="permitAll" />
 
 		
 		<intercept-url pattern="/login/membershipForm.htm" access="permitAll" />
 		<intercept-url pattern="/login/membershipFormSave.htm" access="permitAll" />
-		<intercept-url pattern="/**" access="permitAll" />
-		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
-		 -->
-		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+
+
+		<intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
 		
-		<!--
-		<form-login login-page="/login/login.htm" 		/>
 		
-		 authentication-failure-url="/login/login.htm"--> 
+		<form-login login-page="/index.htm"  authentication-failure-url="/index.htm" />
+		
 		<logout invalidate-session="true" logout-success-url="/" logout-url="/j_spring_security_logout"/>
 		
 		<!-- 
