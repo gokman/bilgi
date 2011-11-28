@@ -49,26 +49,47 @@
 	<div class="orta_div_sol">
 	<!-- kullanýcý giriþ bölümü olacak-->
 	<div class="kullanici_giris">
-	<form method="post">
-	<br />
-	Kullanýcý Adý <br />
-	<input type="text" width="10px" name="username"/><br />
-	Þifre <br />
-	<input type="text" width="10px" name="password"/><br />
-	<input class="dugme_giris" type="submit" width="60px" value=" "/>
-	<a href="<c:url value="/login/requestPassword.htm"/>">Sifremi Unuttum</a>
-	<a href="<c:url value="/login/membershipForm.htm"/>">Üye Ol</a>
-	</form>
+	
+
+	<c:choose>
+							<c:when test="${isAuthenticated=='true' }">
+								<h3>Merhaba <c:out value="${username}"></c:out></h3>
+								<br/>
+								<h3><a href="<c:url value="/j_spring_security_logout"/>" value="Logout">logout</a></h3>
+							</c:when>
+							<c:otherwise>
+								<form method="post" action="j_spring_security_check"><br />
+								Kullanici adi <br />
+								<input type="text" width="10px" name="j_username" /><br />
+								Sifre <br />
+								<input type="text" width="10px" name="j_password" /><br />
+								<input class="dugme_giris" type="submit" width="60px" value=" " />
+								<a href="<c:url value="/login/requestPassword.htm"/>">Sifremi
+								Unuttum</a> <a href="<c:url value="/login/membershipForm.htm"/>">Üye
+								Ol</a></form>
+							</c:otherwise>
+	</c:choose>		 
 	</div>
 	<div class="sol_menu">
 	<img src="<c:url value="/resources/image/ana_sayfa/reklam.jpg"/>"/>
 	</div>
 	</div>
-	</td><td valign="top">
-	<div class="orta_div_sag">
-	ana bolum
-	</div> 
 	</td>
+	<td valign="top">
+	<c:choose>
+							<c:when test="${isAuthenticated=='true'}">
+								<div class="orta_div_sag">
+										ana bolum
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="orta_div_sag">
+										Bu icerige erismek icin giris yapmalisiniz.
+								</div>
+							</c:otherwise>
+	</c:choose>		 
+	</td>
+	
 	</tr>
 	</table>
 
