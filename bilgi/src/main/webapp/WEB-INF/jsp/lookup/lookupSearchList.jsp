@@ -24,7 +24,11 @@
 <table>
 <c:forEach var="look" items="${lookup}">
                     <tr width="300px"><td>
-                    <a href="#"><c:out value="${look.baslik}"></c:out></a>
+                    <form:form action="/bilgi/lookup/lookupMstDetail.htm" method="POST" commandName="lookupDetail" modelAttribute="lookupDetail" enctype="multipart/form-data">
+                    <form:input value="${look.baslik}" type="hidden" path="baslik" />
+                    <input type="submit"  value="${look.baslik}"/>
+                    </form:form>
+                    
                     </td></tr>
                 </c:forEach>
 </table>
