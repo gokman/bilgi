@@ -1,6 +1,8 @@
 package com.customer.dao;
 
 import java.util.Date;
+
+
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -45,7 +47,6 @@ public class CustomerDaoImpl implements CustomerDao{
 		return  customerList;
 		
 	}
-	
 	
 	
 }
