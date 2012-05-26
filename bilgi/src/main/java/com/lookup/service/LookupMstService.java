@@ -9,4 +9,5 @@ public interface LookupMstService {
 	public void saveLookupMst(LookupMst lookupMst);
 	public List<LookupMst> searchLookupMst(String baslik);
 	public List<LookupMst> listLookupMst();
+	public List<LookupMst> getLookupMst(long id);
 }
