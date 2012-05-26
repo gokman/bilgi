@@ -35,4 +35,10 @@ public class LookupMstServiceImpl implements LookupMstService{
 		return lookupMstDao.listLookupMst();
 	}
 
+	@Override
+	public List<LookupMst> getLookupMst(long id) {
+		
+		return lookupMstDao.getLookupMst(id);
+	}
+
 }
