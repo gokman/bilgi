@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lookup.model.LookupMst;
@@ -52,11 +53,12 @@ public class LookupMstController {
 	}
 	
 	@RequestMapping(value = "/lookupMstDetail.htm") 
-	public ModelAndView detailLookupForm(HttpServletRequest req,@ModelAttribute("lookupDetail")LookupMst lookupDetail,BindingResult result) {
+	public ModelAndView detailLookupForm(HttpServletRequest req,@RequestParam("id") long aydi ,@ModelAttribute("lookupDetail")LookupMst lookupDetail,BindingResult result) {
                 ModelAndView modell=new ModelAndView("lookup/lookupDetailPage");
-                String a=req.getServletPath().toString();
-                //List<LookupMst> detay=lookupMstService.searchLookupMst(lookupDetail.getBaslik());
-                modell.addObject("url",a);
+                String a=Long.toString(aydi);
+               
+                List<LookupMst> detay=lookupMstService.getLookupMst(aydi);
+                modell.addObject("url",detay.get(0).getBaslik());
 		
 		return modell;
 	}
