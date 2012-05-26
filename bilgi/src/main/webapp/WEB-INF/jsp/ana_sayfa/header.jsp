@@ -18,8 +18,8 @@
 		  </li>
 			<li><a href="#">Musteriler</a>
                 <ul>
-                <li><a href="#">Listele</a></li>
-                <li><a href="#">Musteri Gir</a></li>
+                <li><a href="${pageContext.request.contextPath}/customer/listCustomers.htm">Listele</a></li>
+                <li><a href="${pageContext.request.contextPath}/customer/addCustomer.htm">Musteri Gir</a></li>
                 </ul>
           </li>
 			<li><a href="#">Iletisim</a></li>
