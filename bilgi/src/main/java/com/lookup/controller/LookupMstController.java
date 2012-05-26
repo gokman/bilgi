@@ -54,8 +54,19 @@ public class LookupMstController {
 	@RequestMapping(value = "/lookupMstDetail.htm") 
 	public ModelAndView detailLookupForm(HttpServletRequest req,@ModelAttribute("lookupDetail")LookupMst lookupDetail,BindingResult result) {
                 ModelAndView modell=new ModelAndView("lookup/lookupDetailPage");
-                List<LookupMst> detay=lookupMstService.searchLookupMst(lookupDetail.getBaslik());
-                modell.addObject("detay",detay);
+                String a=req.getServletPath().toString();
+                //List<LookupMst> detay=lookupMstService.searchLookupMst(lookupDetail.getBaslik());
+                modell.addObject("url",a);
+		
+		return modell;
+	}
+	
+	@RequestMapping(value = "/lookuplisteDoldur.htm") 
+	public ModelAndView listeDoldurForm(HttpServletRequest req,@ModelAttribute("lookupliste")LookupMst lookupDetail,BindingResult result) {
+                ModelAndView modell=new ModelAndView("lookup/lookuplisteDoldur");
+                
+                //List<LookupMst> detay=lookupMstService.searchLookupMst(lookupDetail.getBaslik());
+                modell.addObject("baslikList",lookupMstService.listLookupMst());
 		
 		return modell;
 	}
