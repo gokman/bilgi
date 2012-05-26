@@ -9,4 +9,6 @@ public interface LookupMstDao {
 	public void saveLookupMst(LookupMst lookupMst);
 
 	List<LookupMst> searchLookupMst(String baslik);
+	
+	List<LookupMst> listLookupMst();
 }

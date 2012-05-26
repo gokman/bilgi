@@ -40,4 +40,12 @@ public class LookupMstDaoImpl implements LookupMstDao{
 
 	}
 
+	@Override
+	public List<LookupMst> listLookupMst() {
+		List<LookupMst> list=(List<LookupMst>)sessionFactory.getCurrentSession().createQuery("from LookupMst").list();
+		
+		
+		return list;
+	}
+
 }
