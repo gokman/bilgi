@@ -24,18 +24,11 @@
 <table>
 <c:forEach var="look" items="${lookup}">
                     <tr width="300px"><td>
-                    <form:form action="/bilgi/lookup/lookupMstDetail.htm" method="POST" commandName="lookupDetail" modelAttribute="lookupDetail" enctype="multipart/form-data">
-                    <form:input value="${look.baslik}" type="hidden" path="baslik" />
-                    <input type="submit"  value="${look.baslik}"/>
-                    </form:form>
-                    
+                   <a href="<c:out value="/bilgi/lookup/lookupMstDetail.htm?id=${look.id}"/>">${look.baslik}</a>                    
                     </td></tr>
                 </c:forEach>
 </table>
-                
-
-
-	</div> 
+</div> 
 	<%@include file="/WEB-INF/jsp/ana_sayfa/footer.jsp" %>
 
 </html>
