@@ -11,4 +11,6 @@ public interface LookupMstDao {
 	List<LookupMst> searchLookupMst(String baslik);
 	
 	List<LookupMst> listLookupMst();
+	
+	List<LookupMst> getLookupMst(long id);
 }

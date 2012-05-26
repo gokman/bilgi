@@ -48,4 +48,11 @@ public class LookupMstDaoImpl implements LookupMstDao{
 		return list;
 	}
 
+	@Override
+	public List<LookupMst> getLookupMst(long id) {
+		List<LookupMst> list=(List<LookupMst>)sessionFactory.getCurrentSession().createCriteria(LookupMst.class).
+		add(Restrictions.eq("id", id)).list();
+		return list;
+	}
+
 }
