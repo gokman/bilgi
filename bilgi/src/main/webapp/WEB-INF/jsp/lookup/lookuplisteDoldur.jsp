@@ -7,10 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="<c:url value="/resources/js/form/jquery-1.6.1.min.js"/>"></script>
 </head>
 <body>
-<table>
-<c:out value="${url}">${url}</c:out>
+<form:form modelAttribute="lookupliste">
+<form:select path="baslik">
+<form:option value="0" label="Select"/>
+<form:options items="${baslikList}" itemValue="id" itemLabel="baslik"/>
+</form:select>
+</form:form>
 </body>
 </html>
