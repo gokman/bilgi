@@ -103,12 +103,11 @@ public class CustomerController{
 		return custListPage;
 	}	
 	
-	@RequestMapping(value = "/customerDetail.htm") 
-	public ModelAndView detailLookupForm(HttpServletRequest req,@RequestParam("id") long aydi ,@ModelAttribute("customerDetail")Customer customerDetail,BindingResult result) {
+	@RequestMapping(value = "/customerDetail/{id}.htm",method=RequestMethod.GET) 
+	public ModelAndView detailLookupForm(HttpServletRequest req,@PathVariable("id")String id ,@ModelAttribute("customerDetail")Customer customerDetail,BindingResult result) {
                 ModelAndView modell=new ModelAndView("customer/customerDetail");
-                String a=Long.toString(aydi);
                
-                List<Customer> detay=customerService.getById(aydi);
+                List<Customer> detay=customerService.getById(Long.parseLong(id));
                 modell.addObject("musterim",detay.get(0));
 		
 		return modell;
