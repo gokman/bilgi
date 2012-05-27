@@ -13,7 +13,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/jsp/ana_sayfa/header.jsp" %>
-<c:out value="${url}">${url}</c:out>
+<c:out value="${url.baslik}">${url.baslik}</c:out>
 <%@include file="/WEB-INF/jsp/ana_sayfa/footer.jsp" %>	
 </body>
 </html>
