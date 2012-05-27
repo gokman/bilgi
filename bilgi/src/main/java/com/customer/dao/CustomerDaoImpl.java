@@ -11,10 +11,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.customer.model.Customer;
+import com.lookup.model.LookupMst;
 import com.util.constants.ApplicationConstants;
 
 @Repository("customerDao")
@@ -46,6 +48,13 @@ public class CustomerDaoImpl implements CustomerDao{
 		
 		return  customerList;
 		
+	}
+
+	@Override
+	public List<Customer> getCustomerById(long id) {
+		List<Customer> list=(List<Customer>)sessionFactory.getCurrentSession().createCriteria(Customer.class).
+		add(Restrictions.eq("id", id)).list();
+		return list;
 	}
 	
 	
