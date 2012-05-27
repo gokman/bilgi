@@ -37,6 +37,7 @@ import org.hibernate.Hibernate;
 import com.customer.model.Customer;
 import com.customer.service.CustomerService;
 import com.image.model.EntityImage;
+import com.lookup.model.LookupMst;
 import com.util.constants.ApplicationConstants;
 import com.util.validator.CustomerValidator;
 
@@ -101,5 +102,16 @@ public class CustomerController{
 
 		return custListPage;
 	}	
+	
+	@RequestMapping(value = "/customerDetail.htm") 
+	public ModelAndView detailLookupForm(HttpServletRequest req,@RequestParam("id") long aydi ,@ModelAttribute("customerDetail")Customer customerDetail,BindingResult result) {
+                ModelAndView modell=new ModelAndView("customer/customerDetail");
+                String a=Long.toString(aydi);
+               
+                List<Customer> detay=customerService.getById(aydi);
+                modell.addObject("musterim",detay.get(0));
+		
+		return modell;
+	}
 
 }
