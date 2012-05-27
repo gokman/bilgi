@@ -402,9 +402,30 @@
 	<div id="content-wrap">
 	<div id="main">
 	<!-- Acordion form js and css end -->
-	<c:url value="/customer/saveCustomerForm.htm" var="saveCustomer"></c:url>
+	<c:url var="searchCustomerURL" value="/customer/listCustomersWithCriteria.htm" />
 	
-						<table width="100%" cellspacing="0" cellpadding="0" align="center"	class="bordertable2">
+				<div class="orta_div_sag">
+					<form:form action="${searchCustomerURL}" method="POST" 	commandName="searchCriterias" modelAttribute="searchCriterias">
+						<table width="300px" height="100px">
+							<tr height="50px">
+								<td>Ad:</td>
+								<td>
+									<form:input path="searchCriterias[0]" maxlength="15" /> 
+								</td>
+								<td>Soyad:</td>
+								<td>
+									<form:input path="searchCriterias[1]" maxlength="15" /> 
+								</td>
+								<td>
+									<input type="submit" value="Ara" />
+								</td>
+								
+							</tr>
+						</table>
+					</form:form>
+				</div>
+
+				<table width="100%" cellspacing="0" cellpadding="0" align="center"	class="bordertable2">
 							<tbody>
 								<tr>
 									<td class="tdHeader2">&nbsp;Aktif Musteriler</td>
