@@ -40,7 +40,7 @@ import com.image.model.EntityImage;
 import com.lookup.model.LookupMst;
 import com.util.constants.ApplicationConstants;
 import com.util.validator.CustomerValidator;
-
+import com.util.search.SearchCriteria;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController{
@@ -95,7 +95,7 @@ public class CustomerController{
 	}	
 
 	@RequestMapping(value = "/listCustomers.htm",method = RequestMethod.GET) 
-	public ModelAndView getCustomerList() {
+	public ModelAndView getCustomerList(@ModelAttribute("searchCriterias") SearchCriteria searchCriterias,BindingResult result) {
 		ModelAndView custListPage = new ModelAndView("customer/customerList");
 		List activeCustomers = customerService.listCustomers();
 		custListPage.addObject("activeCustomers", activeCustomers);
@@ -113,5 +113,14 @@ public class CustomerController{
 		
 		return modell;
 	}
+	@RequestMapping(value = "/listCustomersWithCriteria.htm") 
+	public ModelAndView listCustomersWithCriteria(HttpServletRequest req,@ModelAttribute("searchCriterias")SearchCriteria searchCriterias,BindingResult result) {
+		
+		ModelAndView custListPage = new ModelAndView("customer/customerList");
+		List activeCustomers = customerService.listCustomers(searchCriterias);
+		custListPage.addObject("activeCustomers", activeCustomers);
+
+		return custListPage;		
+	}	
 
 }
