@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
  
 import com.customer.dao.CustomerDao; 
 import com.customer.model.Customer; 
+import com.util.search.SearchCriteria;
  
 @Service("customerService") 
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true) 
@@ -43,4 +44,8 @@ public class CustomerServiceImpl implements CustomerService{
         // TODO Auto-generated method stub 
         return customerDao.getCustomerById(id); 
     } 
+    
+    public List<Customer> listCustomers(SearchCriteria searchCriterias){
+    	return customerDao.listCustomers(searchCriterias);
+    }
 }

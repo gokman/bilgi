@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import com.customer.model.Customer;
 import com.lookup.model.LookupMst;
 import com.util.constants.ApplicationConstants;
+import com.util.search.SearchCriteria;
 
 @Repository("customerDao")
 public class CustomerDaoImpl implements CustomerDao{
@@ -25,6 +26,20 @@ public class CustomerDaoImpl implements CustomerDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	
+	public List<Customer> listCustomers(SearchCriteria searchCriteria){
+		Customer customer = new Customer();
+		if(!searchCriteria.getSearchCriterias().get(0) .equals(null) && !searchCriteria.getSearchCriterias().get(0) .equals("")){
+			customer.setName(searchCriteria.getSearchCriterias().get(0));
+		}
+		if(!searchCriteria.getSearchCriterias().get(1).equals(null)  && !searchCriteria.getSearchCriterias().get(1).equals("")){
+			customer.setSurname(searchCriteria.getSearchCriterias().get(1));
+		}
+		return (List<Customer>)sessionFactory.getCurrentSession().createCriteria(Customer.class).add(Example.create(customer)).list();
+
+	}
+	
+	
 	// To Save the article detail
 	public void saveCustomer(Customer cust) {
 		sessionFactory.getCurrentSession().save(cust);
