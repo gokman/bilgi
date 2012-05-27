@@ -58,7 +58,7 @@ public class LookupMstController {
                 String a=Long.toString(aydi);
                
                 List<LookupMst> detay=lookupMstService.getLookupMst(aydi);
-                modell.addObject("url",detay.get(0).getBaslik());
+                modell.addObject("url",detay.get(0));
 		
 		return modell;
 	}
