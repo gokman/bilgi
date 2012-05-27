@@ -43,8 +43,9 @@
 	<bean name="/hello.htm" class="com.welcome.WelcomePageController"/>
 	--> 
 	
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+<!-- 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
 			p:basename="messages"/>
+-->
 			
 	
 	
@@ -53,5 +54,19 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		   <property name="maxUploadSize" value="10000000" />
 	</bean>	
+	
+	<!-- localization -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+		p:fallbackToSystemLocale="false"
+		p:useCodeAsDefaultMessage="true"
+		p:defaultEncoding="UTF-8">
+		<description>Base message source to handle internationalization</description>
+		<property name="basenames">
+			<list>
+				<!-- generated domain resources -->
+				<value>classpath:localization/customer/CustomerDetail</value>
+			</list>
+		</property>
+	</bean>
 			
 </beans>
