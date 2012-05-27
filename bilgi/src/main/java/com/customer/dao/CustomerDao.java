@@ -3,6 +3,7 @@ package com.customer.dao;
 import java.util.List;
 
 import com.customer.model.Customer;
+import com.lookup.model.LookupMst;
 
 
 public interface CustomerDao {
@@ -14,4 +15,6 @@ public interface CustomerDao {
 	public List<Customer> listCustomers(Customer cust);
 	
 	public List<Customer> listByEmail (String email);
+	
+	public List<Customer> getCustomerById(long id);
 }
