@@ -15,9 +15,9 @@ public interface CustomerDao {
 	
 	public List<Customer> listCustomers(Customer cust);
 	
-	public List<Customer> listCustomers(SearchCriteria searchCriterias);
-	
 	public List<Customer> listByEmail (String email);
+
+	public List<Customer> listCustomers(SearchCriteria searchCriterias);
 	
 	public List<Customer> getCustomerById(long id);
 }

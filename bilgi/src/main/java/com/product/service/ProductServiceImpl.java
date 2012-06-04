@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.customer.model.Customer;
 import com.product.dao.ProductDao;
 import com.product.model.Product;
+import com.util.search.SearchCriteria;
 
 @Service("productService")
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
@@ -30,4 +31,14 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> listProduct() {
 		return productDao.listProducts();
 	}
+
+    @Override 
+    public List<Product> getById(long id) { 
+        // TODO Auto-generated method stub 
+        return productDao.getProductById(id); 
+    } 
+    
+    public List<Product> listProducts(SearchCriteria searchCriterias){
+    	return productDao.listProducts(searchCriterias);
+    }	
 }
