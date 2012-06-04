@@ -402,7 +402,34 @@
 	<div id="content-wrap">
 	<div id="main">
 	<!-- Acordion form js and css end -->
-	<c:url value="/customer/saveCustomerForm.htm" var="saveCustomer"></c:url>
+
+	<c:url var="searchProductURL" value="/product/listProductsWithCriteria.htm" />
+	
+				<div class="orta_div_sag">
+					<form:form action="${searchProductURL}" method="POST" 	commandName="searchCriterias" modelAttribute="searchCriterias">
+						<table width="300px" height="100px">
+							<tr height="50px">
+								<td>Semt:</td>
+								<td>
+									<form:input path="searchCriterias[0]" maxlength="15" /> 
+								</td>
+								<td>Alan:</td>
+								<td>
+									<form:input path="searchCriterias[1]" maxlength="15" /> 
+								</td>
+								<td>
+									<input type="submit" value="Ara" />
+								</td>
+								
+							</tr>
+						</table>
+					</form:form>
+				</div>	
+	
+	
+	
+	
+	
 	
 						<table width="100%" cellspacing="0" cellpadding="0" align="center"	class="bordertable2">
 							<tbody>
@@ -432,7 +459,7 @@
 
 												<td valign="top"
 													onmouseover="setDiv(&#39;prestij1&#39;,430,280,1,-40,26,30,10)"><a
-													href="http://www.kariyer.net/JobSearch/detayliarama.kariyer?arn=&sid=&Ara=5&ProfilNo=1333&clkTkp=1027&firmaBaslik=Citibank"
+													href="<c:url value="/product/productDetail/${product.urun_id}.htm"/>"
 													class="prestijBig">
 													
 													
@@ -452,12 +479,12 @@
 													onmouseover="setDiv(&#39;prestij1&#39;,430,280,1,-40,26,30,10)"><span
 													id="prestij1" style="position: relative">
 												<a
-													href="http://www.kariyer.net/JobSearch/detayliarama.kariyer?arn=&sid=&Ara=5&ProfilNo=1333&clkTkp=1027&firmaBaslik=Citibank"
+													href="<c:url value="/product/productDetail/${product.urun_id}.htm"/>"
 													class="prestijBig"><b><c:out
 													value="${product.tip}-${product.adres_detay}" /><c:out
 													value="${rowCounter.index}" /></b></a><br>
 												<a
-													href="http://www.kariyer.net/JobSearch/jobdetail.kariyer?arn=&sid=+&ilankodu=292234&clkTkp=1027"
+													href="<c:url value="/product/productDetail/${product.urun_id}.htm"/>"
 													class="prestijBig"><font class="prestij"><c:out
 													value="${product.tip}" /></font></a></span></td>
 

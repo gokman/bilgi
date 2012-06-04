@@ -14,7 +14,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="id")
-	private long urun_id;
+	private Long urun_id;
 	
 	@Column(name="tip", length=45)
 	private String tip;
@@ -29,7 +29,7 @@ public class Product {
 	private String adres_detay;
 
 	@Column(name="ebat")
-	private long ebat;
+	private Long ebat;
 	
 	@Column(name="ozellik_detay", length=255)
 	private String ozellik_detay;
@@ -38,11 +38,11 @@ public class Product {
 	@Column ( name = "profile_image")
     private String profileImage;		
 
-	public long getUrun_id() {
+	public Long getUrun_id() {
 		return urun_id;
 	}
 
-	public void setUrun_id(long urun_id) {
+	public void setUrun_id(Long urun_id) {
 		this.urun_id = urun_id;
 	}
 
@@ -78,11 +78,11 @@ public class Product {
 		this.adres_detay = adres_detay;
 	}
 
-	public long getEbat() {
+	public Long getEbat() {
 		return ebat;
 	}
 
-	public void setEbat(long ebat) {
+	public void setEbat(Long ebat) {
 		this.ebat = ebat;
 	}
 
