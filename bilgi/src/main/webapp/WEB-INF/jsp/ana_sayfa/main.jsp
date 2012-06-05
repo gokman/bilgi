@@ -74,12 +74,11 @@
 		</tr>
 		<!-- alt kisim -->
 		<tr>
-			<td align="center">
-				<div class="alt_div">alt bölüm</div>
-			</td>
+					<jsp:include page="/WEB-INF/jsp/ana_sayfa/footer.jsp" />
 		</tr>
+
 		</tbody>
 	</table>
-	<div align="center"><img src="<c:url value="/resources/image/ana_sayfa/alt_resim.jpg"/>" /></div>
+
 </body>
 </html>
