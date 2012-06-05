@@ -3,17 +3,35 @@ width:1000px;
 height:150px;
 background-color:#FFFFFF;
 }
+.alt_div{
+width:1000px;
+height:42px;
+background-color:#FFFFFF;
+}
 .ust_div_menu{
 height:30px;
 width:990px;
 margin:0px;
 padding:0px;
+text-align: center;
+}
+.alt_div_menu{
+height:30px;
+width:990px;
+margin:0px;
+padding:0px;
+text-align: center;
 }
 .ust_div_ust{
 width:990px;
 height:120px;
 background-image:url(../../image/ana_sayfa/ust_reklam.jpg);
 }
+.ust_div_ust{
+width:990px;
+height:120px;
+}
+
 .orta_div{
 width:1000px;
 height:auto;
