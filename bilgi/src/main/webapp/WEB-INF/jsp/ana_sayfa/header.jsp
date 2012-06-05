@@ -17,8 +17,8 @@
 				<div class="ust_div">
 					<div class="ust_div_ust"></div>
 					<div class="ust_div_menu">
-						<div class="menu">
-								<ul>
+						<div class="menu" >
+								<ul class="menu">
 									<li><a href="<c:url value="/index.htm"/>" >Ana Sayfa</a></li>
 									<li><a href="#">Ürünler</a>
 										<ul>
