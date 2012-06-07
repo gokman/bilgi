@@ -220,5 +220,25 @@ public class CustomerController{
 		
 		return custListPage;		
 	}	
+	
+	@RequestMapping(value = "/customerUpdatePage/{id}.htm") 
+	public ModelAndView customerUpdateForm(HttpServletRequest req,@PathVariable("id")String id,@ModelAttribute("customerUpdate")Customer customer,BindingResult result) {
+		
+		ModelAndView custUpdatePage = new ModelAndView("customer/customerUpdateForm");
+		 List<Customer> detay=customerService.getById(Long.parseLong(id));
+		 custUpdatePage.addObject("musteri_detay",detay.get(0));
+
+		return custUpdatePage;		
+	}	
+	
+	@RequestMapping(value = "/customerUpdate.htm") 
+	public ModelAndView customerUpdate(HttpServletRequest req,@ModelAttribute("customerUpdate")Customer customer,BindingResult result) {
+	
+		customerService.updateCustomer(customer);
+		
+		ModelAndView custListPage = new ModelAndView("customer/dene");
+		custListPage.addObject("customer",customer);
+		return custListPage;		
+	}
 
 }
