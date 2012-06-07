@@ -601,7 +601,7 @@
 <br />
 <div class="buttonWrapper">
 <input name="formBack1" type="button" class="open1 prevbutton" value="Back" alt="Back" title="Back"/>
-<input name="submit" type="submit" id="submit" value="Submit" class="submitbutton" alt="Submit" title="Submit">
+<input name="submit" type="submit" id="submit" value="Submit" class="submitbutton" alt="Submit" title="Submit"/>
 </div>
 </fieldset>
 </div>
@@ -610,7 +610,7 @@
 			
 						
 	</form:form>
-
+</div>
 <!--  end -->
 
 

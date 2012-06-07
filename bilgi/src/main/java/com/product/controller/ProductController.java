@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,11 +35,29 @@ public class ProductController {
 	@RequestMapping(value = "/addProduct.htm",method = RequestMethod.GET) 
 	public ModelAndView getProductForm(@ModelAttribute("product") Product product,BindingResult result) {
 
-		return new ModelAndView("product/productForm");
+		ModelAndView productForm = new ModelAndView("product/productForm");
+		boolean isAuthenticated = false;
+		String principalResult ="";
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal == null)
+	    	principalResult = null;
+	    if (principal instanceof String)
+	    	principalResult = (String) principal;
+	    if (principal instanceof User)
+	    	principalResult = ((User) principal).getUsername();
+		
+	    if(!principalResult.equals("anonymousUser")){
+	    	isAuthenticated = true ;
+	    }
+		System.out.println("stdout - Returning hello view");
+		productForm.addObject("isAuthenticated", isAuthenticated);
+		productForm.addObject("username", principalResult);		
+		
+		return productForm;
 	}	
 
 	@RequestMapping(value = "/saveProductForm.htm")
-	public ModelAndView saveProductForm(HttpServletRequest req,@ModelAttribute("product")Product product,BindingResult result){
+	public ModelAndView saveProductForm(HttpServletRequest req,@ModelAttribute("product")Product product,@ModelAttribute("searchCriterias") SearchCriteria searchCriterias,BindingResult result){
 
 		ProductValidator validator = new ProductValidator();
 		validator.validate(product, result);
@@ -53,6 +73,23 @@ public class ProductController {
 		List activeProducts = productService.listProduct();
 		productListPage.addObject("activeProducts", activeProducts );		
 		
+		boolean isAuthenticated = false;
+		String principalResult ="";
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal == null)
+	    	principalResult = null;
+	    if (principal instanceof String)
+	    	principalResult = (String) principal;
+	    if (principal instanceof User)
+	    	principalResult = ((User) principal).getUsername();
+		
+	    if(!principalResult.equals("anonymousUser")){
+	    	isAuthenticated = true ;
+	    }
+		System.out.println("stdout - Returning hello view");
+		productListPage.addObject("isAuthenticated", isAuthenticated);
+		productListPage.addObject("username", principalResult);		
+		
 		return productListPage;
 	}	
 
@@ -62,6 +99,26 @@ public class ProductController {
 		List activeProducts = productService.listProduct();
 		productListPage.addObject("activeProducts", activeProducts);
 
+		boolean isAuthenticated = false;
+		String principalResult ="";
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal == null)
+	    	principalResult = null;
+	    if (principal instanceof String)
+	    	principalResult = (String) principal;
+	    if (principal instanceof User)
+	    	principalResult = ((User) principal).getUsername();
+		
+	    if(!principalResult.equals("anonymousUser")){
+	    	isAuthenticated = true ;
+	    }
+		System.out.println("stdout - Returning hello view");
+		productListPage.addObject("isAuthenticated", isAuthenticated);
+		productListPage.addObject("username", principalResult);
+		
+		
+		
+		
 		return productListPage;
 	}	
 	
@@ -72,7 +129,26 @@ public class ProductController {
                 List<Product> detay=productService.getById(Long.parseLong(id));
                 modell.addObject("product",detay.get(0));
 		
-		return modell;
+                
+                
+        		boolean isAuthenticated = false;
+        		String principalResult ="";
+        	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        	    if (principal == null)
+        	    	principalResult = null;
+        	    if (principal instanceof String)
+        	    	principalResult = (String) principal;
+        	    if (principal instanceof User)
+        	    	principalResult = ((User) principal).getUsername();
+        		
+        	    if(!principalResult.equals("anonymousUser")){
+        	    	isAuthenticated = true ;
+        	    }
+        		System.out.println("stdout - Returning hello view");
+        		modell.addObject("isAuthenticated", isAuthenticated);
+        		modell.addObject("username", principalResult);                
+		
+        		return modell;
 	}
 	@RequestMapping(value = "/listProductsWithCriteria.htm") 
 	public ModelAndView listProductsWithCriteria(HttpServletRequest req,@ModelAttribute("searchCriterias")SearchCriteria searchCriterias,BindingResult result) {
@@ -81,6 +157,24 @@ public class ProductController {
 		List activeProducts = productService.listProducts(searchCriterias);
 		productListPage.addObject("activeProducts", activeProducts);
 
+		boolean isAuthenticated = false;
+		String principalResult ="";
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal == null)
+	    	principalResult = null;
+	    if (principal instanceof String)
+	    	principalResult = (String) principal;
+	    if (principal instanceof User)
+	    	principalResult = ((User) principal).getUsername();
+		
+	    if(!principalResult.equals("anonymousUser")){
+	    	isAuthenticated = true ;
+	    }
+		System.out.println("stdout - Returning hello view");
+		productListPage.addObject("isAuthenticated", isAuthenticated);
+		productListPage.addObject("username", principalResult);		
+		
+		
 		return productListPage;		
 	}	
 	
