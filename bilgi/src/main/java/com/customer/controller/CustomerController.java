@@ -167,12 +167,30 @@ public class CustomerController{
 	
 	@RequestMapping(value = "/customerDetail/{id}.htm",method=RequestMethod.GET) 
 	public ModelAndView detailLookupForm(HttpServletRequest req,@PathVariable("id")String id ,@ModelAttribute("customerDetail")Customer customerDetail,BindingResult result) {
-                ModelAndView modell=new ModelAndView("customer/customerDetail");
+                ModelAndView detailPage=new ModelAndView("customer/customerDetail");
                
                 List<Customer> detay=customerService.getById(Long.parseLong(id));
-                modell.addObject("musterim",detay.get(0));
-		
-		return modell;
+                detailPage.addObject("musterim",detay.get(0));
+
+        		boolean isAuthenticated = false;
+        		String principalResult ="";
+        	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        	    if (principal == null)
+        	    	principalResult = null;
+        	    if (principal instanceof String)
+        	    	principalResult = (String) principal;
+        	    if (principal instanceof User)
+        	    	principalResult = ((User) principal).getUsername();
+        		
+        	    if(!principalResult.equals("anonymousUser")){
+        	    	isAuthenticated = true ;
+        	    }
+        		System.out.println("stdout - Returning hello view");
+        		detailPage.addObject("isAuthenticated", isAuthenticated);
+        		detailPage.addObject("username", principalResult);
+                
+                
+		return detailPage;
 	}
 	@RequestMapping(value = "/listCustomersWithCriteria.htm") 
 	public ModelAndView listCustomersWithCriteria(HttpServletRequest req,@ModelAttribute("searchCriterias")SearchCriteria searchCriterias,BindingResult result) {
@@ -181,6 +199,25 @@ public class CustomerController{
 		List activeCustomers = customerService.listCustomers(searchCriterias);
 		custListPage.addObject("activeCustomers", activeCustomers);
 
+		boolean isAuthenticated = false;
+		String principalResult ="";
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal == null)
+	    	principalResult = null;
+	    if (principal instanceof String)
+	    	principalResult = (String) principal;
+	    if (principal instanceof User)
+	    	principalResult = ((User) principal).getUsername();
+		
+	    if(!principalResult.equals("anonymousUser")){
+	    	isAuthenticated = true ;
+	    }
+		System.out.println("stdout - Returning hello view");
+		custListPage.addObject("isAuthenticated", isAuthenticated);
+		custListPage.addObject("username", principalResult);
+
+		
+		
 		return custListPage;		
 	}	
 
