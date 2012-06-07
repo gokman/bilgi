@@ -71,6 +71,14 @@ public class CustomerDaoImpl implements CustomerDao{
 		add(Restrictions.eq("id", id)).list();
 		return list;
 	}
+
+
+	@Override
+	public void updateCustomer(Customer cust) {
+		
+		sessionFactory.getCurrentSession().update(cust);
+		
+	}
 	
 	
 }
