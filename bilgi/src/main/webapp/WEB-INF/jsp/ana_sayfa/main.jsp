@@ -23,7 +23,7 @@
 
 				<table class="orta_div" align="center">
 					<tr>
-						<td>
+						<td valign="top">
 							<div class="orta_div_sol">
 							<!-- kullanýcý giriþ bölümü olacak-->
 								<div class="kullanici_giris">

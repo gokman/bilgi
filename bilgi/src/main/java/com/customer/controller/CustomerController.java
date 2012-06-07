@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,13 +36,14 @@ import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Hibernate;
+
 import com.customer.model.Customer;
 import com.customer.service.CustomerService;
 import com.image.model.EntityImage;
-import com.lookup.model.LookupMst;
 import com.util.constants.ApplicationConstants;
-import com.util.validator.CustomerValidator;
 import com.util.search.SearchCriteria;
+import com.util.validator.CustomerValidator;
+
 @Controller
 @RequestMapping("/customer")
 public class CustomerController{
@@ -54,7 +57,26 @@ public class CustomerController{
 	@RequestMapping(value = "/addCustomer.htm",method = RequestMethod.GET) 
 	public ModelAndView getCustomerForm(@ModelAttribute("customer") Customer customer,BindingResult result) {
 
-		return new ModelAndView("customer/customerForm");
+		boolean isAuthenticated = false;
+		String principalResult ="";
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal == null)
+	    	principalResult = null;
+	    if (principal instanceof String)
+	    	principalResult = (String) principal;
+	    if (principal instanceof User)
+	    	principalResult = ((User) principal).getUsername();
+		
+	    if(!principalResult.equals("anonymousUser")){
+	    	isAuthenticated = true ;
+	    }
+	    ModelAndView mv = new ModelAndView("customer/customerForm");
+	  
+		System.out.println("stdout - Returning hello view");
+		mv.addObject("isAuthenticated", isAuthenticated);
+		mv.addObject("username", principalResult);
+		
+		return mv;
 	}	
 
 	@RequestMapping(value = "/saveCustomerForm.htm")
@@ -91,6 +113,26 @@ public class CustomerController{
 		imageForm.addObject("image", image);
 		imageForm.addObject("imageCount",ApplicationConstants.imageCountPerObject);
 
+		boolean isAuthenticated = false;
+		String principalResult ="";
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal == null)
+	    	principalResult = null;
+	    if (principal instanceof String)
+	    	principalResult = (String) principal;
+	    if (principal instanceof User)
+	    	principalResult = ((User) principal).getUsername();
+		
+	    if(!principalResult.equals("anonymousUser")){
+	    	isAuthenticated = true ;
+	    }
+	  
+		System.out.println("stdout - Returning hello view");
+		imageForm.addObject("isAuthenticated", isAuthenticated);
+		imageForm.addObject("username", principalResult);
+		
+		
+		
 		return imageForm;
 	}	
 
@@ -100,6 +142,26 @@ public class CustomerController{
 		List activeCustomers = customerService.listCustomers();
 		custListPage.addObject("activeCustomers", activeCustomers);
 
+		boolean isAuthenticated = false;
+		String principalResult ="";
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal == null)
+	    	principalResult = null;
+	    if (principal instanceof String)
+	    	principalResult = (String) principal;
+	    if (principal instanceof User)
+	    	principalResult = ((User) principal).getUsername();
+		
+	    if(!principalResult.equals("anonymousUser")){
+	    	isAuthenticated = true ;
+	    }
+		System.out.println("stdout - Returning hello view");
+		custListPage.addObject("isAuthenticated", isAuthenticated);
+		custListPage.addObject("username", principalResult);
+		
+		
+		
+		
 		return custListPage;
 	}	
 	

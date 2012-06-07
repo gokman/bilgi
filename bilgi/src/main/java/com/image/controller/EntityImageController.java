@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -98,6 +100,26 @@ public class EntityImageController{
 		List images = entityImageService.listImages();
 		successPage.addObject("images", persistedImages);
 
+		boolean isAuthenticated = false;
+		String principalResult ="";
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal == null)
+	    	principalResult = null;
+	    if (principal instanceof String)
+	    	principalResult = (String) principal;
+	    if (principal instanceof User)
+	    	principalResult = ((User) principal).getUsername();
+		
+	    if(!principalResult.equals("anonymousUser")){
+	    	isAuthenticated = true ;
+	    }
+	  
+		System.out.println("stdout - Returning hello view");
+		successPage.addObject("isAuthenticated", isAuthenticated);
+		successPage.addObject("username", principalResult);
+				
+		
+		
 		return successPage;
 	}	
 
