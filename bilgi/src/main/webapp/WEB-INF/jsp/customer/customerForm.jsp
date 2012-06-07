@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+	
 			<!-- Acordion form js and css -->
 			<script type="text/javascript">
 			<!--
@@ -17,7 +19,13 @@
 			}
 			// -->
 			</script>
+			<!-- 
+			<link href="<c:url value="/resources/css/ana_sayfa/main.css"/>" rel="stylesheet" type="text/css"/>
+			<link rel="stylesheet" href="<c:url value="/resources/css/ana_sayfa/menu_style.css"/>" type="text/css" />
+			-->
+			<!-- 
 			<link rel="stylesheet" href="<c:url value="/resources/css/form/customer_form.css"/>"></link>
+			-->
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery-1.2.1.js"/>"></script>
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery-1.2.js"/>"></script>
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery.form.js"/>"></script>
@@ -27,23 +35,16 @@
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery.dimensions.js"/>"></script>
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery.accordion.js"/>"></script>
 			
-			<!-- date picker -->
-			
+			<!-- date picker 
 				<link rel="stylesheet" href="<c:url value="/resources/css/datepicker/datepicker.css"/>" />
 			    <link rel="stylesheet" href="<c:url value="/resources/css/datepicker/layout.css"/>" />
-			
 			<!--	 
 				<script type="text/javascript" src="<c:url value="/resources/js/datepicker/datepicker.js"/>"></script>
-			    
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/eye.js"/>"></script>
-			    
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/utils.js"/>"></script>
-			    
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/layout.js"/>"></script>
-			    
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/jquery.js"/>"></script>
 			  -->
-			
 			<script type="text/javascript">
 			// JQUERY FOR THIS PAGE
 			
@@ -189,74 +190,9 @@
 									});
 								});
 			</script>
-			
-			
-			
 			<!-- css for this page -->
 			<style type="text/css">
 			/* ------ one ------------*/
-			body .mainText{
-			font-family:Arial, Helvetica, sans-serif;
-			font-size:12px;
-			}
-			#demoText h1, .mainText h1{
-			font-size:130%;
-			color:#0099FF;
-			text-decoration:none;
-			font-family:Arial, Helvetica, sans-serif;
-			margin:5px 4px 5px 24px;
-			background:none;
-			padding:0;
-			border:none;
-			text-transform:capitalize;
-			}
-			.mainText h2{
-			font-size:110%;
-			color:#000033;
-			font-family:Arial, Helvetica, sans-serif;
-			text-decoration:none;
-			background:none;
-			margin:4px 32px 6px 22px;
-			text-transform:capitalize;
-			}
-			.mainText h3{
-			font-size:120%;
-			font-weight:900;
-			margin:14px 0 0 0;
-			text-align:center;
-			color:#000033;
-			}
-			.mainText table{
-			width:95%;
-			border:1px solid #0099FF;
-			border-collapse:collapse;
-			margin:18px 7px;
-			}
-			.mainText table td{
-			background-color:#99CCFF;
-			color:#000033;
-			padding:4px;
-			}
-			.mainText table th{
-			background-color:#000033;
-			color:#99CCFF;
-			padding:4px;
-			}
-			.mainText .linkPar a{
-			color:#000033;
-			text-decoration:underline;
-			}
-			.mainText .linkPar a:hover{
-			color:#660033;
-			text-decoration:none;
-			font-weight:900;
-			}
-			.pusher{
-			cursor:pointer;
-			padding:3px 10px 3px 22px;
-			font-weight:900;
-			font-size:14px;
-			}
 			/* ------------- form specific styles are here  -------------- */
 			
 			fieldset {
@@ -364,8 +300,6 @@
 			ul#stepForm li{
 			list-style:none;
 			}
-			
-			
 			/* Form Buttons  */
 			input.submitbutton, .nextbutton, .prevbutton{
 			width:100px;
@@ -383,8 +317,55 @@
 			}
 			</style> 
 	</head>
-<body>	
-<a href="<c:url value="/index.htm"/>">Anasayfa</a>
+
+<body bgcolor="#AF4555">
+	<table align="center" cellspacing="0" cellpadding="0" width="1000px" bgcolor="#FFFFFF">
+		<tbody>
+		<!-- üst kisim -->
+		<tr>
+					<jsp:include page="/WEB-INF/jsp/ana_sayfa/header.jsp" />
+		</tr>
+
+		<!-- orta kisim -->
+		<tr>
+			<td>
+
+				<table class="orta_div" align="center">
+					<tr>
+						<td valign="top">
+							<div class="orta_div_sol">
+							<!-- kullanıcı giriş bölümü olacak-->
+								<div class="kullanici_giris">
+									<c:choose>
+											<c:when test="${isAuthenticated=='true' }">
+												<h3>Merhaba <c:out value="${username}"></c:out></h3>
+												<br/>
+												<h3><a href="<c:url value="/j_spring_security_logout"/>" value="Logout">logout</a></h3>
+											</c:when>
+											<c:otherwise>
+												<form method="post" action="j_spring_security_check"><br />
+												Kullanici adi <br />
+												<input type="text" width="10px" name="j_username" /><br />
+												Sifre <br />
+												<input width="10px" name="j_password" type="password"/><br />
+												<input class="dugme_giris" type="submit" width="60px" value=" " />
+												<br />
+												<a href="<c:url value="/login/requestPassword.htm"/>">Sifremi
+												Unuttum</a> <a href="<c:url value="/login/membershipForm.htm"/>">Üye
+												Ol</a></form>
+											</c:otherwise>
+									</c:choose>		 
+								</div>
+								<div class="sol_menu">
+									<img src="<c:url value="/resources/image/ana_sayfa/reklam.jpg"/>"/>
+								</div>
+							</div>
+						</td>
+						<td valign="top">
+							<c:choose>
+								<c:when test="${isAuthenticated=='true'}">
+
+<!-- start -->
 	<div id="wrap">
 	<!-- content-wrap starts here -->
 	<div id="content-wrap">
@@ -629,5 +610,31 @@
 			
 						
 	</form:form>
+
+<!--  end -->
+
+
+								</c:when>
+								<c:otherwise>
+									<div class="orta_div_sag">
+											Bu icerige erismek icin giris yapmalisiniz.
+									</div>
+								</c:otherwise>
+							</c:choose>		 
+						</td>
+	
+					</tr>
+				</table>
+
+			</td>
+		</tr>
+		<!-- alt kisim -->
+		<tr>
+					<jsp:include page="/WEB-INF/jsp/ana_sayfa/footer.jsp" />
+		</tr>
+
+		</tbody>
+	</table>
+
 </body>
 </html>
