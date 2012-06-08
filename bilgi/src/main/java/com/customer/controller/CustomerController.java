@@ -239,6 +239,6 @@ public class CustomerController{
 		ModelAndView custListPage = new ModelAndView("customer/dene");
 		custListPage.addObject("customer",customer);
 		return custListPage;		
-	}
+	} 
 
 }
