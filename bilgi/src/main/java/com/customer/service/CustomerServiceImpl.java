@@ -48,4 +48,9 @@ public class CustomerServiceImpl implements CustomerService{
     public List<Customer> listCustomers(SearchCriteria searchCriterias){
     	return customerDao.listCustomers(searchCriterias);
     }
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false) 
+    public void updateCustomer(Customer cust) {
+        customerDao.updateCustomer(cust);
+        
+    }    
 }
