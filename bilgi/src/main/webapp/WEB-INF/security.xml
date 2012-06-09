@@ -25,6 +25,7 @@
 		<intercept-url pattern="/resources/**" access="permitAll" />
 
 		
+		<intercept-url pattern="/login/activateUserAccount/**" access="permitAll" />
 		<intercept-url pattern="/login/membershipForm.htm" access="permitAll" />
 		<intercept-url pattern="/login/membershipFormSave.htm" access="permitAll" />
 		<intercept-url pattern="/login/requestPassword.htm" access="permitAll" />
