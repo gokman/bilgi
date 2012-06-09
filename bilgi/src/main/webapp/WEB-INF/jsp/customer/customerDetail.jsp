@@ -359,6 +359,11 @@
 															value="${musterim.maritalStatus}"></c:out>
 													</td>
 												</tr>
+												<tr>
+													<td><a
+														href="<c:url value="/customer/customerUpdatePage/${musterim.customerId}.htm"/>">Güncelle</a>
+													</td>
+												</tr>
 											</table>
 
 										</div>
