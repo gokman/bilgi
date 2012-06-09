@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -136,7 +137,27 @@ public class LoginLogoutController{
 	@RequestMapping(value = "/requestPassword.htm",method = RequestMethod.GET) 
 	public ModelAndView getRequestPassowrdForm() {
 
-		return new ModelAndView("/membership/requestPassword");
+
+		ModelAndView passPage = new ModelAndView("/membership/requestPassword");
+		boolean isAuthenticated = false;
+		String principalResult ="";
+	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    if (principal == null)
+	    	principalResult = null;
+	    if (principal instanceof String)
+	    	principalResult = (String) principal;
+	    if (principal instanceof User)
+	    	principalResult = ((User) principal).getUsername();
+		
+	    if(!principalResult.equals("anonymousUser")){
+	    	isAuthenticated = true ;
+	    }
+	  
+		System.out.println("stdout - Returning hello view");
+		passPage.addObject("isAuthenticated", isAuthenticated);
+		passPage.addObject("username", principalResult);
+		
+		return passPage;
 	}	
 	
 	
