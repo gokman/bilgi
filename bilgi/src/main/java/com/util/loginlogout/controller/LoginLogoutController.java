@@ -98,7 +98,8 @@ public class LoginLogoutController{
 		
 		String to = user.getEmail();	
 		try {
-			String activationURL = context.getMessage("activationURL", null, Locale.getDefault());
+			String activationURL = "http://localhost:8080/bilgi/login/activateUserAccount";
+					//context.getMessage(activationURL, null, Locale.getDefault())
 			String activationString = MailSender.sendActivationEmail(user,activationURL);
 			user.setActivationString(activationString);
 			
@@ -123,8 +124,27 @@ public class LoginLogoutController{
 		User waitingUser = loginService.getWaitingMember(exmpUser);
 		
 		if(waitingUser != null){
+			ModelAndView successPage = new ModelAndView("ana_sayfa/main");
+			boolean isAuthenticated = false;
+			String principalResult ="";
+		    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		    if (principal == null)
+		    	principalResult = null;
+		    if (principal instanceof String)
+		    	principalResult = (String) principal;
+		    if (principal instanceof User)
+		    	principalResult = ((User) principal).getUsername();
+			
+		    if(!principalResult.equals("anonymousUser")){
+		    	isAuthenticated = true ;
+		    }
+		  
+			System.out.println("stdout - Returning hello view");
+			successPage.addObject("isAuthenticated", isAuthenticated);
+			successPage.addObject("username", principalResult);
+			
 			loginService.updateMembershipStatus(waitingUser.getUserId());
-			return new ModelAndView("/index.htm");
+			return successPage;
 		}else{
 			//TODO aktivasyon hata sayfasý
 			
