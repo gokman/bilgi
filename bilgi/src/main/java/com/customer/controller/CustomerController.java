@@ -226,13 +226,30 @@ public class CustomerController{
 		
 		ModelAndView custUpdatePage = new ModelAndView("customer/customerUpdateForm");
 		 List<Customer> detay=customerService.getById(Long.parseLong(id));
-		 custUpdatePage.addObject("musteri_detay",detay.get(0));
+		 custUpdatePage.addObject("customer",detay.get(0));
+			boolean isAuthenticated = false;
+			String principalResult ="";
+		    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		    if (principal == null)
+		    	principalResult = null;
+		    if (principal instanceof String)
+		    	principalResult = (String) principal;
+		    if (principal instanceof User)
+		    	principalResult = ((User) principal).getUsername();
+			
+		    if(!principalResult.equals("anonymousUser")){
+		    	isAuthenticated = true ;
+		    }
+			System.out.println("stdout - Returning hello view");
+			custUpdatePage.addObject("isAuthenticated", isAuthenticated);
+			custUpdatePage.addObject("username", principalResult);
 
+		 
 		return custUpdatePage;		
 	}	
 	
 	@RequestMapping(value = "/customerUpdate.htm") 
-	public ModelAndView customerUpdate(HttpServletRequest req,@ModelAttribute("customerUpdate")Customer customer,BindingResult result) {
+	public ModelAndView customerUpdate(HttpServletRequest req,@ModelAttribute("customer")Customer customer,BindingResult result) {
 	
 		customerService.updateCustomer(customer);
 		

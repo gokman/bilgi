@@ -124,7 +124,7 @@ public class LoginLogoutController{
 		User waitingUser = loginService.getWaitingMember(exmpUser);
 		
 		if(waitingUser != null){
-			ModelAndView successPage = new ModelAndView("ana_sayfa/main");
+			ModelAndView successPage = new ModelAndView("membership/activationSuccessPage");
 			boolean isAuthenticated = false;
 			String principalResult ="";
 		    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

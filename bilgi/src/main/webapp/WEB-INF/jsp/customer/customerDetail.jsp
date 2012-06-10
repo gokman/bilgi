@@ -331,9 +331,10 @@
 													<td class="musteri_sol_sutun"><fmt:message
 															key="profileImage" />
 													</td>
-													<td class="musteri_sag_sutun"><c:choose>
-															<c:when test="${not empty customer.profileImage}">
-																<img src="<c:url value="${customer.profileImage}"/>"
+													<td class="musteri_sag_sutun">
+													<c:choose>
+															<c:when test="${not empty musterim.profileImage}">
+																<img src="<c:url value="${musterim.profileImage}"/>"
 																	border="0" alt="" hspace="0" width="100" height="140">
 															</c:when>
 															<c:otherwise>
