@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <head>
 	<link href="<c:url value="/resources/css/ana_sayfa/main.css"/>" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="<c:url value="/resources/css/ana_sayfa/menu_style.css"/>" type="text/css" />
@@ -17,8 +19,8 @@
 						<div class="menu" >
 								<ul class="menu">
 									<li><a href="<c:url value="/index.htm"/>" >Ana Sayfa</a></li>
-									<li><a href="#">� Copyright 2012 MUSEM</a></li>
-									<li><a href="#">Bize Ulasin</a></li>
+									<li><a href="#">© Copyright 2012 MUSEM</a></li>
+									<li><a href="#">Bize Ulaşın</a></li>
 								</ul>
 						</div>
 					</div>
