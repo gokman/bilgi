@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <head>
  
 	<link href="<c:url value="/resources/css/ana_sayfa/main.css"/>" rel="stylesheet" type="text/css"/>
@@ -13,7 +15,7 @@
 	</div>
 	<table align="center" cellspacing="0" cellpadding="0" width="1000px" bgcolor="#FFFFFF">
 		<tbody>
-		<!-- üst kisim -->
+		<!-- ï¿½st kisim -->
 		<tr>
 			<td align="center">
 				<div class="ust_div">
@@ -22,20 +24,20 @@
 						<div class="menu" >
 								<ul class="menu">
 									<li><a href="<c:url value="/index.htm"/>" >Ana Sayfa</a></li>
-									<li><a href="#">Ürünler</a>
+									<li><a href="#">ÃœrÃ¼nler</a>
 										<ul>
-											<li><a href="<c:url value="/product/addProduct.htm"/>">Ürün Gir</a></li>
+											<li><a href="<c:url value="/product/addProduct.htm"/>">ÃœrÃ¼n Gir</a></li>
 											<li><a href="<c:url value="/product/listProducts.htm"/>">Listele</a></li>
 									   </ul>
 								  </li>
-									<li><a href="#">Müþteriler</a>
+									<li><a href="#">MÃ¼ÅŸteriler</a>
 						                <ul>
 						                <li><a href="<c:url value="/customer/listCustomers.htm"/>">Listele</a></li>
-						                <li><a href="<c:url value="/customer/addCustomer.htm"/>">Müþteri Gir</a></li>
+						                <li><a href="<c:url value="/customer/addCustomer.htm"/>">MÃ¼ÅŸteri Gir</a></li>
 						                </ul>
 						          </li>
-									<li><a href="#">Ýletiþim</a></li>
-									<li><a href="#">Hakkýmýzda</a></li>
+									<li><a href="#">Ä°letiÅŸim</a></li>
+									<li><a href="#">HakkÄ±mÄ±zda</a></li>
 								</ul>
 						</div>
 					</div>
