@@ -38,7 +38,10 @@
         <property name="suffix">
             <value>.jsp</value>
         </property>
+        <property name="contentType" value="text/html;charset=UTF-8" />
     </bean>
+    
+    
 	<!-- the application context definition for the springapp DispatcherServlet
 	<bean name="/hello.htm" class="com.welcome.WelcomePageController"/>
 	--> 
