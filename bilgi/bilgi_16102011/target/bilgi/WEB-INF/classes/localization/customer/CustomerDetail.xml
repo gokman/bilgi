@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>Domain resources for CustomerDetail</comment>
+
+	<entry key="name">Ad:</entry>
+    <entry key="surname">Soyad:</entry>
+    <entry key="salary">Maaş:</entry>
+    <entry key="occupation">Yer:</entry>
+    <entry key="educationLevel">Eğitim Seviyesi:</entry>
+    <entry key="placeOfwork">İş Yeri:</entry>
+    <entry key="settlementStatus">ikamet Durumu:</entry>
+    <entry key="adress">Adres:</entry>
+    <entry key="phoneNumber">Tel No:</entry>
+    <entry key="email">E-posta:</entry>
+    <entry key="city">Şehir:</entry>
+    <entry key="country">Ülke:</entry>
+    <entry key="profileImage">Profil Resmi:</entry>
+    <entry key="gender">cinsiyet:</entry>
+    <entry key="maritalStatus">Medeni Hali:</entry>
+</properties>
