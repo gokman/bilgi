@@ -43,7 +43,7 @@ import com.image.model.EntityImage;
 import com.util.constants.ApplicationConstants;
 import com.util.search.SearchCriteria;
 import com.util.validator.CustomerValidator;
-
+import com.util.login.check.LoginCheck;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController{
@@ -51,31 +51,13 @@ public class CustomerController{
 	@Autowired
 	private CustomerService customerService;
 
-	@Autowired 
-	private ApplicationContext context;
-	
+	private LoginCheck loginInfo = new LoginCheck();
+
 	@RequestMapping(value = "/addCustomer.htm",method = RequestMethod.GET) 
 	public ModelAndView getCustomerForm(@ModelAttribute("customer") Customer customer,BindingResult result) {
-
-		boolean isAuthenticated = false;
-		String principalResult ="";
-	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    if (principal == null)
-	    	principalResult = null;
-	    if (principal instanceof String)
-	    	principalResult = (String) principal;
-	    if (principal instanceof User)
-	    	principalResult = ((User) principal).getUsername();
 		
-	    if(!principalResult.equals("anonymousUser")){
-	    	isAuthenticated = true ;
-	    }
 	    ModelAndView mv = new ModelAndView("customer/customerForm");
-	  
-		System.out.println("stdout - Returning hello view");
-		mv.addObject("isAuthenticated", isAuthenticated);
-		mv.addObject("username", principalResult);
-		
+	    loginInfo.getUserInfo(mv);
 		return mv;
 	}	
 
@@ -113,26 +95,7 @@ public class CustomerController{
 		imageForm.addObject("image", image);
 		imageForm.addObject("imageCount",ApplicationConstants.imageCountPerObject);
 
-		boolean isAuthenticated = false;
-		String principalResult ="";
-	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    if (principal == null)
-	    	principalResult = null;
-	    if (principal instanceof String)
-	    	principalResult = (String) principal;
-	    if (principal instanceof User)
-	    	principalResult = ((User) principal).getUsername();
-		
-	    if(!principalResult.equals("anonymousUser")){
-	    	isAuthenticated = true ;
-	    }
-	  
-		System.out.println("stdout - Returning hello view");
-		imageForm.addObject("isAuthenticated", isAuthenticated);
-		imageForm.addObject("username", principalResult);
-		
-		
-		
+		loginInfo.getUserInfo(imageForm);
 		return imageForm;
 	}	
 
@@ -142,26 +105,7 @@ public class CustomerController{
 		List activeCustomers = customerService.listCustomers();
 		custListPage.addObject("activeCustomers", activeCustomers);
 
-		boolean isAuthenticated = false;
-		String principalResult ="";
-	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    if (principal == null)
-	    	principalResult = null;
-	    if (principal instanceof String)
-	    	principalResult = (String) principal;
-	    if (principal instanceof User)
-	    	principalResult = ((User) principal).getUsername();
-		
-	    if(!principalResult.equals("anonymousUser")){
-	    	isAuthenticated = true ;
-	    }
-		System.out.println("stdout - Returning hello view");
-		custListPage.addObject("isAuthenticated", isAuthenticated);
-		custListPage.addObject("username", principalResult);
-		
-		
-		
-		
+		loginInfo.getUserInfo(custListPage);
 		return custListPage;
 	}	
 	
@@ -171,26 +115,9 @@ public class CustomerController{
                
                 List<Customer> detay=customerService.getById(Long.parseLong(id));
                 detailPage.addObject("musterim",detay.get(0));
-
-        		boolean isAuthenticated = false;
-        		String principalResult ="";
-        	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        	    if (principal == null)
-        	    	principalResult = null;
-        	    if (principal instanceof String)
-        	    	principalResult = (String) principal;
-        	    if (principal instanceof User)
-        	    	principalResult = ((User) principal).getUsername();
-        		
-        	    if(!principalResult.equals("anonymousUser")){
-        	    	isAuthenticated = true ;
-        	    }
-        		System.out.println("stdout - Returning hello view");
-        		detailPage.addObject("isAuthenticated", isAuthenticated);
-        		detailPage.addObject("username", principalResult);
-                
-                
-		return detailPage;
+                	
+                loginInfo.getUserInfo(detailPage);
+                return detailPage;
 	}
 	@RequestMapping(value = "/listCustomersWithCriteria.htm") 
 	public ModelAndView listCustomersWithCriteria(HttpServletRequest req,@ModelAttribute("searchCriterias")SearchCriteria searchCriterias,BindingResult result) {
@@ -198,26 +125,8 @@ public class CustomerController{
 		ModelAndView custListPage = new ModelAndView("customer/customerList");
 		List activeCustomers = customerService.listCustomers(searchCriterias);
 		custListPage.addObject("activeCustomers", activeCustomers);
-
-		boolean isAuthenticated = false;
-		String principalResult ="";
-	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    if (principal == null)
-	    	principalResult = null;
-	    if (principal instanceof String)
-	    	principalResult = (String) principal;
-	    if (principal instanceof User)
-	    	principalResult = ((User) principal).getUsername();
 		
-	    if(!principalResult.equals("anonymousUser")){
-	    	isAuthenticated = true ;
-	    }
-		System.out.println("stdout - Returning hello view");
-		custListPage.addObject("isAuthenticated", isAuthenticated);
-		custListPage.addObject("username", principalResult);
-
-		
-		
+		loginInfo.getUserInfo(custListPage);
 		return custListPage;		
 	}	
 	
@@ -227,23 +136,8 @@ public class CustomerController{
 		ModelAndView custUpdatePage = new ModelAndView("customer/customerUpdateForm");
 		 List<Customer> detay=customerService.getById(Long.parseLong(id));
 		 custUpdatePage.addObject("customer",detay.get(0));
-			boolean isAuthenticated = false;
-			String principalResult ="";
-		    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		    if (principal == null)
-		    	principalResult = null;
-		    if (principal instanceof String)
-		    	principalResult = (String) principal;
-		    if (principal instanceof User)
-		    	principalResult = ((User) principal).getUsername();
-			
-		    if(!principalResult.equals("anonymousUser")){
-		    	isAuthenticated = true ;
-		    }
-			System.out.println("stdout - Returning hello view");
-			custUpdatePage.addObject("isAuthenticated", isAuthenticated);
-			custUpdatePage.addObject("username", principalResult);
 
+		 loginInfo.getUserInfo(custUpdatePage);
 		 
 		return custUpdatePage;		
 	}	
