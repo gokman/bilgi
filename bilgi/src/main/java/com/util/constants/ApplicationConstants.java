@@ -14,7 +14,12 @@ public interface ApplicationConstants {
 		public static final String CUSTOMER ="C";
 		public static final String PRODUCT  ="P";
 	}
-	
+	public static interface CurrencyType {
+		public static final String DOLAR 	="USD";
+		public static final String TL		="TL";
+		public static final String EURO		="EUR";
+		
+	}
 	public static interface EntityImageTypePath{
 		public static final String CUSTOMER ="customer";
 		public static final String PRODUCT  ="product";

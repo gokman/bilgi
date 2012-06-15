@@ -7,6 +7,7 @@ import java.sql.Blob;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -56,7 +57,13 @@ public class CustomerController{
 	@RequestMapping(value = "/addCustomer.htm",method = RequestMethod.GET) 
 	public ModelAndView getCustomerForm(@ModelAttribute("customer") Customer customer,BindingResult result) {
 		
+		List<String> currencyList = new ArrayList<String>();
+		currencyList.add(ApplicationConstants.CurrencyType.TL);
+		currencyList.add(ApplicationConstants.CurrencyType.DOLAR);
+		currencyList.add(ApplicationConstants.CurrencyType.EURO);
+		
 	    ModelAndView mv = new ModelAndView("customer/customerForm");
+	    mv.addObject("currencyList",currencyList);
 	    loginInfo.getUserInfo(mv);
 		return mv;
 	}	

@@ -47,6 +47,26 @@
 			  -->
 			<script type="text/javascript">
 			// JQUERY FOR THIS PAGE
+// Numeric only control handler
+jQuery.fn.ForceNumericOnly =
+function()
+{
+    return this.each(function()
+    {
+        $(this).keydown(function(e)
+        {
+            var key = e.charCode || e.keyCode || 0;
+            // allow backspace, tab, delete, arrows, numbers and keypad numbers ONLY
+            return (
+                key == 8 || 
+                key == 9 ||
+                key == 46 ||
+                (key >= 37 && key <= 40) ||
+                (key >= 48 && key <= 57) ||
+                (key >= 96 && key <= 105));
+        });
+    });
+};			
 			
 				$(document)
 						.ready(
@@ -187,6 +207,8 @@
 										$("#recordClientZip").mask("99999");
 										$("#recordPropertyZip").mask("99999");
 										$("#recordPurchaseZip").mask("99999");
+										$("#recordClientSalary").ForceNumericOnly();
+										
 									});
 								});
 			</script>
@@ -462,6 +484,14 @@
 
 		<label for="recordClientSalary" class="input required">Aylik Gelir:</label>
 		<form:input path="salary" name="recordClientSalary" id="recordClientSalary" class="inputclass {required:true}" title="Aylik Gelir" maxlength="254" />
+
+		<form:select path="currencyType" name="currencyType" id="currencyType" class="inputclass {required:true}" title="Para Birimi">
+			<c:forEach var="currency" items="${currencyList}">
+			  <form:option value="${currency}" label="${currency}"></form:option>
+			</c:forEach>
+		</form:select>
+		
+		
 		<br />
 	
 		<label for="recordClientOccupation" class="input required">Meslek:</label>

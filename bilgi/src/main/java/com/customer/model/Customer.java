@@ -29,7 +29,11 @@ public class Customer {
 	
 	@Column ( name="salary")
 	private Long salary;
-		@Column(name="occupation")
+	
+	@Column ( name="currencyType")
+	private String currencyType;
+	
+	@Column(name="occupation")
 	private String occupation;
 	
 	@Column(name="education_level")
@@ -194,6 +198,14 @@ public class Customer {
 
 	public String getProfileImage() {
 		return profileImage;
+	}
+
+	public void setCurrencyType(String currencyType) {
+		this.currencyType = currencyType;
+	}
+
+	public String getCurrencyType() {
+		return currencyType;
 	}
 	
 	
