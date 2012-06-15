@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.util.constants.ApplicationConstants;
+import com.util.login.check.LoginCheck;
 import com.util.login.service.LoginService;
 import com.util.mailing.MailSender;
 import com.util.membership.model.User;
@@ -38,9 +39,9 @@ public class LoginLogoutController{
     private static final String destinationDir = "C:/temp/";
 	
 	
-	@Autowired 
-	private ApplicationContext context;
-	
+    @Autowired
+    private LoginCheck loginInfo;
+    
 	@RequestMapping(value = "/login.htm", method = RequestMethod.GET)
 	public ModelAndView login(
 			BindingResult result) {
@@ -125,24 +126,7 @@ public class LoginLogoutController{
 		
 		if(waitingUser != null){
 			ModelAndView successPage = new ModelAndView("membership/activationSuccessPage");
-			boolean isAuthenticated = false;
-			String principalResult ="";
-		    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		    if (principal == null)
-		    	principalResult = null;
-		    if (principal instanceof String)
-		    	principalResult = (String) principal;
-		    if (principal instanceof User)
-		    	principalResult = ((User) principal).getUsername();
-			
-		    if(!principalResult.equals("anonymousUser")){
-		    	isAuthenticated = true ;
-		    }
-		  
-			System.out.println("stdout - Returning hello view");
-			successPage.addObject("isAuthenticated", isAuthenticated);
-			successPage.addObject("username", principalResult);
-			
+			loginInfo.getUserInfo(successPage);
 			loginService.updateMembershipStatus(waitingUser.getUserId());
 			return successPage;
 		}else{
@@ -158,26 +142,9 @@ public class LoginLogoutController{
 	public ModelAndView getRequestPassowrdForm() {
 
 
-		ModelAndView passPage = new ModelAndView("/membership/requestPassword");
-		boolean isAuthenticated = false;
-		String principalResult ="";
-	    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    if (principal == null)
-	    	principalResult = null;
-	    if (principal instanceof String)
-	    	principalResult = (String) principal;
-	    if (principal instanceof User)
-	    	principalResult = ((User) principal).getUsername();
-		
-	    if(!principalResult.equals("anonymousUser")){
-	    	isAuthenticated = true ;
-	    }
-	  
-		System.out.println("stdout - Returning hello view");
-		passPage.addObject("isAuthenticated", isAuthenticated);
-		passPage.addObject("username", principalResult);
-		
-		return passPage;
+		ModelAndView requestPasswordPage = new ModelAndView("/membership/requestPassword");
+		loginInfo.getUserInfo(requestPasswordPage);
+		return requestPasswordPage;
 	}	
 	
 	
