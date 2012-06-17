@@ -1,5 +1,6 @@
 package com.util.loginlogout.controller;
 import java.io.File;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
@@ -130,7 +131,7 @@ public class LoginLogoutController{
 			loginService.updateMembershipStatus(waitingUser.getUserId());
 			return successPage;
 		}else{
-			//TODO aktivasyon hata sayfasý
+			//TODO aktivasyon hata sayfasi
 			
 			return new ModelAndView("/index.htm");
 		}
