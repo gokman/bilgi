@@ -100,7 +100,7 @@
 														        <img src="<c:url value="${product.profileImage}"/>"  border="0" alt="" hspace="0" width="100" height="140">
 														    </c:when>
 														    <c:otherwise>
-														        <img src="<c:url value="/resources/image/customer/user_anonymous_man.png"/>"  border="0" alt="" hspace="0" width="100" height="140">
+														        <img src="<c:url value="/resources/image/product/anonymous_product.jpg"/>"  border="0" alt="" hspace="0" width="100" height="140">
 														    </c:otherwise>
 														</c:choose>													
 														

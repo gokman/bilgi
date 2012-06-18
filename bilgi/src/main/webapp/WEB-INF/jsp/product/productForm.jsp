@@ -311,11 +311,18 @@ function()
 				<form:input path="" name="recordClientEmail1" id="recordClientEmail1" class="inputclass {required:true, equalTo:'#recordClientEmail'}" maxlength="254"  title="Please confirm your email address"/>
 				<br />
 			-->
+				<label for="productProfileImage" class="input required">Profil Resmi:</label>
+				<input type="file" class="inputclass {required:true}" id="productProfileImage" name="productProfileImage" title="Profile image is required" />
+				<br />
 			
 
 				<br />
 				<div class="buttonWrapper">
+				<!-- 
 				<input name="formNext1" type="button" class="open1 nextbutton" value="Next" alt="Next" title="Next" />
+				-->
+				<input name="submit" type="submit" id="submit" value="Submit" class="submitbutton" alt="Submit" title="Submit"></input>
+				
 				</div>
 		</fieldset> 
 		</div>

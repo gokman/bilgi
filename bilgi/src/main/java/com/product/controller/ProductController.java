@@ -1,5 +1,6 @@
 package com.product.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.product.model.Product;
@@ -40,8 +43,20 @@ public class ProductController {
 	}	
 
 	@RequestMapping(value = "/saveProductForm.htm")
-	public ModelAndView saveProductForm(HttpServletRequest req,@ModelAttribute("product")Product product,@ModelAttribute("searchCriterias") SearchCriteria searchCriterias,BindingResult result){
+	public ModelAndView saveProductForm(HttpServletRequest req,@ModelAttribute("product")Product product,@ModelAttribute("searchCriterias") SearchCriteria searchCriterias,BindingResult result,@RequestParam("productProfileImage") MultipartFile productProfileImage){
 
+		String profileImagePath = "/resources/image/product/"+productProfileImage.getOriginalFilename();
+		File newFiles= new File(req.getSession().getServletContext().getRealPath(profileImagePath));
+	
+		
+        try {
+			productProfileImage.transferTo(newFiles);
+		} catch (Exception e1) {
+
+			e1.printStackTrace();
+		}
+		product.setProfileImage(profileImagePath);
+		
 		ProductValidator validator = new ProductValidator();
 		validator.validate(product, result);
 
