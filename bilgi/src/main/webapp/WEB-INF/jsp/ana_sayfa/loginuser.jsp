@@ -11,17 +11,13 @@
 <div class="kullanici_giris">
 									<c:choose>
 											<c:when test="${isAuthenticated=='true' }">
-											<table class="merhabakutu">
-											<tr><td>
-												<a id="merhaba">Merhaba</a>
-											</td></tr>
-											<tr><td>
-												<a id="username"><c:out value="${username}"></c:out></a>
-										    </td></tr>
-										    <tr><td>
-												<a id="logout" href="<c:url value="/j_spring_security_logout"/>" value="Logout">Çıkış</a>
-											</td></tr>
-											</table>
+
+												<form class="formkullanicigiris" method="post" action="j_spring_security_check"><br />
+												<a >Merhaba </a> 
+												<a ><c:out value="${username}"></c:out></a><br />
+												<a href="<c:url value="/j_spring_security_logout"/>" value="Logout">Çıkış</a> 
+												</form>
+
 											</c:when>
 											<c:otherwise>
 											
