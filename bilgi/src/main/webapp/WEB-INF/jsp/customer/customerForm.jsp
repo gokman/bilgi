@@ -1,15 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-	
+			
 			<!-- Acordion form js and css -->
 			<script type="text/javascript">
-			<!--
+			
 			function isNumericKey(e) {
 			   var k = document.all ? e.keyCode : e.which;
 			   return ((k > 47 && k < 58) || k == 8);
@@ -17,7 +18,7 @@
 			function extractNumeric(str) {
 			   return str.replace(/\D/g,"");
 			}
-			// -->
+			 
 			</script>
 			<!-- 
 			<link href="<c:url value="/resources/css/ana_sayfa/main.css"/>" rel="stylesheet" type="text/css"/>
@@ -26,6 +27,7 @@
 			<!-- 
 			<link rel="stylesheet" href="<c:url value="/resources/css/form/customer_form.css"/>"></link>
 			-->
+			<link rel="stylesheet" href="<c:url value="/resources/css/form/main_form.css"/>"></link>
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery-1.2.1.js"/>"></script>
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery-1.2.js"/>"></script>
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery.form.js"/>"></script>
@@ -38,7 +40,7 @@
 			<!-- date picker 
 				<link rel="stylesheet" href="<c:url value="/resources/css/datepicker/datepicker.css"/>" />
 			    <link rel="stylesheet" href="<c:url value="/resources/css/datepicker/layout.css"/>" />
-			<!--	 
+				 
 				<script type="text/javascript" src="<c:url value="/resources/js/datepicker/datepicker.js"/>"></script>
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/eye.js"/>"></script>
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/utils.js"/>"></script>
@@ -217,133 +219,13 @@ function()
 			/* ------ one ------------*/
 			/* ------------- form specific styles are here  -------------- */
 			
-			fieldset {
-			margin:0;
-			border:1px solid #C3DE00;
-			padding: 10px;
-			/*border:none;
-			padding:0;*/
-			color:#7563A5;
-			}
-			legend {
-			background-color:#FFFFFF;
-			text-align: center;
-			color: #097981;
-			padding:0 12px;
-			}
-			label {
-			text-align: right;
-			width: 298px;
-			border-right: 1px dotted #099;
-			padding-right: 5px;
-			margin:0 0 8px 0;
-			float: left;
-			clear: left;
-			display: block;
-			color: #7563A5;
-			}
-			label.checkbox, label.textarea{
-			border:none;
-			}
-			label.lgfield{
-			border:none;
-			text-align:center;
-			clear:both;
-			float:none;
-			width:100%;
-			}
-			fieldset input, fieldset select, fieldset textarea {
-			margin-left: 10px;
-			margin-bottom: 8px;
-			}
-			select.longfield{
-			margin:0 0 0 115px;
-			}
-			input[type="radio"],input[type="checkbox"] {
-			margin: 2px 0 0 4px;
-			}
-			textarea {
-			width:250px;
-			float:left;
-			}
-			
-			/*Get Help Form Styles*/
-			p.formDisclaimer{
-			text-align:center;
-			margin:32px 24px 12px 0;
-			font-style:italic;
-			}
-			div.buttonWrapper{
-			margin:28px 0 14px 0;
-			clear:both;
-			text-align:center;
-			}
-			.formspacer{
-			height:1em;
-			clear:both;
-			}
-			.hideField{
-			display:none;
-			}
-			.pushOpen{
-			height:18em;
-			}
-			/* ----- error message for field validation ----- */
-			#stepForm label.warning{
-			text-align: left;
-			width:auto;
-			padding:0;
-			margin:0 0 0 10px;
-			float: none;
-			clear: none;
-			display: inline;
-			color:#CC3366;
-			font-size:10px; 
-			border:none;
-			border-top:1px dotted #CC3366;
-			}
-			div.requiredNotice{
-			width:140px;
-			float:right;
-			margin:0 24px 0 0;
-			padding:0;
-			}
-			h3.stepHeader{
-			text-align:left;
-			font-size:16px;
-			font-weight:bold;
-			margin:0 0 24px 24px;
-			color:#676cac;
-			}
-			ul#stepForm, ul#stepForm li{
-			margin:0;
-			padding:0;
-			}
-			ul#stepForm li{
-			list-style:none;
-			}
-			/* Form Buttons  */
-			input.submitbutton, .nextbutton, .prevbutton{
-			width:100px;
-			height:40px;
-			background-color:#663399;
-			padding:4px;
-			border:1px solid #339933;
-			cursor:pointer;
-			text-align:center;
-			color:#FFFFFF;
-			margin:7px;
-			}
-			input.submitbutton{
-			background-color:#006699;
-			}
 			</style> 
 	</head>
 
 <body bgcolor="#AF4555">
 	<table align="center" cellspacing="0" cellpadding="0" width="1000px" bgcolor="#FFFFFF">
 		<tbody>
-		<!-- �st kisim -->
+		<!-- üst kisim -->
 		<tr>
 					<jsp:include page="/WEB-INF/jsp/ana_sayfa/header.jsp" />
 		</tr>
@@ -356,7 +238,7 @@ function()
 					<tr>
 						<td valign="top">
 							<div class="orta_div_sol">
-							<!-- kullan�c� giri� b�l�m� olacak-->
+							<!-- kullanï¿½cï¿½ giriï¿½ bï¿½lï¿½mï¿½ olacak-->
 								<jsp:include page="/WEB-INF/jsp/ana_sayfa/loginuser.jsp" />
 								<div class="sol_menu">
 									<img src="<c:url value="/resources/image/ana_sayfa/reklam.jpg"/>"/>
@@ -388,8 +270,8 @@ function()
 
 				<fieldset>
 				<legend> Step 1 of 3 - Kimlik Bilgileri</legend> 
-				<div class="requiredNotice">*Required Field</div>
-				<h3 class="stepHeader">Musteri Kayit Formu</h3>
+				<div class="requiredNotice">* Zorunlu Alan</div>
+				<h3 class="stepHeader">Müşteri Kayıt Formu</h3>
 <!-- Sahis sirket olayi simdidlik kapali
 				<div class="formspacer" > </div>
 				<label for="recordPurchaseMetRealtor" class="input required">Musteri Turu</label>
@@ -401,10 +283,10 @@ function()
 				<div class="formspacer" > </div>
 
 				<label for="recordClientNameFirst" class="input required">First Name:</label>
-				<form:input path="name" name="recordClientNameFirst" id="recordClientNameFirst" class="inputclass {required:true}" title="First Name is required" maxlength="254" />
+				<form:input path="name" name="recordClientNameFirst" id="recordClientNameFirst" class="formtext" title="First Name is required" maxlength="254" />
 				<br />
 				<label for="recordClientNameLast" class="input required">Last Name:</label>
-				<form:input path="surname" name="recordClientNameLast" id="recordClientNameLast" class="inputclass {required:true}" maxlength="254" title="Last Name is required" />
+				<form:input class="formtext"  path="surname" name="recordClientNameLast" id="recordClientNameLast" maxlength="254" title="Last Name is required" />
 				<br />
 
 				<label for="recordForGenderType" class="input required">Cinsiyet</label>
@@ -447,8 +329,8 @@ function()
 	</a>
 	<div>
 	<fieldset>
-	<legend> Step 2 of 3 - Meslek ve Faaliyet Alani Bilgileri</legend>
-	<div class="requiredNotice">*Required Field</div>
+	<legend> Step 2 of 3 - Meslek ve Faaliyet Alanı Bilgileri</legend>
+	<div class="requiredNotice">* Zorunlu Alan</div>
 	<h3 class="stepHeader">Tell us about the property you're selling</h3>
 
 		<label for="recordEducationLevel" class="input required">Egitim Durumu:</label> 
@@ -463,7 +345,7 @@ function()
        <br />
 
 		<label for="recordClientSalary" class="input required">Aylik Gelir:</label>
-		<form:input path="salary" name="recordClientSalary" id="recordClientSalary" class="inputclass {required:true}" title="Aylik Gelir" maxlength="254" />
+		<form:input path="salary" name="recordClientSalary" id="recordClientSalary" class="formtext" title="Aylik Gelir" maxlength="254" />
 
 		<form:select path="currencyType" name="currencyType" id="currencyType" class="inputclass {required:true}" title="Para Birimi">
 			<c:forEach var="currency" items="${currencyList}">
@@ -475,14 +357,14 @@ function()
 		<br />
 	
 		<label for="recordClientOccupation" class="input required">Meslek:</label>
-		<form:input path="occupation" name="recordClientOccupation" id="recordClientOccupation" class="inputclass {required:true}" title="Meslek" maxlength="254" />
+		<form:input path="occupation" name="recordClientOccupation" id="recordClientOccupation" class="formtext" title="Meslek" maxlength="254" />
 		<br />
 		
 		<label for="recordClientPlaceOfWork" class="input required">Calisilan Kurum:</label>
-		<form:input path="placeOfWork" name="recordClientPlaceOfWork" id="recordClientPlaceOfWork" class="inputclass {required:true}" title="Calisilan Kurum" maxlength="254" />
+		<form:input path="placeOfWork" name="recordClientPlaceOfWork" id="recordClientPlaceOfWork" class="formtext" title="Calisilan Kurum" maxlength="254" />
 		<br />
 		
-		<label for="recordSettlementStatus" class="input required">Ikamet Durumu:</label>
+		<label for="recordSettlementStatus" class="input required">İkamet Durumu:</label>
 		
 		<form:select
 				path="settlementStatus" name="recordSettlementStatus" id="recordSettlementStatus"
@@ -586,14 +468,14 @@ function()
 	<br />
 
 	<label for="recordClientAddress1" class="input required">Current  Address:</label>
-	<form:input path="adress" name="recordClientAddress1" id="recordClientAddress1" class="inputclass {required:true}" maxlength="254" title="Address is required"/>
+	<form:input path="adress" name="recordClientAddress1" id="recordClientAddress1" class="formtext" maxlength="254" title="Address is required"/>
 	<br />
 
 	<label for="recordPropertyCity" class="input required">City:</label>
-	<form:input path="city" name="recordPropertyCity" id="recordPropertyCity" class="inputclass {required:true}" title="City is required" maxlength="254"  onblur="recordClientCity.value = this.value" /><br />
+	<form:input path="city" name="recordPropertyCity" id="recordPropertyCity" class="formtext" title="City is required" maxlength="254"  onblur="recordClientCity.value = this.value" /><br />
 	<br />					
 	<label for="recordClientEmail" class="input required">Email Address:</label>
-	<form:input path="email" name="recordClientEmail" id="recordClientEmail" class="inputclass {required:true, email:true}" maxlength="254" title="Email address is required" />
+	<form:input path="email" name="recordClientEmail" id="recordClientEmail" class="formtext" maxlength="254" title="Email address is required" />
 	<br />
 <!-- 	
 <label for="recordClientZip" class="input required">Zip:</label>
@@ -601,7 +483,7 @@ function()
 <br />
 -->
 <label for="recordClientPhone" class="input required">Phone Number:</label>
-<form:input path="phoneNumber" name="recordClientPhone" id="recordClientPhone" class="inputclass {required:true}" maxlength="254" title="Phone Number is required"/>
+<form:input path="phoneNumber" name="recordClientPhone" id="recordClientPhone" class="formtext" maxlength="254" title="Phone Number is required"/>
 <br />
 <!-- 
 <label for="recordClientPhoneAlt" class="input">Alternate Number:</label>
