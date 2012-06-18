@@ -1,11 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
 	
 			<!-- Acordion form js and css -->
 			<script type="text/javascript">
@@ -321,7 +322,7 @@
 <body bgcolor="#AF4555">
 	<table align="center" cellspacing="0" cellpadding="0" width="1000px" bgcolor="#FFFFFF">
 		<tbody>
-		<!-- üst kisim -->
+		<!-- Ã¼st kisim -->
 		<tr>
 					<jsp:include page="/WEB-INF/jsp/ana_sayfa/header.jsp" />
 		</tr>
@@ -334,7 +335,7 @@
 					<tr>
 						<td valign="top">
 							<div class="orta_div_sol">
-							<!-- kullanıcı giriş bölümü olacak-->
+							<!-- kullanÃ½cÃ½ giriÃ¾ bÃ¶lÃ¼mÃ¼ olacak-->
 								<jsp:include page="/WEB-INF/jsp/ana_sayfa/loginuser.jsp" />
 								<div class="sol_menu">
 									<img src="<c:url value="/resources/image/ana_sayfa/reklam.jpg"/>"/>
