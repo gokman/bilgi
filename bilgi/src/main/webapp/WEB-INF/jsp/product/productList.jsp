@@ -9,9 +9,25 @@
 	<title>Ana Sayfa</title>
 	<link href="<c:url value="/resources/css/ana_sayfa/main.css"/>" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="<c:url value="/resources/css/ana_sayfa/menu_style.css"/>" type="text/css" />
+	
+	<link rel="stylesheet" href="<c:url value="/resources/css/zebra/style.css"/>" type="text/css" />
+	<link rel="stylesheet" href="<c:url value="/resources/css/zebra/zebra_dialog.css"/>" type="text/css" />
+	<link rel="stylesheet" href="<c:url value="/resources/css/zebra/ir_black.css"/>" type="text/css" />
+
+	<script type="text/javascript" src="<c:url value="/resources/js/zebra/jquery-1.7.2.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/zebra/zebra_dialog.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/zebra/highlight.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/zebra/functions.js"/>"></script>
+
 </head>
 
 <body bgcolor="#AF4555">
+	<c:if test="${isSaveOperation=='true'}">
+		<script>
+		$.Zebra_Dialog('<strong>Ürün kayıt islemi basarıyla tamamlandı');
+		</script>
+	</c:if>
+
 	<table align="center" cellspacing="0" cellpadding="0" width="1000px" bgcolor="#FFFFFF">
 		<tbody>
 		<!-- üst kisim -->
