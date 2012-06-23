@@ -7,12 +7,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
+	<script type="text/javascript" src="<c:url value="/resources/js/zebra/jquery-1.7.2.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/zebra/zebra_dialog.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/zebra/highlight.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/zebra/functions.js"/>"></script>
+
 	<title>Ana Sayfa</title>
 	<link href="<c:url value="/resources/css/ana_sayfa/main.css"/>" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="<c:url value="/resources/css/ana_sayfa/menu_style.css"/>" type="text/css" />
 </head>
 
 <body bgcolor="#AF4555">
+	<c:if test="${isSaveOperation=='true'}">
+		<script>
+		$.Zebra_Dialog('<strong>Zebra_Dialog</strong>, a small, compact and highly configurable dialog box plugin for jQuery');
+		</script>
+	</c:if>
+	
 	<table align="center" cellspacing="0" cellpadding="0" width="1000px" bgcolor="#FFFFFF">
 		<tbody>
 		<!-- üst kisim -->

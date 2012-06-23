@@ -70,7 +70,7 @@ public class ProductController {
 		ModelAndView productListPage = new ModelAndView("product/productList");
 		List activeProducts = productService.listProduct();
 		productListPage.addObject("activeProducts", activeProducts );		
-		
+		productListPage.addObject("isSaveOperation",true);
 		loginInfo.getUserInfo(productListPage);
 		return productListPage;
 	}	
