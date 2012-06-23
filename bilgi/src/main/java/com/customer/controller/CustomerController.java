@@ -28,6 +28,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -88,7 +89,8 @@ public class CustomerController{
 		validator.validate(customer, result);
 
 		if(result.hasErrors()){
-			ModelAndView returnView = new ModelAndView("customer/customerForm");
+			ModelAndView returnView = new ModelAndView(new RedirectView("customerForm"));
+			loginInfo.getUserInfo(returnView);
 			returnView.addObject("customer", customer);
 			return returnView;
 		}
