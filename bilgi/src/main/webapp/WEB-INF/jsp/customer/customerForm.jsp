@@ -281,7 +281,8 @@ function()
 				<form:radiobutton name="recordPurchaseMetRealtor" path="gender" class="inputclass {required:true}" value="1" title="Please choose Yes or No" />				
 -->
 				<div class="formspacer" > </div>
-
+				<label><form:errors path="*" /></label>
+				
 				<label for="recordClientNameFirst" class="input required">First Name:</label>
 				<form:input path="name" name="recordClientNameFirst" id="recordClientNameFirst" class="formtext" title="First Name is required" maxlength="254" />
 				<br />

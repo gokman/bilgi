@@ -89,8 +89,13 @@ public class CustomerController{
 		validator.validate(customer, result);
 
 		if(result.hasErrors()){
-			ModelAndView returnView = new ModelAndView(new RedirectView("customerForm"));
+			ModelAndView returnView = new ModelAndView("customer/customerForm");
 			loginInfo.getUserInfo(returnView);
+			List<String> currencyList = new ArrayList<String>();
+			currencyList.add(ApplicationConstants.CurrencyType.TL);
+			currencyList.add(ApplicationConstants.CurrencyType.DOLAR);
+			currencyList.add(ApplicationConstants.CurrencyType.EURO);
+			returnView.addObject("currencyList",currencyList);
 			returnView.addObject("customer", customer);
 			return returnView;
 		}
