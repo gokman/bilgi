@@ -285,9 +285,11 @@ function()
 				
 				<label for="recordClientNameFirst" class="input required">First Name:</label>
 				<form:input path="name" name="recordClientNameFirst" id="recordClientNameFirst" class="formtext" title="First Name is required" maxlength="254" />
+				<form:errors path="name"></form:errors>
 				<br />
 				<label for="recordClientNameLast" class="input required">Last Name:</label>
 				<form:input class="formtext"  path="surname" name="recordClientNameLast" id="recordClientNameLast" maxlength="254" title="Last Name is required" />
+				<form:errors path="surname"></form:errors>
 				<br />
 
 				<label for="recordForGenderType" class="input required">Cinsiyet</label>
@@ -302,7 +304,7 @@ function()
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bekar: 
 				<form:radiobutton path="maritalStatus" name="recordForMaritalStatus" type="radio" class="inputclass {required:true}" value="1" title="Please choose Yes or No" />
 				<div class="formspacer" > </div>
-
+                <form:errors path="maritalStatus"></form:errors>
 				<!-- gecici olarak kapatilacak
 				<label for="recordClientEmail1" class="input required">Confirm Email:</label>
 				<form:input path="" name="recordClientEmail1" id="recordClientEmail1" class="inputclass {required:true, equalTo:'#recordClientEmail'}" maxlength="254"  title="Please confirm your email address"/>
@@ -343,26 +345,30 @@ function()
 				<form:option value="Universite" label="Universite" />
 				<form:option value="Y.Lisans" label="Y.Lisans" />
        </form:select> 
+       <form:errors path="educationLevel"></form:errors>
        <br />
 
 		<label for="recordClientSalary" class="input required">Aylik Gelir:</label>
 		<form:input path="salary" name="recordClientSalary" id="recordClientSalary" class="formtext" title="Aylik Gelir" maxlength="254" />
-
+        <form:errors path="salary"></form:errors>
+        
 		<form:select path="currencyType" name="currencyType" id="currencyType" class="inputclass {required:true}" title="Para Birimi">
 			<c:forEach var="currency" items="${currencyList}">
 			  <form:option value="${currency}" label="${currency}"></form:option>
 			</c:forEach>
 		</form:select>
-		
+		<form:errors path="currencyType"></form:errors>
 		
 		<br />
 	
 		<label for="recordClientOccupation" class="input required">Meslek:</label>
 		<form:input path="occupation" name="recordClientOccupation" id="recordClientOccupation" class="formtext" title="Meslek" maxlength="254" />
+		<form:errors path="occupation"></form:errors>
 		<br />
 		
 		<label for="recordClientPlaceOfWork" class="input required">Calisilan Kurum:</label>
 		<form:input path="placeOfWork" name="recordClientPlaceOfWork" id="recordClientPlaceOfWork" class="formtext" title="Calisilan Kurum" maxlength="254" />
+		<form:errors path="placeOfWork"></form:errors>
 		<br />
 		
 		<label for="recordSettlementStatus" class="input required">İkamet Durumu:</label>
@@ -374,6 +380,7 @@ function()
 				<form:option value="Kiraci" label="Kiraci" />
 				<form:option value="Misafir" label="Misafir" />
        </form:select> 
+       <form:errors path="settlementStatus"></form:errors>
        <br />
 		
 	
@@ -465,18 +472,21 @@ function()
 		<form:option value="GR" label="GR" />
 		<form:option value="KKTC" label="KKTC" />
 	</form:select> 
-
+    <form:errors path="country"></form:errors>
 	<br />
 
 	<label for="recordClientAddress1" class="input required">Current  Address:</label>
 	<form:input path="adress" name="recordClientAddress1" id="recordClientAddress1" class="formtext" maxlength="254" title="Address is required"/>
+	<form:errors path="adress"></form:errors>
 	<br />
 
 	<label for="recordPropertyCity" class="input required">City:</label>
 	<form:input path="city" name="recordPropertyCity" id="recordPropertyCity" class="formtext" title="City is required" maxlength="254"  onblur="recordClientCity.value = this.value" /><br />
+	<form:errors path="city"></form:errors>
 	<br />					
 	<label for="recordClientEmail" class="input required">Email Address:</label>
 	<form:input path="email" name="recordClientEmail" id="recordClientEmail" class="formtext" maxlength="254" title="Email address is required" />
+	<form:errors path="email"></form:errors>
 	<br />
 <!-- 	
 <label for="recordClientZip" class="input required">Zip:</label>
@@ -485,6 +495,7 @@ function()
 -->
 <label for="recordClientPhone" class="input required">Phone Number:</label>
 <form:input path="phoneNumber" name="recordClientPhone" id="recordClientPhone" class="formtext" maxlength="254" title="Phone Number is required"/>
+<form:errors path="phoneNumber"></form:errors>
 <br />
 <!-- 
 <label for="recordClientPhoneAlt" class="input">Alternate Number:</label>
