@@ -3,6 +3,7 @@ package com.util.validator;
 
 
 import java.util.List;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,16 +29,26 @@ public class CustomerValidator  implements Validator {
     
     
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "surname");
+        //ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name");
-        
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email.must.be.entered");
-        Customer customer = (Customer) target;
+        /*ValidationUtils.rejectIfEmptyOrWhitespace(errors, "maritalStatus", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "educationLevel", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "salary", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "currencyType", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "occupation", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "placeOfWork", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "settlementStatus", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "country", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "adress", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "city", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phoneNumber", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "required");*/
+        Customer customer = (Customer) target;     
 
 //        try{
 //        	int test = Integer.parseInt(user.getPhoneNumber());
 //        }catch(NumberFormatException ex){
-//        	errors.rejectValue("phoneNumber","phoneNumber.format.error");
+//      	errors.rejectValue("phoneNumber","phoneNumber.format.error");
 //        }
 //        List <User> userList = loginService.getByUsername(user.getNickName());
         
