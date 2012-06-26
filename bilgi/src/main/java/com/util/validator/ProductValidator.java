@@ -7,6 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.faces.bean.ViewScoped;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.servlet.jsp.tagext.ValidationMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +32,14 @@ public class ProductValidator  implements Validator {
     
     
     public void validate(Object target, Errors errors) {
-//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "surname");
-//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name");
-//        
-//        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email.must.be.entered");
+    //	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "tip", "required");
+    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sehir", "required");
+    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "semt", "required");
+    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "adres_detay", "required");
+    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ebat", "required");
+    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ozellik_detay", "required");
+    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "required");
+    	
         Product product = (Product) target;
 
     }
