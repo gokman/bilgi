@@ -4,7 +4,7 @@
 <properties>
 	<comment>Domain resources for CustomerDetail</comment>
 
-	<entry key="name">Ad:</entry>
+	<entry key="namee">Ad:</entry>
     <entry key="surname">Soyad:</entry>
     <entry key="salary">Maaş:</entry>
     <entry key="occupation">Yer:</entry>
