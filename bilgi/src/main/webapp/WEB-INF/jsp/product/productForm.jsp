@@ -10,7 +10,7 @@
 	
 			<!-- Acordion form js and css -->
 			<script type="text/javascript">
-			<!--
+			
 			function isNumericKey(e) {
 			   var k = document.all ? e.keyCode : e.which;
 			   return ((k > 47 && k < 58) || k == 8);
@@ -18,7 +18,7 @@
 			function extractNumeric(str) {
 			   return str.replace(/\D/g,"");
 			}
-			// -->
+			
 			</script>
 			<!-- 
 			<link href="<c:url value="/resources/css/ana_sayfa/main.css"/>" rel="stylesheet" type="text/css"/>
@@ -39,7 +39,7 @@
 			<!-- date picker 
 				<link rel="stylesheet" href="<c:url value="/resources/css/datepicker/datepicker.css"/>" />
 			    <link rel="stylesheet" href="<c:url value="/resources/css/datepicker/layout.css"/>" />
-			<!--	 
+				 
 				<script type="text/javascript" src="<c:url value="/resources/js/datepicker/datepicker.js"/>"></script>
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/eye.js"/>"></script>
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/utils.js"/>"></script>
@@ -267,41 +267,47 @@ function()
 
 
 				<fieldset>
-				<legend> Step 1 of 3 - Urun Bilgileri</legend> 
-				<div class="requiredNotice">*Required Field</div>
-				<h3 class="stepHeader">Urun Kayit Formu</h3>
+				<legend> Adım 1/3 - Ürün Bilgileri</legend> 
+				<div class="requiredNotice">* Zorunlu Alan</div>
+				<h3 class="stepHeader">Ürün Kayıt Formu</h3>
 				<div class="formspacer" > </div>
 
-				<label for="recordProductType" class="input required">Urun Turu:</label>
+				<label for="recordProductType" class="input required">Ürün Türü:</label>
 				
 				<form:select
 						path="tip" name="recordProductType" id="recordProductType"
-						class="inputclass {required:true}" title="Urun Turu">
+						class="inputclass {required:true}" title="Ürün Türü" >
 						<form:option value="Ev" label="Ev" />
-						<form:option value="Dukkan" label="Dukkan" />
+						<form:option value="Dükkan" label="Dükkan" />
 						<form:option value="Arsa" label="Arsa" />
 		       </form:select> 
+		      <!--   <form:errors path="tip"></form:errors> -->
 		       <br />
 
-				<label for="recordPropertyCity" class="input required">Sehir:</label>
-				<form:input path="sehir" name="recordPropertyCity" id="recordPropertyCity" class="formtext" title="Urunun bulundugu sehir" maxlength="254"  onblur="recordClientCity.value = this.value" /><br />
+				<label for="recordPropertyCity" class="input required">Şehir:</label>
+				<form:input path="sehir" name="recordPropertyCity" id="recordPropertyCity" class="formtext" title="Urunun bulundugu sehir" maxlength="100"  onblur="recordClientCity.value = this.value" /><br />
+				<form:errors path="sehir"></form:errors>
 				<br />					
 				
 
 				<label for="recordPropertyDistrict" class="input required">Semt:</label>
-				<form:input path="semt" name="recordPropertyDistrict" id="recordPropertyDistrict" class="formtext" title="Urunun bulundugu semt" maxlength="254"  onblur="recordClientCity.value = this.value" /><br />
+				<form:input path="semt" name="recordPropertyDistrict" id="recordPropertyDistrict" class="formtext" title="Urunun bulundugu semt" maxlength="150"  onblur="recordClientCity.value = this.value" /><br />
+				<form:errors path="semt"></form:errors>
 				<br />					
 
 				<label for="recordClientAddress1" class="input required">Adres Detay:</label>
 				<form:input path="adres_detay" name="recordClientAddress1" id="recordClientAddress1" class="formtext" maxlength="254" title="Adres "/>
+				<form:errors path="adres_detay"></form:errors>
 				<br />
 
 				<label for="ebat" class="input required">Alan:</label>
 				<form:input path="ebat" name="ebat" id="ebat" class="formtext" maxlength="254" title="Alan "/>
+				<form:errors path="ebat"></form:errors>
 				<br />
 
-				<label for="recordProductDetail" class="input required">Urun Detay:</label>
+				<label for="recordProductDetail" class="input required">Ürün Detay:</label>
 				<form:input path="ozellik_detay" name="recordProductDetail" id="recordProductDetail" class="formtext" maxlength="254" title="Ozellik Detay "/>
+				<form:errors path="ozellik_detay"></form:errors>
 				<br />
 				
 				<div class="formspacer" > </div>
@@ -336,9 +342,9 @@ function()
 	</a>
 	<div>
 	<fieldset>
-	<legend> Step 2 of 3 - Meslek ve Faaliyet Alani Bilgileri</legend>
-	<div class="requiredNotice">*Required Field</div>
-	<h3 class="stepHeader">Tell us about the property you're selling</h3>
+	<legend> Adım 2/3 - Meslek ve Faaliyet Alanı Bilgileri</legend>
+	<div class="requiredNotice">*Zorunlu Alan</div>
+	<h3 class="stepHeader">Sattığınız ürün hakkında bilgi verin</h3>
 
 	<div class="buttonWrapper">
 	<input name="formBack0" type="button" class="open0 prevbutton" value="Back" alt="Back" title="Back"/>
@@ -356,9 +362,9 @@ function()
 </a>
 <div>
 <fieldset>
-<legend> Step 3 of 3 - Iletisim Bilgileri</legend>
-<div class="requiredNotice">*Required Field</div>
-<h3 class="stepHeader">Tell us about your communication info</h3>
+<legend> Adım 3/3 - İletişim Bilgileri</legend>
+<div class="requiredNotice">*Zorunlu Alan</div>
+<h3 class="stepHeader">İletişim bilgilerinizi girin</h3>
 <br />
 <div class="buttonWrapper">
 <input name="formBack1" type="button" class="open1 prevbutton" value="Back" alt="Back" title="Back"/>
@@ -378,7 +384,7 @@ function()
 								</c:when>
 								<c:otherwise>
 									<div class="orta_div_sag">
-											Bu icerige erismek icin giris yapmalisiniz.
+											Bu içerige erişmek için giriş yapmalısınız.
 									</div>
 								</c:otherwise>
 							</c:choose>		 
