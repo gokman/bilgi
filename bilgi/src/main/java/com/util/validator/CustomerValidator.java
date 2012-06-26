@@ -29,9 +29,9 @@ public class CustomerValidator  implements Validator {
     
     
     public void validate(Object target, Errors errors) {
-        //ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name");
-        /*ValidationUtils.rejectIfEmptyOrWhitespace(errors, "maritalStatus", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "maritalStatus", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "educationLevel", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "salary", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "currencyType", "required");
@@ -42,8 +42,16 @@ public class CustomerValidator  implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "adress", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "city", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phoneNumber", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "required");*/
-        Customer customer = (Customer) target;     
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "required");
+        Customer customer = (Customer) target;  
+        
+        if(customer.getSalary()!=null && customer.getSalary()<=0){
+        	errors.rejectValue("salary", "positivenumber");
+        }
+        if(customer.getEmail()!=null && !customer.getEmail().contains("@")){
+            errors.rejectValue("email", "validformat");
+        }
+        
 
 //        try{
 //        	int test = Integer.parseInt(user.getPhoneNumber());
