@@ -67,7 +67,9 @@
 		<property name="basenames">
 			<list>
 				<!-- generated domain resources -->
-				<value>classpath:localization/customer/CustomerDetail</value>
+				<value >classpath:localization/customer/CustomerDetail</value>
+				<value>classpath:localization/customer/header</value>
+				<value>classpath:messages</value>
 			</list>
 		</property>
 	</bean>
