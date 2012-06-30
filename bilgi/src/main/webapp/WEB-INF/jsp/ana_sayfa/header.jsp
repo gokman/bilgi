@@ -33,8 +33,8 @@
 								  </li>
 									<li><a href="#">Müşteriler</a>
 						                <ul>
-						                <li><a href="<c:url value="/customer/listCustomers.htm"/>">Listele</a></li>
 						                <li><a href="<c:url value="/customer/addCustomer.htm"/>">Müşteri Gir</a></li>
+						                <li><a href="<c:url value="/customer/listCustomers.htm"/>">Listele</a></li>						                
 						                </ul>
 						          </li>
 									<li><a href="#">İletişim</a></li>

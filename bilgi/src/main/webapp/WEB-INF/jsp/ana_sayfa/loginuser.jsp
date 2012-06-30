@@ -22,13 +22,13 @@
 											<c:otherwise>
 											
 												<form class="formkullanicigiris" method="post" action="j_spring_security_check"><br />
-												<a>Kullanici adi</a> <br />
+												<a>Kullanıcı adı</a> <br />
 												<input id="textfield" type="text" name="j_username" /><br />
-												<a>Sifre</a> <br />
+												<a>Şifre</a> <br />
 												<input id="textfield" name="j_password" type="password"/><br />
-												<input id="button" type="submit"  value="Giris" />
+												<input id="button" type="submit"  value="Giriş" />
 												<br />
-												<a href="<c:url value="/login/requestPassword.htm"/>">Sifremi Unuttum</a> 
+												<a href="<c:url value="/login/requestPassword.htm"/>">Şifremi Unuttum</a> 
 												<a href="<c:url value="/login/membershipForm.htm"/>">Üye Ol</a>
 												</form>
 											
