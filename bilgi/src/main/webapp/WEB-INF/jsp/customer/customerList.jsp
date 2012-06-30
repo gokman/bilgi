@@ -7,13 +7,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
+    
 	<script type="text/javascript" src="<c:url value="/resources/js/zebra/jquery-1.7.2.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/zebra/zebra_dialog.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/zebra/highlight.js"/>"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/zebra/functions.js"/>"></script>
 
-	<title>Ana Sayfa</title>
+	<title>Müşteriler</title>
+	<link rel="stylesheet" href="<c:url value="/resources/css/liste/customer.css"/>" type="text/css" />
+	<link rel="stylesheet" href="<c:url value="/resources/css/ana_sayfa/arama.css"/>" type="text/css" />
 	<link href="<c:url value="/resources/css/ana_sayfa/main.css"/>" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="<c:url value="/resources/css/ana_sayfa/menu_style.css"/>" type="text/css" />
 </head>
@@ -53,29 +55,29 @@
 	<c:url var="searchCustomerURL" value="/customer/listCustomersWithCriteria.htm" />
 	
 				<div class="orta_div_sag">
-					<form:form action="${searchCustomerURL}" method="POST" 	commandName="searchCriterias" modelAttribute="searchCriterias">
-						<table width="300px" height="100px">
+					<form:form class="aramastil" action="${searchCustomerURL}" method="POST" 	commandName="searchCriterias" modelAttribute="searchCriterias">
+						<table width="auto" height="auto" align="center">
 							<tr height="50px">
-								<td>Ad:</td>
+								<td><label>Ad:</label></td>
 								<td>
-									<form:input path="searchCriterias[0]" maxlength="15" /> 
+									<form:input id="searchfield" path="searchCriterias[0]" maxlength="15" /> 
 								</td>
-								<td>Soyad:</td>
+								<td><label>Soyad:</label></td>
 								<td>
-									<form:input path="searchCriterias[1]" maxlength="15" /> 
+									<form:input id="searchfield" path="searchCriterias[1]" maxlength="15" /> 
 								</td>
 								<td>
-									<input type="submit" value="Ara" />
+									<input id="searchbutton" type="submit" value="Ara" />
 								</td>
 								
 							</tr>
 						</table>
 					</form:form>
 
-				<table width="100%" cellspacing="0" cellpadding="0" align="center"	class="bordertable2">
+				<table width="80%" cellspacing="0" cellpadding="0" align="center">
 							<tbody>
 								<tr>
-									<td class="tdHeader2">&nbsp;Aktif Musteriler</td>
+									<td class="tdHeader2"></td>
 								</tr>
 								<tr>
 									<td valign="top" bgcolor="#d0d0d0"
@@ -85,9 +87,9 @@
 										cellpadding="1" cellspacing="2" border="0" class="table">
 										<tbody>
 											<tr>
-												<td colspan="4" height="2"><img
-													src="/resources/kariyer/tpx(1).gif" width="1" height="2"
-													border="0" alt=""></td>
+												<td colspan="4" height="2">
+												<img src="/resources/kariyer/tpx(1).gif" width="1" height="2"
+													border="0" alt="" /></td>
 											</tr>
 
 											<script language="JavaScript">writePrestij(1,'?arn=&sid=',26)</script>
@@ -99,35 +101,36 @@
 												</c:if>
 
 												<td valign="top"
-													onmouseover="setDiv(&#39;prestij1&#39;,430,280,1,-40,26,30,10)"><a
-													href="<c:url value="/customer/customerDetail/${customer.customerId}.htm"/>"
-													class="prestijBig">
-													
-													
+													onmouseover="setDiv(&#39;prestij1&#39;,430,280,1,-40,26,30,10)" width="25%">
+													<table class="liste_kutu" width="100%" align="center" ><tr><td>
+													<a href="<c:url value="/customer/customerDetail/${customer.customerId}.htm"/>">
 													<c:choose>
 													    <c:when test="${not empty customer.profileImage}">
-													        <img src="<c:url value="${customer.profileImage}"/>"  border="0" alt="" hspace="0" width="100" height="140">
+													        <img src="<c:url value="${customer.profileImage}"/>"  border="0" alt="" hspace="0" width="100%" height="170px" />
 													    </c:when>
 													    <c:otherwise>
-													        <img src="<c:url value="/resources/image/customer/user_anonymous_man.png"/>"  border="0" alt="" hspace="0" width="100" height="140">
+													        <img src="<c:url value="/resources/image/customer/user_anonymous_man.png"/>"  border="0" alt="" hspace="0" width="100%" height="170px" />
 													    </c:otherwise>
 													</c:choose>													
 													
 													
 												</a>
-												</td>
-												<td width="50%" valign="top"
-													onmouseover="setDiv(&#39;prestij1&#39;,430,280,1,-40,26,30,10)"><span
-													id="prestij1" style="position: relative">
-												<a
-													href="<c:url value="/customer/customerDetail/${customer.customerId}.htm"/>"
-													class="prestijBig"><b><c:out
-													value="${customer.name}" /><c:out
-													value="${rowCounter.index}" /></b></a><br>
-												<a
-													href="<c:url value="/customer/customerDetail/${customer.customerId}.htm"/>"
-													class="prestijBig"><font class="prestij"><c:out
-													value="${customer.name}" /></font></a></span></td>
+												<br/>
+												<span style="position: relative">
+												<a href="<c:url value="/customer/customerDetail/${customer.customerId}.htm"/>"
+													class="liste_yazi">
+													<b>
+													<c:out value="${customer.name}" />
+													</b>
+											    </a>
+											    <br/>
+												<a href="<c:url value="/customer/customerDetail/${customer.customerId}.htm"/>"
+													class="liste_yazi">
+												<font class="prestij"><c:out value="${customer.name}" /></font>
+												</a>
+												</span>
+												</td></tr></table>
+													</td>
 
 												<c:if test='${rowCounter.index % 3 == "2"}'>
 													</tr>	

@@ -6,9 +6,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Ana Sayfa</title>
+	<title>Ürünler</title>
 	<link href="<c:url value="/resources/css/ana_sayfa/main.css"/>" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="<c:url value="/resources/css/ana_sayfa/menu_style.css"/>" type="text/css" />
+	<link rel="stylesheet" href="<c:url value="/resources/css/liste/urun.css"/>" type="text/css" />
+	<link rel="stylesheet" href="<c:url value="/resources/css/ana_sayfa/arama.css"/>" type="text/css" />
 	
 	<link rel="stylesheet" href="<c:url value="/resources/css/zebra/style.css"/>" type="text/css" />
 	<link rel="stylesheet" href="<c:url value="/resources/css/zebra/zebra_dialog.css"/>" type="text/css" />
@@ -24,7 +26,7 @@
 <body bgcolor="#AF4555">
 	<c:if test="${isSaveOperation=='true'}">
 		<script>
-		$.Zebra_Dialog('<strong>Ürün kayıt islemi basarıyla tamamlandı');
+		$.Zebra_Dialog('<strong>Ürün kayıt işlemi basarıyla tamamlandı');
 		</script>
 	</c:if>
 
@@ -59,19 +61,19 @@
 							<c:url var="searchProductURL" value="/product/listProductsWithCriteria.htm" />
 				
 							<div class="orta_div_sag">
-								<form:form action="${searchProductURL}" method="POST" 	commandName="searchCriterias" modelAttribute="searchCriterias">
-									<table width="300px" height="100px">
+								<form:form action="${searchProductURL}" method="POST" class="aramastil" commandName="searchCriterias" modelAttribute="searchCriterias">
+									<table width="auto" height="auto" align="center">
 										<tr height="50px">
-											<td>Semt:</td>
+											<td><label>Semt:</label></td>
 											<td>
-												<form:input path="searchCriterias[0]" maxlength="15" /> 
+												<form:input id="searchfield" path="searchCriterias[0]" maxlength="15" /> 
 											</td>
-											<td>Alan:</td>
+											<td><label>Alan:</label></td>
 											<td>
-												<form:input path="searchCriterias[1]" maxlength="15" /> 
+												<form:input id="searchfield" path="searchCriterias[1]" maxlength="15" /> 
 											</td>
 											<td>
-												<input type="submit" value="Ara" />
+												<input type="submit" id="searchbutton" value="Ara" />
 											</td>
 											
 										</tr>
@@ -79,17 +81,18 @@
 								</form:form>
 							</div>			
 		
-							<table width="100%" cellspacing="0" cellpadding="0" align="center"	class="bordertable2">
+							<table width="80%" cellspacing="0" cellpadding="0" align="center">
 								<tbody>
 									<tr>
-										<td class="tdHeader2">&nbsp;Aktif Urunler</td>
+										<!-- <td class="tdHeader2">&nbsp;Aktif Urunler</td> -->
+										
 									</tr>
 									<tr>
 										<td valign="top" bgcolor="#d0d0d0"
 											onmouseover="javascript:prestijTimer=0" height="594">
 	
-										<table bgcolor="#ffffff" id="ilan1" width="100%" height="100%"
-											cellpadding="1" cellspacing="2" border="0" class="table">
+										<table bgcolor="#ffffff"  width="100%" height="100%"
+											cellpadding="1" cellspacing="2" border="0" >
 											<tbody>
 												<tr>
 													<td colspan="4" height="2"><img
@@ -105,36 +108,40 @@
 														<tr>	
 													</c:if>
 	
-													<td valign="top"
-														onmouseover="setDiv(&#39;prestij1&#39;,430,280,1,-40,26,30,10)"><a
-														href="<c:url value="/product/productDetail/${product.urun_id}.htm"/>"
-														class="prestijBig">
+												    
+												     
+		<td valign="top" onmouseover="setDiv(&#39;prestij1&#39;,430,280,1,-40,26,30,10)" width="25%">
+		<table class="liste_kutu" width="100%" align="center"><tr><td>
+		<a href="<c:url value="/product/productDetail/${product.urun_id}.htm"/>">
+						
+						<!-- <img src="<c:url value="/resources/image/product/anonymous_product.jpg"/>"  border="0" hspace="0" width="100%" height="170px" />   -->						
+														
+							<c:choose>
+									<c:when test="${not empty product.profileImage}">
+									 <img src="<c:url value="${product.profileImage}"/>"  border="0" alt="" hspace="0" width="100%" height="170px" />
+									</c:when>
+								    <c:otherwise>
+									 <img src="<c:url value="/resources/image/product/anonymous_product.jpg"/>"  border="0" alt="" hspace="0" width="100%" height="170px" />
+									</c:otherwise>
+						   </c:choose>											
 														
 														
-														<c:choose>
-														    <c:when test="${not empty product.profileImage}">
-														        <img src="<c:url value="${product.profileImage}"/>"  border="0" alt="" hspace="0" width="100" height="140">
-														    </c:when>
-														    <c:otherwise>
-														        <img src="<c:url value="/resources/image/product/anonymous_product.jpg"/>"  border="0" alt="" hspace="0" width="100" height="140">
-														    </c:otherwise>
-														</c:choose>													
-														
-														
-													</a>
-													</td>
-													<td width="50%" valign="top"
-														onmouseover="setDiv(&#39;prestij1&#39;,430,280,1,-40,26,30,10)"><span
-														id="prestij1" style="position: relative">
-													<a
-														href="<c:url value="/product/productDetail/${product.urun_id}.htm"/>"
-														class="prestijBig"><b><c:out
-														value="${product.tip}-${product.adres_detay}" /><c:out
-														value="${rowCounter.index}" /></b></a><br>
-													<a
-														href="<c:url value="/product/productDetail/${product.urun_id}.htm"/>"
-														class="prestijBig"><font class="prestij"><c:out
-														value="${product.tip}" /></font></a></span></td>
+		</a>
+		<br/>											
+								<span style="position: relative">
+								    <a href="<c:url value="/product/productDetail/${product.urun_id}.htm"/>" class="liste_yazi">
+										<font><c:out value="${product.tip}" /></font>
+									</a>
+									  <br/>
+									<a href="<c:url value="/product/productDetail/${product.urun_id}.htm"/>" class="liste_yazi">
+									    <b>	
+										<c:out value="${product.adres_detay}" />
+										<!--<c:out value="${rowCounter.index}" />-->
+										</b>
+									</a>									
+								</span>
+		</td></tr></table>
+		</td>
 	
 													<c:if test='${rowCounter.index % 3 == "2"}'>
 														</tr>	
@@ -157,7 +164,7 @@
 								</c:when>
 								<c:otherwise>
 									<div class="orta_div_sag">
-											Bu icerige erismek icin giris yapmalisiniz.
+											Bu içeriğe erişmek için giriş yapmalısınız.
 									</div>
 								</c:otherwise>
 							</c:choose>		 
