@@ -14,49 +14,30 @@
 	<http auto-config="true" use-expressions="true"> 
 		
 		<access-denied-handler error-page="/authentication/accessDenied"/>
-		
 		<intercept-url pattern="/authentication/accessDenied.jsp" access="permitAll" />
 		<intercept-url pattern="/authentication/accessDenied.htm" access="permitAll" />
 		<intercept-url pattern="/authentication/accessDenied.htm" access="permitAll" />
 		<intercept-url pattern="/index.jsp" access="permitAll" />
 		<intercept-url pattern="/index.htm" access="permitAll" />
 		<intercept-url pattern="/resources/**" access="permitAll" /> <!-- resources (css,image,js) dosyalarına erişim icin -->
-		
 		<intercept-url pattern="/resources/**" access="permitAll" />
-
-		
 		<intercept-url pattern="/login/activateUserAccount/**" access="permitAll" />
 		<intercept-url pattern="/login/membershipForm.htm" access="permitAll" />
 		<intercept-url pattern="/login/membershipFormSave.htm" access="permitAll" />
 		<intercept-url pattern="/login/requestPassword.htm" access="permitAll" />
 		<intercept-url pattern="/login/sendForgottenPassword.htm" access="permitAll" />
-		
-
 		<intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
-		
-		
 		<form-login login-page="/index.htm"  authentication-failure-url="/index.htm" />
-		
 		<logout invalidate-session="true" logout-success-url="/" logout-url="/j_spring_security_logout"/>
-		
-		<!-- 
-		<remember-me key="jbcpPetStore"/>
-		
-		-->
 	</http>
+
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider>
- 
-	    <jdbc-user-service data-source-ref="dataSource" 
+	    <jdbc-user-service 
+	    	data-source-ref="dataSource" 
 	    	authorities-by-username-query="select username,authority from db_roseindia.authorities where username=?"
 	    	users-by-username-query="select username,password,'true' as enabled from db_roseindia.user where username=?"
-	    	/>
-	    	
- <!-- 
-			<user-service>
-				<user authorities="ROLE_USER" name="guest" password="guest" />
-			</user-service>
--->			
+	    />
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>

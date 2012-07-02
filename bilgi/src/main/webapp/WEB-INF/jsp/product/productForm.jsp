@@ -285,29 +285,29 @@ function()
 		       <br />
 
 				<label for="recordPropertyCity" class="input required">Şehir:</label>
-				<form:input path="sehir" name="recordPropertyCity" id="recordPropertyCity" class="formtext" title="Urunun bulundugu sehir" maxlength="100"  onblur="recordClientCity.value = this.value" /><br />
-				<form:errors path="sehir"></form:errors>
+				<form:input path="sehir" name="recordPropertyCity" id="recordPropertyCity" class="formtext" title="Urunun bulundugu sehir" maxlength="100"  onblur="recordClientCity.value = this.value" />
+				<form:errors path="sehir" cssClass="warning"></form:errors>
 				<br />					
 				
 
 				<label for="recordPropertyDistrict" class="input required">Semt:</label>
-				<form:input path="semt" name="recordPropertyDistrict" id="recordPropertyDistrict" class="formtext" title="Urunun bulundugu semt" maxlength="150"  onblur="recordClientCity.value = this.value" /><br />
-				<form:errors path="semt"></form:errors>
+				<form:input path="semt" name="recordPropertyDistrict" id="recordPropertyDistrict" class="formtext" title="Urunun bulundugu semt" maxlength="150"  onblur="recordClientCity.value = this.value" />
+				<form:errors path="semt" cssClass="warning"></form:errors>
 				<br />					
 
 				<label for="recordClientAddress1" class="input required">Adres Detay:</label>
 				<form:input path="adres_detay" name="recordClientAddress1" id="recordClientAddress1" class="formtext" maxlength="254" title="Adres "/>
-				<form:errors path="adres_detay"></form:errors>
+				<form:errors path="adres_detay" cssClass="warning"></form:errors>
 				<br />
 
 				<label for="ebat" class="input required">Alan:</label>
 				<form:input path="ebat" name="ebat" id="ebat" class="formtext" maxlength="254" title="Alan "/>
-				<form:errors path="ebat"></form:errors>
+				<form:errors path="ebat" cssClass="warning"></form:errors>
 				<br />
 
 				<label for="recordProductDetail" class="input required">Ürün Detay:</label>
 				<form:input path="ozellik_detay" name="recordProductDetail" id="recordProductDetail" class="formtext" maxlength="254" title="Ozellik Detay "/>
-				<form:errors path="ozellik_detay"></form:errors>
+				<form:errors path="ozellik_detay" cssClass="warning"></form:errors>
 				<br />
 				
 				<div class="formspacer" > </div>
