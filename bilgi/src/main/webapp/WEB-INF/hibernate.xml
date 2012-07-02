@@ -3,37 +3,35 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
-http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-http://www.springframework.org/schema/context
-http://www.springframework.org/schema/context/spring-context-3.0.xsd
-http://www.springframework.org/schema/tx
-http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 <!-- Hibernate session factory -->
-<bean id="sessionFactory" 
-class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-    <property name="dataSource">
-      <ref bean="dataSource"/>
-    </property>
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    	<property name="dataSource">
+      		<ref bean="dataSource"/>
+    	</property>
  
-    <property name="hibernateProperties">
-       <props>
-         <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-         <prop key="hibernate.show_sql">true</prop>
-       </props>
-    </property>
+    	<property name="hibernateProperties">
+       		<props>
+         		<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+         		<prop key="hibernate.show_sql">true</prop>
+       		</props>
+    	</property>
  
-    <property name="annotatedClasses">
-		<list>
-			<value>com.customer.model.Customer</value>
-			<value>com.product.model.Product</value>
-			<value>com.lookup.model.LookupMst</value>
-			<value>com.image.model.EntityImage</value>
-			<value>com.util.membership.model.User</value>
-		</list>
-    </property>
- 
+    	<property name="annotatedClasses">
+			<list>
+				<value>com.customer.model.Customer</value>
+				<value>com.product.model.Product</value>
+				<value>com.lookup.model.LookupMst</value>
+				<value>com.image.model.EntityImage</value>
+				<value>com.util.membership.model.User</value>
+			</list>
+    	</property>
     </bean>
     
     <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
@@ -42,9 +40,4 @@ class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBea
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>    
-    
-    
-    
-    
-    
 </beans>

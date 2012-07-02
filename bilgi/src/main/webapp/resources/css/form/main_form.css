@@ -155,3 +155,7 @@
 			input.submitbutton:hover, .nextbutton:hover, .prevbutton:hover {
 				background: #d94e09;
 			}
+		
+		.error{
+			color: #ff0000;
+		}

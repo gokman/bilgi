@@ -15,23 +15,14 @@
 	<context:annotation-config />
 	<mvc:resources mapping="/resources/**" location="/resources/"/>
 
-     <!-- Enable annotation-based validation using Bean Validation Framework -->  
-     <!-- Using these instead of vld namespace to prevent Eclipse from complaining 
-     <bean id="configurationLoader"  
-         class="org.springmodules.validation.bean.conf.loader.annotation.AnnotationBeanValidationConfigurationLoader"/>  
-     	<bean id="validator" class="org.springmodules.validation.bean.BeanValidator"  p:configurationLoader-ref="configurationLoader"/>
-	-->  
 	<mvc:annotation-driven/>
 	<!-- Database Configuration -->
 	<import resource="DataSource.xml"/>
 	<import resource="hibernate.xml"/>
 	<import resource="security.xml"/>
-	<!--  
-	<import resource="email-utils.xml"/>	
-	-->
+
 	<bean id="membershipFormValidator" class="com.util.validator.MembershipFormValidator"></bean>
-    <bean id="viewResolver"
-    class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="prefix">
             <value>/WEB-INF/jsp/</value>
        </property>
@@ -41,23 +32,11 @@
         <property name="contentType" value="text/html;charset=UTF-8" />
     </bean>
     
-    
-	<!-- the application context definition for the springapp DispatcherServlet
-	<bean name="/hello.htm" class="com.welcome.WelcomePageController"/>
-	--> 
-	
-<!-- 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-			p:basename="messages"/>
--->
-			
-	
-	
 	<!-- for file upload -->
-	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		   <property name="maxUploadSize" value="10000000" />
 	</bean>	
-	
+
 	<!-- localization -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
 		p:fallbackToSystemLocale="false"
@@ -73,5 +52,4 @@
 			</list>
 		</property>
 	</bean>
-			
 </beans>
