@@ -1,7 +1,6 @@
 package com.product.controller;
 
 import java.io.File;
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,8 +43,8 @@ public class ProductController {
 	}	
 
 	@RequestMapping(value = "/saveProductForm.htm")
-	public ModelAndView saveProductForm(HttpServletRequest req,@ModelAttribute("product")Product product,@ModelAttribute("searchCriterias") SearchCriteria searchCriterias,BindingResult result,@RequestParam("productProfileImage") MultipartFile productProfileImage){
-        //@ModelAttribute("searchCriterias") SearchCriteria searchCriterias,
+	public ModelAndView saveProductForm(HttpServletRequest req,@ModelAttribute("searchCriterias") SearchCriteria searchCriterias,@ModelAttribute("product")Product product,BindingResult result,@RequestParam("productProfileImage") MultipartFile productProfileImage){
+
 		String profileImagePath = "/resources/image/product/"+productProfileImage.getOriginalFilename();
 		File newFiles= new File(req.getSession().getServletContext().getRealPath(profileImagePath));
 	
@@ -56,7 +55,7 @@ public class ProductController {
 
 			e1.printStackTrace();
 		}
-		product.setprofileImage(profileImagePath);
+		product.setProfileImage(profileImagePath);
 		
 		ProductValidator validator = new ProductValidator();
 		validator.validate(product, result);
