@@ -38,10 +38,8 @@ public class ProductValidator  implements Validator {
     	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "adres_detay", "required");
     	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ebat", "required");
     	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ozellik_detay", "required");
-    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "required");
-    	
-        Product product = (Product) target;
 
+    	
     }
  
 }
