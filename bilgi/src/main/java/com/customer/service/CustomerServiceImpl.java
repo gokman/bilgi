@@ -40,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService{
  
  
     @Override 
-    public List<Customer> getById(long id) { 
+    public Customer getById(long id) { 
         // TODO Auto-generated method stub 
         return customerDao.getCustomerById(id); 
     } 

@@ -16,7 +16,7 @@ public interface CustomerService {
          
         public List<Customer> getByEmail (String email); 
          
-        public List<Customer> getById(long id); 
+        public Customer getById(long id); 
      
         public void updateCustomer(Customer cust);
         
