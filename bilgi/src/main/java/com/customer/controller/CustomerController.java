@@ -40,6 +40,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Hibernate;
 
+import com.customer.demand.model.CustomerDemand;
+import com.customer.demand.service.CustomerDemandService;
 import com.customer.model.Customer;
 import com.customer.service.CustomerService;
 import com.image.model.EntityImage;
@@ -53,6 +55,9 @@ public class CustomerController{
 
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private CustomerDemandService customerDemandService;
 
 	private LoginCheck loginInfo = new LoginCheck();
 
@@ -165,6 +170,24 @@ public class CustomerController{
 		ModelAndView custListPage = new ModelAndView("customer/dene");
 		custListPage.addObject("customer",customer);
 		return custListPage;		
+	} 
+	
+	@RequestMapping(value = "/customerDemand.htm") 
+	public ModelAndView customerDemand(HttpServletRequest req,@RequestParam("id") Long id,@ModelAttribute("customer")CustomerDemand customer,BindingResult result) {
+		
+		ModelAndView custDemandPage = new ModelAndView("customer/customerDemand");
+		custDemandPage.addObject("musteriId", id);
+		loginInfo.getUserInfo(custDemandPage);
+		return custDemandPage;		
+	} 
+	
+	@RequestMapping(value = "/saveCustomerDemand.htm") 
+	public ModelAndView savecustomerDemand(HttpServletRequest req,@ModelAttribute("customer")CustomerDemand customer,BindingResult result) {
+		
+		ModelAndView custDemandPage = new ModelAndView("/");
+		loginInfo.getUserInfo(custDemandPage);
+		customerDemandService.addCustomer(customer);
+		return custDemandPage;		
 	} 
 
 }
