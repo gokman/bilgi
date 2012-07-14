@@ -19,7 +19,7 @@ public interface CustomerDao {
 
 	public List<Customer> listCustomers(SearchCriteria searchCriterias);
 	
-	public List<Customer> getCustomerById(long id);
+	public Customer getCustomerById(long id);
 	
 	public void updateCustomer(Customer cust);
 }

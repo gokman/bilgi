@@ -66,10 +66,10 @@ public class CustomerDaoImpl implements CustomerDao{
 	}
 
 	@Override
-	public List<Customer> getCustomerById(long id) {
+	public Customer getCustomerById(long id) {
 		List<Customer> list=(List<Customer>)sessionFactory.getCurrentSession().createCriteria(Customer.class).
 		add(Restrictions.eq("id", id)).list();
-		return list;
+		return list.get(0);
 	}
 
 

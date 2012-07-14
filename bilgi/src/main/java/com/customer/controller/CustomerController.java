@@ -128,8 +128,8 @@ public class CustomerController{
 	public ModelAndView detailLookupForm(HttpServletRequest req,@PathVariable("id")String id ,@ModelAttribute("customerDetail")Customer customerDetail,BindingResult result) {
                 ModelAndView detailPage=new ModelAndView("customer/customerDetail");
                
-                List<Customer> detay=customerService.getById(Long.parseLong(id));
-                detailPage.addObject("musterim",detay.get(0));
+                Customer detay=customerService.getById(Long.parseLong(id));
+                detailPage.addObject("musterim",detay);
                 	
                 loginInfo.getUserInfo(detailPage);
                 return detailPage;
@@ -149,8 +149,8 @@ public class CustomerController{
 	public ModelAndView customerUpdateForm(HttpServletRequest req,@PathVariable("id")String id,@ModelAttribute("customerUpdate")Customer customer,BindingResult result) {
 		
 		ModelAndView custUpdatePage = new ModelAndView("customer/customerUpdateForm");
-		 List<Customer> detay=customerService.getById(Long.parseLong(id));
-		 custUpdatePage.addObject("customer",detay.get(0));
+		 Customer detay=customerService.getById(Long.parseLong(id));
+		 custUpdatePage.addObject("customer",detay);
 
 		 loginInfo.getUserInfo(custUpdatePage);
 		 
