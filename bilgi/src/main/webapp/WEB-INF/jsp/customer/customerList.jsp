@@ -129,6 +129,9 @@
 												<font class="prestij"><c:out value="${customer.name}" /></font>
 												</a>
 												</span>
+												<!-- talep düğmesi -->
+												<br/>
+												<a  href="<c:url value="/customer/customerDemand.htm?id=${customer.customerId}"/>" class="liste_button">Talep Gir</a>
 												</td></tr></table>
 													</td>
 
