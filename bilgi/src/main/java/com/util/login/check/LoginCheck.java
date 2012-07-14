@@ -24,7 +24,6 @@ public class LoginCheck {
 	    	isAuthenticated = true ;
 	    }	    
 	    
-		System.out.println("stdout - Returning hello view");
 		currentPage.addObject("isAuthenticated", isAuthenticated);
 		currentPage.addObject("username", principalResult);
 
