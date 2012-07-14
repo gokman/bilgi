@@ -37,6 +37,13 @@
 						                <li><a href="<c:url value="/customer/listCustomers.htm"/>">Listele</a></li>						                
 						                </ul>
 						          </li>
+									<li><a href="#">Randevu</a>
+						                <ul>
+						                <li><a href="<c:url value="/appointment/getCustomerForm4Appointment.htm"/>">Randevu Al</a></li>
+						                <li><a href="<c:url value="/appointment/listAppointments.htm"/>">Randevu Sorgula</a></li>						                
+						                </ul>
+									</li>
+
 									<li><a href="#">İletişim</a></li>
 									<li><a href="#">Hakkımızda</a></li>
 								</ul>
