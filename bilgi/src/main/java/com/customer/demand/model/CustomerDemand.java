@@ -28,71 +28,7 @@ public class CustomerDemand {
 	
 	@Column(name = "sehir")
 	private String sehir;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getMusteriId() {
-		return musteriId;
-	}
-
-	public void setMusteriId(Long musteriId) {
-		this.musteriId = musteriId;
-	}
-
-	public String getTip() {
-		return tip;
-	}
-
-	public void setTip(String tip) {
-		this.tip = tip;
-	}
-
-	public String getSemt() {
-		return semt;
-	}
-
-	public void setSemt(String semt) {
-		this.semt = semt;
-	}
-
-	public String getSehir() {
-		return sehir;
-	}
-
-	public void setSehir(String sehir) {
-		this.sehir = sehir;
-	}
-
-	public Long getAltdeger() {
-		return altdeger;
-	}
-
-	public void setAltdeger(Long altdeger) {
-		this.altdeger = altdeger;
-	}
-
-	public Long getUstdeger() {
-		return ustdeger;
-	}
-
-	public void setUstdeger(Long ustdeger) {
-		this.ustdeger = ustdeger;
-	}
-
-	public Long getEbat() {
-		return ebat;
-	}
-
-	public void setEbat(Long ebat) {
-		this.ebat = ebat;
-	}
-
+	
 	@Column(name = "alt_deger")
 	private Long altdeger;
 	
@@ -101,4 +37,70 @@ public class CustomerDemand {
 	
 	@Column(name = "ebat")
 	private Long ebat;
+
+	public Long getid() {
+		return id;
+	}
+
+	public void setid(Long id) {
+		this.id = id;
+	}
+
+	public Long getmusteriId() {
+		return musteriId;
+	}
+
+	public void setmusteriId(Long musteriId) {
+		this.musteriId = musteriId;
+	}
+
+	public String gettip() {
+		return tip;
+	}
+
+	public void settip(String tip) {
+		this.tip = tip;
+	}
+
+	public String getsemt() {
+		return semt;
+	}
+
+	public void setsemt(String semt) {
+		this.semt = semt;
+	}
+
+	public String getsehir() {
+		return sehir;
+	}
+
+	public void setsehir(String sehir) {
+		this.sehir = sehir;
+	}
+
+	public Long getaltdeger() {
+		return altdeger;
+	}
+
+	public void setaltdeger(Long altdeger) {
+		this.altdeger = altdeger;
+	}
+
+	public Long getustdeger() {
+		return ustdeger;
+	}
+
+	public void setustdeger(Long ustdeger) {
+		this.ustdeger = ustdeger;
+	}
+
+	public Long getebat() {
+		return ebat;
+	}
+
+	public void setebat(Long ebat) {
+		this.ebat = ebat;
+	}
+
+	
 }
