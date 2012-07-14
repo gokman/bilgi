@@ -8,7 +8,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.customer.model.Customer;
 import com.product.model.Product;
 import com.util.search.SearchCriteria;
 
@@ -21,7 +20,10 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public void saveProduct(Product prod) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().save(prod);
+		try {
+			sessionFactory.getCurrentSession().save(prod);	
+		} catch (Exception e) {
+		}
 	}
 
 	@SuppressWarnings("unchecked")
