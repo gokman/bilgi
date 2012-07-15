@@ -20,5 +20,9 @@ public interface AppointmentDao {
 	
 	public Appointment getAppointmentById(long id);
 	
+	public List<Appointment> listAppointmentsByCustomerID(Long customerID);
+	
 	public void updateAppointment (Appointment appointment);
+	
+	public void deleteAppointment (Appointment appointment);
 }

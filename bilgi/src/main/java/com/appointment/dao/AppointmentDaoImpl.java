@@ -63,13 +63,20 @@ public class AppointmentDaoImpl implements AppointmentDao{
 		return list.get(0);
 	}
 
-
 	@Override
-	public void updateAppointment(Appointment appointment) {
-		
-		sessionFactory.getCurrentSession().update(appointment);
-		
+	public List<Appointment> listAppointmentsByCustomerID(Long customerID) {
+		List<Appointment> list=(List<Appointment>)sessionFactory.getCurrentSession().createCriteria(Appointment.class).
+		add(Restrictions.eq("customerId", customerID)).list();
+		return list;
 	}
 	
+	@Override
+	public void updateAppointment(Appointment appointment) {
+		sessionFactory.getCurrentSession().update(appointment);
+	}
+
+	public void deleteAppointment(Appointment appointment) {
+		sessionFactory.getCurrentSession().delete(appointment);
+	}
 	
 }

@@ -38,6 +38,11 @@ public class AppointmentServiceImpl implements AppointmentService{
         // TODO Auto-generated method stub 
         return appointmentDao.getAppointmentById(id); 
     } 
+
+	@Override
+	public List<Appointment> listAppointmentsByCustomer(Long customerID) {
+		return appointmentDao.listAppointmentsByCustomerID(customerID);
+	}    
     
     public List<Appointment> listAppointments(SearchCriteria searchCriterias){
     	return appointmentDao.listAppointments(searchCriterias);
@@ -46,5 +51,11 @@ public class AppointmentServiceImpl implements AppointmentService{
     public void updateAppointment(Appointment appointment) {
     	appointmentDao.updateAppointment(appointment);
         
-    }    
+    }
+    
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false) 
+    public void deleteAppointment(Appointment appointment) {
+    	appointmentDao.deleteAppointment(appointment);
+        
+    }
 }

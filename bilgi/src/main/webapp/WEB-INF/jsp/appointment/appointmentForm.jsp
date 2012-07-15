@@ -18,10 +18,68 @@
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/jquery.ui.widget.js"/>"></script>
 			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/jquery.ui.datepicker.js"/>"></script>
 
+
+			
+				<script type="text/javascript" src="<c:url value="/resources/js/zebra/zebra_dialog.js"/>"></script>
+
+			<link rel="stylesheet" href="<c:url value="/resources/css/zebra/style.css"/>" type="text/css" />
+				<link rel="stylesheet" href="<c:url value="/resources/css/zebra/zebra_dialog.css"/>" type="text/css" />
+				<link rel="stylesheet" href="<c:url value="/resources/css/zebra/ir_black.css"/>" type="text/css" />
+	
+  
+				<script type="text/javascript" src="<c:url value="/resources/js/zebra/highlight.js"/>"></script>
+				<script type="text/javascript" src="<c:url value="/resources/js/zebra/functions.js"/>"></script>
+
 			<script type="text/javascript">
 			// JQUERY FOR THIS PAGE
-						<!-- Acordion form js and css -->
+
 			
+			<!--
+									function submitForm(i) {
+									if (i=='save') document.cmaForm.action="/bilgi/appointment/saveAppointmentForm.htm";;
+									if (i=='update') document.cmaForm.action="/bilgi/appointment/updateAppointmentForm.htm";;
+									
+									}			
+		-->	
+									function saveAppointment(){
+										document.cmaForm.action="/bilgi/appointment/saveAppointmentForm.htm";
+										
+										$.Zebra_Dialog('<strong>Randevu Kayıt </strong>Randevuyu kaydetmek istediğinizden emin misiniz?', {
+										    'type':     'question',
+										    'title':    'Custom buttons',
+										    'buttons':  [
+															{caption: 'Vazgeç', callback: function() { }},
+										                    {caption: 'Kaydet', callback: function() { document.cmaForm.submit()}},
+										                ]
+										});										
+									}
+
+									function updateAppointment(){
+										document.cmaForm.action="/bilgi/appointment/updateAppointmentForm.htm";
+										
+										$.Zebra_Dialog('<strong>Randevu Güncelleme </strong>Randevuyu güncellemek istediğinizden emin misiniz?', {
+										    'type':     'question',
+										    'title':    'Custom buttons',
+										    'buttons':  [
+															{caption: 'Vazgeç', callback: function() { }},
+										                    {caption: 'Kaydet', callback: function() { document.cmaForm.submit()}},
+										                ]
+										});										
+									}
+									function deleteAppointment(){
+										document.cmaForm.action="/bilgi/appointment/deleteAppointmentForm.htm";
+										
+										$.Zebra_Dialog('<strong>Randevu Güncelleme </strong>Randevuyu silmek istediğinizden emin misiniz?', {
+										    'type':     'question',
+										    'title':    'Custom buttons',
+										    'buttons':  [
+															{caption: 'Vazgeç', callback: function() { }},
+										                    {caption: 'Kaydet', callback: function() { document.cmaForm.submit()}},
+										                ]
+										});										
+									}
+									
+									
 			// masked inputs
 									$(function($) {
 										$("#recordClientNameFirst").attr("disabled", "disabled");
@@ -31,12 +89,6 @@
 										
 									});
 			</script>
-			<!-- css for this page -->
-			<style type="text/css">
-			/* ------ one ------------*/
-			/* ------------- form specific styles are here  -------------- */
-			
-			</style> 
 	</head>
 
 <body bgcolor="#AF4555">
@@ -72,8 +124,8 @@
 	<div id="content-wrap">
 	<div id="main">
 	<!-- Acordion form js and css end -->
-	<c:url value="/appointment/saveAppointment.htm" var="saveAppointment"></c:url>
-	<form:form  name="cmaForm" id="cmaForm" action="${saveAppointment}" modelAttribute="appointment" method="POST" enctype="multipart/form-data" >
+	<c:url value="/appointment/saveOrUpdateAppointment.htm" var="saveOrUpdateAppointment"></c:url>
+	<form:form  name="cmaForm" id="cmaForm" action="${saveOrUpdateAppointment}" modelAttribute="appointment" method="POST" enctype="multipart/form-data" >
 
 		<ul id="stepForm" class="ui-accordion-container">
 			<li  id="sf1">
@@ -98,7 +150,7 @@
 				<br />				
 				
 				<form:hidden path="customerId" value="${customer.customerId }"/>
-				
+				<form:hidden path="id" />
 				<label for="appointmentState" class="input required">Randevu Durumu:</label>
 				<form:select
 						path="app_state" name="appointmentState" id="appointmentState"
@@ -122,7 +174,19 @@
  				<br/>
  
 				<div class="buttonWrapper">
-				<input name="submit" type="submit" id="submit" value="Submit" class="submitbutton" alt="Submit" title="Submit"/>
+
+				<c:choose>
+					<c:when test="${appointment.id != null}">
+						<input name="cancel" type="submit" id="cancel" value="Vazgeç" class="submitbutton" alt="Cancel" title="Vazgeç" onclick="cancel(); return false;"/>
+						<input name="update" type="button" id="update" value="Güncelle" class="submitbutton" alt="Submit" title="Güncelle" onclick="updateAppointment(); return false;"/>
+						<input name="delete" type="button" id="delete" value="Sil" class="submitbutton" alt="Submit" title="Sil" onclick="deleteAppointment(); return false;"/>
+					</c:when>
+					<c:otherwise>
+						<input name="cancel" type="submit" id="cancel" value="Vazgeç" class="submitbutton" alt="Cancel" title="Vazgeç" onclick="cancelAppointment(); return false;"/>
+						<input name="save" type="submit" id="save" value="Kaydet" class="submitbutton" alt="Submit" title="Kaydet" onclick="saveAppointment(); return false;"/>
+					</c:otherwise>
+				</c:choose>
+				
 				</div>
 		</fieldset> 
 		</div>
