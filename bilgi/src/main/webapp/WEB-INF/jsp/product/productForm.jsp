@@ -20,11 +20,6 @@
 			}
 			
 			</script>
-			<!-- 
-			<link href="<c:url value="/resources/css/ana_sayfa/main.css"/>" rel="stylesheet" type="text/css"/>
-			<link rel="stylesheet" href="<c:url value="/resources/css/ana_sayfa/menu_style.css"/>" type="text/css" />
-			-->
-			 
 			<link rel="stylesheet" href="<c:url value="/resources/css/form/main_form.css"/>"></link>
 			
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery-1.2.1.js"/>"></script>
