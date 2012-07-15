@@ -37,16 +37,6 @@
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery.dimensions.js"/>"></script>
 			<script type="text/javascript" src="<c:url value="/resources/js/form/jquery.accordion.js"/>"></script>
 			
-			<!-- date picker 
-				<link rel="stylesheet" href="<c:url value="/resources/css/datepicker/datepicker.css"/>" />
-			    <link rel="stylesheet" href="<c:url value="/resources/css/datepicker/layout.css"/>" />
-				 
-				<script type="text/javascript" src="<c:url value="/resources/js/datepicker/datepicker.js"/>"></script>
-			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/eye.js"/>"></script>
-			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/utils.js"/>"></script>
-			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/layout.js"/>"></script>
-			    <script type="text/javascript" src="<c:url value="/resources/js/datepicker/jquery.js"/>"></script>
-			  -->
 			<script type="text/javascript">
 			// JQUERY FOR THIS PAGE
 // Numeric only control handler
@@ -166,11 +156,17 @@ function()
 													</c:choose>													
 												</a>
 												<br/>
+												<b>
+												<c:out value="${customer.name} ${customer.surname}" />
+												</b>
+												<br/>
 												<a href="<c:url value="/appointment/getAppointmentForm/${customer.customerId}.htm"/>">
-													<b>
-													<c:out value="${customer.name} ${customer.surname}" />
-													</b>
+													Yeni Randevu  
 											    </a>
+											    <br/>
+												<a href="<c:url value="/appointment/listAppointments/${customer.customerId}.htm"/>">
+													Randevularını Listele
+											    </a>											    
 											    <br/>
 												</td></tr></table>
 													</td>

@@ -13,10 +13,13 @@ public interface AppointmentService {
         public List<Appointment> listAppointments(); 
         
         public List<Appointment> listAppointments(SearchCriteria searchCriterias);
-         
+        
+        public List<Appointment> listAppointmentsByCustomer(Long customerID); 
          
         public Appointment getById(long id); 
      
         public void updateAppointment (Appointment appointment);
+        
+        public void deleteAppointment (Appointment appointment);
         
     }

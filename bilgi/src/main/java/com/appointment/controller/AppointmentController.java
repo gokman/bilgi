@@ -54,17 +54,24 @@ public class AppointmentController{
 	
 	private LoginCheck loginInfo = new LoginCheck();
 
-	/*
-	 * Overriden :)
-	 */
 	@RequestMapping(value = "/getCustomerForm4Appointment.htm",method = RequestMethod.GET) 
 	public ModelAndView getCustomerForm4Appoinment(@ModelAttribute("searchCriterias") SearchCriteria searchCriteria,BindingResult result) {
 		
 	    ModelAndView mv = new ModelAndView("appointment/customerForm4Appointment");
 	    loginInfo.getUserInfo(mv);
 		return mv;
+	}
+	
+	@RequestMapping(value = "/listAppointments/{customerID}.htm") 
+	public ModelAndView listAppointmentsWithCriteria(@PathVariable("customerID")Long customerID,HttpServletRequest req,@ModelAttribute("searchCriterias")SearchCriteria searchCriterias,BindingResult result) {
+		
+		ModelAndView appointmentsListPage = new ModelAndView("appointment/appointmentList");
+		List <Appointment> activeAppointments = appointmentService.listAppointmentsByCustomer(customerID);
+		appointmentsListPage.addObject("activeAppointments",activeAppointments);
+
+		loginInfo.getUserInfo(appointmentsListPage);
+		return appointmentsListPage;		
 	}	
-	 
 	
 	@RequestMapping(value = "/listAppointmentCustomers.htm") 
 	public ModelAndView listCustomersForm4Appointment(@ModelAttribute("searchCriterias") SearchCriteria searchCriteria,@ModelAttribute("appointment") Appointment appointment,BindingResult result) {
@@ -89,11 +96,24 @@ public class AppointmentController{
 		loginInfo.getUserInfo(mv);
 		return mv;
 	}
+
+	@RequestMapping(value="/appointmentDetail/{appointmentID}/{customerID}.htm",method=RequestMethod.GET)
+	public ModelAndView getAppointmentDetailForm(@PathVariable("customerID")Long customerID,@PathVariable("appointmentID")Long appointmentID,@ModelAttribute("appointmentUpdate")Appointment appointment,BindingResult result){
+		
+		Customer customer = customerService.getById(customerID);
+		Appointment appointmentEx = appointmentService.getById(appointmentID);
+		
+		ModelAndView mv =new ModelAndView("appointment/appointmentForm");
+		mv.addObject("customer", customer);
+		mv.addObject("appointment", appointmentEx);
+		mv.addObject("hoursOfDay", ApplicationUtil.getHoursOfADay());
+		loginInfo.getUserInfo(mv);
+		return mv;
+	}	
 	
 
-	@RequestMapping(value = "/saveAppointment.htm")
-	public ModelAndView saveAppointmentForm(HttpServletRequest req,@ModelAttribute("appointment")Appointment appointment,BindingResult result){
-
+	@RequestMapping(value = "/saveAppointmentForm.htm")
+	public ModelAndView saveAppointmentForm(HttpServletRequest request,@ModelAttribute("appointment")Appointment appointment,BindingResult result){
 
 		AppointmentValidator validator = new AppointmentValidator();
 		validator.validate(appointment, result);
@@ -103,14 +123,29 @@ public class AppointmentController{
 			loginInfo.getUserInfo(returnView);
 			return returnView;
 		}
-		
-		
 		appointmentService.addAppointment(appointment);
-		
+
 		ModelAndView mv = new ModelAndView("redirect:/index.htm");
 		loginInfo.getUserInfo(mv);
 		return mv;
 	}	
+
+	@RequestMapping(value = "/updateAppointmentForm.htm")
+	public ModelAndView appointmentUpdateForm(HttpServletRequest req,@ModelAttribute("appointment")Appointment appointment,BindingResult result) {
+			appointmentService.updateAppointment(appointment);
+			
+			ModelAndView mv = new ModelAndView("redirect:/appointment/listAppointments/"+appointment.getCustomerId()+".htm");
+			return mv;
+	} 		
+		
 	
+	@RequestMapping(value = "/deleteAppointmentForm.htm")
+	public ModelAndView appointmentDeleteForm(HttpServletRequest req,@ModelAttribute("appointment")Appointment appointment,BindingResult result) {
+		
+		appointmentService.deleteAppointment(appointment);
+
+		ModelAndView mv = new ModelAndView("redirect:/appointment/listAppointments/"+appointment.getCustomerId()+".htm");
+		return mv;
+	}	
 	
 }
