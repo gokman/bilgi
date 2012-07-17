@@ -31,7 +31,6 @@ public class LookupMstServiceImpl implements LookupMstService{
 
 	@Override
 	public List<LookupMst> listLookupMst() {
-		// TODO Auto-generated method stub
 		return lookupMstDao.listLookupMst();
 	}
 

@@ -19,7 +19,6 @@ public class ProductDaoImpl implements ProductDao{
 
 	@Override
 	public void saveProduct(Product prod) {
-		// TODO Auto-generated method stub
 		try {
 			sessionFactory.getCurrentSession().save(prod);	
 		} catch (Exception e) {
@@ -28,13 +27,11 @@ public class ProductDaoImpl implements ProductDao{
 
 	@SuppressWarnings("unchecked")
 	public List<Product> listProducts() {
-		// TODO Auto-generated method stub
 		return (List<Product>)sessionFactory.getCurrentSession().createCriteria(Product.class).list();
 	}
 
 	@Override
 	public List<Product> listProdcutss(Product prod) {
-		// TODO Auto-generated method stub
 		return (List<Product>)sessionFactory.getCurrentSession().createCriteria(Product.class).add(Example.create(prod)).list();
 	}
 
