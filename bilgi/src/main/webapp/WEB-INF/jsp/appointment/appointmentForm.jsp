@@ -35,11 +35,6 @@
 
 			
 			<!--
-									function submitForm(i) {
-									if (i=='save') document.cmaForm.action="/bilgi/appointment/saveAppointmentForm.htm";;
-									if (i=='update') document.cmaForm.action="/bilgi/appointment/updateAppointmentForm.htm";;
-									
-									}			
 		-->	
 									function saveAppointment(){
 										document.cmaForm.action="/bilgi/appointment/saveAppointmentForm.htm";
@@ -62,7 +57,7 @@
 										    'title':    'Custom buttons',
 										    'buttons':  [
 															{caption: 'Vazgeç', callback: function() { }},
-										                    {caption: 'Kaydet', callback: function() { document.cmaForm.submit()}},
+										                    {caption: 'Güncelle', callback: function() { document.cmaForm.submit()}},
 										                ]
 										});										
 									}
@@ -73,14 +68,32 @@
 										    'type':     'question',
 										    'title':    'Custom buttons',
 										    'buttons':  [
-															{caption: 'Vazgeç', callback: function() { }},
-										                    {caption: 'Kaydet', callback: function() { document.cmaForm.submit()}},
+															{caption: 'Hayır', callback: function() { }},
+										                    {caption: 'Evet', callback: function() { document.cmaForm.submit()}},
 										                ]
 										});										
 									}
+									function cancelAppointment(){
+										document.cmaForm.action="/bilgi/appointment/cancelAppointmentForm.htm";
+										
+										$.Zebra_Dialog('<strong>Randevu Güncelleme </strong>Vazgeçmek istediğinizden emin misiniz?', {
+										    'type':     'question',
+										    'title':    'Custom buttons',
+										    'buttons':  [
+															{caption: 'Hayır', callback: function() { }},
+										                    {caption: 'Evet', callback: function() { $(location).attr('href',"/bilgi/index.htm")}},
+										                ]
+										});										
+									}									
+									
+			
+
+												
 									
 									
-			// masked inputs
+									
+									
+									// masked inputs
 									$(function($) {
 										$("#recordClientNameFirst").attr("disabled", "disabled");
 										$("#recordClientNameLast").attr("disabled", "disabled");
@@ -88,6 +101,8 @@
 										$( "#datepicker" ).datepicker();
 										
 									});
+			
+						
 			</script>
 	</head>
 
@@ -172,12 +187,19 @@
 				<form:input type="text" id="datepicker" path="app_date" class="formtext"></form:input>
 				
  				<br/>
+				<label for="appPlace" class="input required">Randevu Yeri:</label>
+				<form:input name="appPlace" id="appPlace" class="formtext" path="app_place"></form:input>
+				<br/>
+
+				<label for="description" class="input required">Açıklama:</label>
+				<form:textarea style="resize:none;" rows="4" columns="20" name="description" id="description" class="formtextarea"  path="description"></form:textarea>
+				<br/>				 				
  
 				<div class="buttonWrapper">
 
 				<c:choose>
 					<c:when test="${appointment.id != null}">
-						<input name="cancel" type="submit" id="cancel" value="Vazgeç" class="submitbutton" alt="Cancel" title="Vazgeç" onclick="cancel(); return false;"/>
+						<input name="cancel" type="submit" id="cancel" value="Vazgeç" class="submitbutton" alt="Cancel" title="Vazgeç" onclick="cancelAppointment(); return false;"/>
 						<input name="update" type="button" id="update" value="Güncelle" class="submitbutton" alt="Submit" title="Güncelle" onclick="updateAppointment(); return false;"/>
 						<input name="delete" type="button" id="delete" value="Sil" class="submitbutton" alt="Submit" title="Sil" onclick="deleteAppointment(); return false;"/>
 					</c:when>
