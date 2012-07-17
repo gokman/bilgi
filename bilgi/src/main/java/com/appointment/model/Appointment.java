@@ -30,9 +30,34 @@ public class Appointment {
 
 	@Column(name = "app_state")
 	private String app_state;
+	
+	@Column(name = "app_place")
+	private String app_place;
+
+	@Column(name = "description")
+	private String description;
+
 
 	
 	
+	//TODO aciklama alani eklenicek. description
+	
+	public String getApp_place() {
+		return app_place;
+	}
+
+	public void setApp_place(String app_place) {
+		this.app_place = app_place;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getApp_date() {
 		return app_date;
 	}

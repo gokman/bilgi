@@ -35,7 +35,6 @@ public class AppointmentServiceImpl implements AppointmentService{
     
     @Override 
     public Appointment getById(long id) { 
-        // TODO Auto-generated method stub 
         return appointmentDao.getAppointmentById(id); 
     } 
 
